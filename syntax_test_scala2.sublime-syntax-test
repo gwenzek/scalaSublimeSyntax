@@ -2,30 +2,59 @@
 
 import scala.collection.mutable._
 import scala.collection.immutable.{List, Set}
-// ^ source.scala meta.import.scala keyword.other.import
-//      ^ source.scala meta.import.scala variable.package.scala
-//                                  ^ source.scala meta.import.scala entity.name.class
+// ^ meta.import.scala keyword.other.import
+//      ^ meta.import.scala variable.package.scala
+//                                  ! meta.import.scala entity.name.class
 
 
 package scala_syntax {
-//      ^ source.scala foo
+// ^ keyword.other.scoping
+//      ^ entity.name.package.scala
 
   /**
+// <- comment.block.documentation.scala
    * Bar documentation
    * @param a: Int the content of this Bar
+//     ! keyword.other.scaladoc.scala
    */
   class Bar(a: Int) {
+// ^ keyword.declaration.scala
+//      ^ entity.name.class.declaration
+//          ^ variable.parameter
+//             ^ support.type.scala
     val unbar = a
+//  ^ keyword.declaration
 
     // this is a comment
-    def combine(that: Bar) = Bar(a + that.bar)
+//     ^ comment.line.double-slash.scala
+    def combine(that: Bar) = Bar(this.a + that.bar)
+//  ^ keyword.declaration.scala
+//        ^ entity.name.function.declaration
+//               ^ variable.parameter
+//                     ^ support.type.scala
+//                         ^ keyword.eq.scala
+//                                 ^ variable.language.scala
+//                                      ^ keyword.operator.scala
+//                            ! entity.name.class
 
     /* this is another comment
+//     ^ comment.block.scala
     */
-    def +=(x: Int) : Bar = Bar(a + /* plus */ x)
+    def +=(x: Int) : Bar = Bar(a /* plus */  + x)
+//  ^ keyword.declaration.scala
+//       ^ entity.name.function.declaration
+//         ^ variable.parameter
+//             ^ support.type.scala
+//                    ^ support.type.scala
+//                       ^ keyword.eq.scala
+//                                  ^ comment.block.scala
+//                                           ^ keyword.operator.scala
   }
 
   class BarBar(a: Int, b: Int = 0) extends Bar(a)
+//  ^ keyword.declaration.scala
+//                              ^ constant.numeric.scala
+//                                         ^ entity.other.inherited-class.scala
 
   trait Foo[T] {
     def add(t: T): T
@@ -47,14 +76,15 @@ package scala_syntax {
     val wordEndingInOpChars_!^ : Int = 1
     val !^© = 1 // opchars ans symbols
     val abc_!^= : Int = 1 // mixing letters and symbols
-    def abc_*^©= = 1
-    def abc_*^= : Foo[Bar]
+    def abc_*^= : Int = 1
+    def abc_^= : Foo[Bar]
 
     @tailrec
     def abc(a: Int)(implicit b: Boolean) : Int = 1
   }
 
   trait Readable[T] {
+    type Tbis = T
     def read(s: String): Option[T]
   }
 
