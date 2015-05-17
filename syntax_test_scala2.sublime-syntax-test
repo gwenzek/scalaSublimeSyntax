@@ -14,6 +14,8 @@ package scala_syntax {
   /**
 // ^ comment.block.documentation.scala
    * Bar documentation
+   * @author toto
+//     ^ keyword.other.documentation.scaladoc.scala
    * @param a: Int the content of this Bar
 //     ^ keyword.other.documentation.scaladoc.scala
    */
@@ -33,9 +35,9 @@ package scala_syntax {
 //               ^ variable.parameter
 //                     ^ support.type.scala
 //                         ^ keyword.eq.scala
+//                            ^ entity.name.class
 //                                 ^ variable.language.scala
 //                                      ^ keyword.operator.scala
-//                            ! entity.name.class
 
     /* this is another comment
 //     ^ comment.block.scala
@@ -47,14 +49,21 @@ package scala_syntax {
 //             ^ support.type.scala
 //                    ^ support.type.scala
 //                       ^ keyword.eq.scala
+//                         ^ entity.name.class
 //                                  ^ comment.block.scala
 //                                           ^ keyword.operator.scala
   }
 
-  class BarBar(a: Int, b: Int = 0) extends Bar(a)
-//  ^ keyword.declaration.scala
-//                              ^ constant.numeric.scala
-//                                         ^ entity.other.inherited-class.scala
+  case class BarBar(a: Int = 1, b: Boolean = false) extends Bar(a)
+// ^ keyword.declaration.scala
+//      ^ keyword.declaration.scala
+//                  ^ variable.parameter
+//                           ^ constant.numeric.scala
+//                              ^ variable.parameter
+//                                  ^ support.type.scala
+//                                           ^ constant.language.scala
+//                                                    ^ keyword.declaration.scala
+//                                                          ^ entity.other.inherited-class.scala
 
   trait Foo[T] {
     def add(t: T): T
@@ -65,14 +74,29 @@ package scala_syntax {
       with Bar(2 + 1)
   {
     val z= 1e-12
+//       ^ keyword.eq.scala
+//         ^ constant.numeric.scala
+//             ^ constant.numeric.scala
     val y: Int = 0x3ff
+//               ^ constant.numeric.scala
+//                   ^ constant.numeric.scala
 
 
     val !#%&*+-/:<=>?@\^|~ : Int = 1 // all simple opchars
+//  ^ keyword.declaration.scala
+//              ^ entity.name.val.declaration
+//                ^ entity.name.val.declaration
+//                           ^ support.type.scala
+//                               ^ keyword.eq.scala
+//                                 ^ constant.numeric.scala
+//                                   ^ comment.line.double-slash
     val !#%&*+-/:<=>?@\^ = 2
     val simpleName = 1
     val simpleName2: Float with Foo = 1
     var withDigitsAndUnderscores_ab_12_ab12 = 1
+//                              ^ entity.name.val.declaration
+//                                  ^ entity.name.val.declaration
+//                                        ^ entity.name.val.declaration
     val wordEndingInOpChars_!^ : Int = 1
     val !^© = 1 // opchars ans symbols
     val abc_!^= : Int = 1 // mixing letters and symbols
@@ -80,7 +104,7 @@ package scala_syntax {
     def abc_^= : Foo[Bar]
 
     @tailrec
-    def abc(a: Int)(implicit b: Boolean) : Int = 1
+    def abc(a: Int)(b: Boolean = false) : Int = 1
   }
 
   trait Readable[T] {
