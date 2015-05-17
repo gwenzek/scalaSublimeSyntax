@@ -12,10 +12,10 @@ package scala_syntax {
 //      ^ entity.name.package.scala
 
   /**
-// <- comment.block.documentation.scala
+// ^ comment.block.documentation.scala
    * Bar documentation
    * @param a: Int the content of this Bar
-//     ! keyword.other.scaladoc.scala
+//     ^ keyword.other.documentation.scaladoc.scala
    */
   class Bar(a: Int) {
 // ^ keyword.declaration.scala
