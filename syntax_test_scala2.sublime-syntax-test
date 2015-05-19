@@ -3,8 +3,8 @@
 import scala.collection.mutable._
 import scala.collection.immutable.{List, Set}
 // ^ meta.import.scala keyword.other.import
-//      ^ meta.import.scala variable.package.scala
-//                                  ! meta.import.scala entity.name.class
+//      ^ variable.package.scala
+//                                  ! entity.name.class
 
 
 package scala_syntax {
@@ -15,9 +15,10 @@ package scala_syntax {
 // ^ comment.block.documentation.scala
    * Bar documentation
    * @author toto
-//     ^ keyword.other.documentation.scaladoc.scala
-   * @param a: Int the content of this Bar
-//     ^ keyword.other.documentation.scaladoc.scala
+//     ^ keyword.documentation.inventory.scala
+   * @param a the content of this Bar
+//     ^ keyword.documentation.parameter.scala
+   * @todo finish Bar
    */
   class Bar(a: Int) {
 // ^ keyword.declaration.scala
@@ -74,6 +75,7 @@ package scala_syntax {
       with Bar(2 + 1)
   {
     val z= 1e-12
+//      ^ entity.name.val.declaration
 //       ^ keyword.eq.scala
 //         ^ constant.numeric.scala
 //             ^ constant.numeric.scala
@@ -101,10 +103,25 @@ package scala_syntax {
     val !^© = 1 // opchars ans symbols
     val abc_!^= : Int = 1 // mixing letters and symbols
     def abc_*^= : Int = 1
+
     def abc_^= : Foo[Bar]
+//  ^ keyword.declaration.scala
+//               ^ support.type.scala
+//                   ^ support.type.scala
 
     @tailrec
-    def abc(a: Int)(b: Boolean = false) : Int = 1
+//  ^ entity.name.tag
+    def abc(a: Int)(implicit b: Boolean) : Int =
+//  ^ keyword.declaration.scala
+//      ^ entity.name.function.declaration
+//          ^ variable.parameter
+//              ^ support.type.scala
+//                     ^ storage.modifier.other
+//                           ^ variable.parameter
+      if(b) 1 else abc(a - 1)(a < 0)
+
+    def printMessage(foo: Foo, a: Int) =
+      println(s"Foo: $foo, n: ${a + 2}")
   }
 
   trait Readable[T] {
