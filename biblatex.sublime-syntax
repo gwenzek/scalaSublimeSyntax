@@ -1,0 +1,487 @@
+%YAML 1.2
+---
+name: biblatex
+file_extensions: [.bib]
+scope: 'text.biblatex'
+
+# see: http://ftp.oleane.net/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf
+# less interessant: https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management#biblatex
+
+variables:
+
+  # integers
+  int: '([0-9]+)'
+  day: '([1-2][0-9]|3[01]|[1-9])'
+  month: '(1[012]|[1-9]|jan|feb|mar|)'
+  year: '([1-9][0-9]{3})'
+  _date: '{{month}}/{{day}}/{{year}}'
+  pages: '{{int}}(-+){{int}}'
+  issn: '([0-9]{4}-?[0-9]{3}[0-9xX])'
+
+contexts:
+
+  main:
+    - match: '(@article)\{(\S*),'
+      captures:
+        1: keyword.other.entry-type.biblatex
+        2: entity.name.function
+      push: article
+
+    - match: '(@inproceedings)\{(\S*),'
+      captures:
+        1: keyword.other.entry-type.biblatex
+        2: entity.name.function
+      push: inproceedings
+
+  ##################################
+  ###        Reference types         ###
+  ##################################
+
+  # TODO: distinguish between @article and @inproceedings
+  article:
+    - meta_scope: meta.article
+    # Required fields:
+    - include: author
+    - include: title
+    - include: journal_title
+    - include: date
+    - include: year
+  # Optional fields:
+    - include: url
+    - include: editor_etc
+    - include: organization_etc
+    - include: issue_title
+
+  #   language, origlanguage, series, eid, version, note, issn, addendum, pubstate, doi, eprint, eprintclass, eprinttype
+    - include: range_fields
+    - include: int_fields
+    - include: issn
+    - include: unknown
+    - include: count_brackets
+
+  inproceedings:
+    - meta_scope: meta.inproceedings
+    # Required fields:
+    - include: author
+    - include: title
+    - include: book_title
+    - include: date
+    - include: year
+
+    # Optional fields:
+    - include: url
+    - include: editor_etc
+    - include: main_title
+    - include: organization_etc
+
+    #eventtitle, eventtitleaddon, eventdate, venue,
+    # language, volume, part, volumes, series, number, note,
+    # month, isbn, chapter, pages, addendum, pubstate, doi, eprint, eprintclass, eprinttype, url, urldate
+    - include: range_fields
+    - include: int_fields
+
+    - include: unknown
+    - include: count_brackets
+
+
+  ##################################
+  ###        Field types         ###
+  ##################################
+
+  author:
+    - match: \b(author|shortauthor)\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.author
+        - include: name_list
+
+  title:
+    - match: \b(title|subtitle|titleaddon)\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.literal_field.title
+        - include: literal_field
+
+  date:
+    - match: \b(date)\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push: date_field
+
+  url:
+    - match: \b(url)\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.url
+        - include: literal_field
+    - match: \b(urldate)\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.urldate
+        - include: date_field
+
+  book_title:
+    - match: \b(book(?:title|subtitle|titleaddon))\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.literal_field.title
+        - include: literal_field
+
+  journal_title:
+    - match: \b(journal(?:title|subtitle|titleaddon)?)\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.literal_field.title
+        - include: literal_field
+
+  main_title:
+    - match: \b(main(?:title|subtitle|titleaddon))\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.literal_field.title
+        - include: literal_field
+
+  issue_title:
+    - match: \b(issue(?:title|subtitle))\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.literal_field.title
+        - include: literal_field
+
+  event:
+    - match: \b(event(?:title|subtitle|titleaddon))\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.literal_field.title
+        - include: literal_field
+    - match: \b(eventdate)\s*=\s*
+      push: date_field
+
+  editor_etc:
+    - match: \b(editor[abc]?|translator|annotator|commentator|shorteditor)\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.name_list
+        - include: name_list
+
+  organization_etc:
+    - match: \b(organization|publisher|location|language)\s*(=)\s*
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push:
+        - meta_scope: meta.literal_list
+        - include: literal_list
+
+  range_fields:
+    - match: '\b(pages)\s*(=)\s*((\{)\s*{{pages}}\s*(\})|(")\s*{{pages}}\s*(")|()\s*{{pages}}\s*()
+      )\s*'
+      scope: meta.pages
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+        3: string.punctuation.bracket.begin
+        5: constant.numeric
+        6: keyword.operator.dashes
+        7: constant.numeric
+        8: string.punctuation.bracket.end
+      push: need_coma
+    - match: '\b(pages)\s*(=)\s*(")'
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+        3: string.punctuation.quote.begin
+      push:
+        - meta_scope: meta.range_field
+        - include: pop_on_quotes
+
+  int_fields:
+    - match: '\b(volume|month|numpages|number)\s*(=)\s*'
+      scope: meta.pages
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push: int_field
+    - match: '\b(pages)\s*(=)\s*(")'
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+        3: string.punctuation.quote.begin
+      push:
+        - meta_scope: meta.range_field
+        - include: pop_on_quotes
+
+  issn:
+    - match: '\b(issn)\s*(=)\s*'
+      scope: meta.pages
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push: issn_field
+
+  year:
+    - match: '\b(year)\s*(=)\s*'
+      scope: meta.year
+      captures:
+        1: support.function.biblatex
+        2: keyword.eq
+      push: year_field
+
+  unknown:
+    - match: ^\s*
+    - match: (\S*)\s*(=)\s*
+      captures:
+        1: meta.unknown constant.character
+        2: keyword.eq
+      push:
+        - include: literal_field
+
+  ##################################
+  ###        Data types         ###
+  ##################################
+  name_list:
+    - match: (\{)
+      scope: string.punctuation.bracket.begin
+      set:
+        - meta_scope: 'meta.name_list_in'
+        - include: name_list_in
+        - include: pop_on_bracket
+    - match: '(")'
+      scope: string.punctuation.bracket.begin
+      set:
+        - meta_scope: 'meta.name_list_in'
+        - include: name_list_in
+        - include: pop_on_quotes
+
+  name_list_in:
+    - match: ','
+      scope: keyword.punctuation.separator.second
+    - include: literal_list_in
+
+  literal_list:
+    - match: \s*(\{)
+      scope: string.punctuation.bracket.begin
+      set:
+        - include: literal_list_in
+        - include: pop_on_bracket
+    - match: '\s*(")'
+      scope: string.punctuation.bracket.begin
+      set:
+        - include: literal_list_in
+        - include: pop_on_quotes
+    - match: .*$
+      scope: invalid.illegal
+      pop: true
+
+  literal_list_in:
+    - match: \b(and\s+others)\b
+      scope: keyword.punctuation.separator
+    - match: \b(and)\b
+      scope: keyword.punctuation.separator
+
+  literal_field:
+    - match: \s*(\{)
+      scope: string.punctuation.bracket.begin
+      set: pop_on_bracket
+    - match: '\s*(")'
+      scope: string.punctuation.bracket.begin
+      set: pop_on_quotes
+    - match: .*$
+      scope: invalid.illegal
+      pop: true
+
+  date_field:
+    - match: '(\{)\s*{{_date}}\s*(\})\s*'
+      scope: meta.date
+      captures:
+        1: string.punctuation.bracket.begin
+        2: constant.numeric.date
+        3: constant.numeric.date
+        4: constant.numeric.date
+        5: string.punctuation.bracket.end
+      set: need_coma
+    - match: '(\{)\s*(\S*)\s*(\})\s*'
+      scope: meta.date
+      captures:
+        1: string.punctuation.bracket.begin
+        2: invalid.malformated.date
+        3: string.punctuation.bracket.end
+      set: need_coma
+    - match: '{{_date}}'
+      captures:
+        1: constant.numeric.date
+        2: constant.numeric.date
+        3: constant.numeric.date
+      set: need_coma
+    - match: .*
+      scope: invalid.malformated.date
+      set: need_coma
+
+  int_field:
+    - match: '(\{)\s*{{int}}\s*(\})\s*'
+      scope: meta.int
+      captures:
+        1: string.punctuation.bracket.begin
+        2: constant.numeric
+        3: string.punctuation.bracket.end
+      set: need_coma
+    - match: '(")\s*{{int}}\s*(")\s*'
+      scope: meta.int
+      captures:
+        1: string.punctuation.quote.begin
+        2: constant.numeric
+        3: string.punctuation.quote.end
+      set: need_coma
+    - match: '{{int}}'
+      scope: constant.numeric
+      set: need_coma
+    - match: '\s*'
+    - match: '([^,]*)'
+      scope: invalid.should-be-int
+      set: need_coma
+
+  year_field:
+    - match: '(\{)\s*{{year}}\s*(\})\s*'
+      scope: meta.year
+      captures:
+        1: string.punctuation.bracket.begin
+        2: constant.numeric
+        3: string.punctuation.bracket.end
+      set: need_coma
+    - match: '(")\s*{{year}}\s*(")\s*'
+      scope: meta.year
+      captures:
+        1: string.punctuation.quote.begin
+        2: constant.numeric
+        3: string.punctuation.quote.end
+      set: need_coma
+    - match: '{{year}}'
+      scope: constant.numeric
+      set: need_coma
+    - match: '\s*'
+    - match: '([^,]*)'
+      scope: invalid.should-be-year
+      set: need_coma
+
+  issn_field:
+    - match: '(\{)\s*{{issn}}\s*(\})\s*'
+      scope: meta.issn
+      captures:
+        1: string.punctuation.bracket.begin
+        2: constant.numeric
+        3: string.punctuation.bracket.end
+      set: need_coma
+    - match: '(")\s*{{issn}}\s*(")\s*'
+      scope: meta.issn
+      captures:
+        1: string.punctuation.quote.begin
+        2: constant.numeric
+        3: string.punctuation.quote.end
+      set: need_coma
+    - match: '{{issn}}'
+      scope: constant.numeric
+      set: need_coma
+    - match: '\s*'
+    - match: '([^,]*)'
+      scope: invalid.should-be-issn
+      set: need_coma
+
+  ##################################
+  ###          Helpers           ###
+  ##################################
+  pop_on_bracket:
+    - match: \{
+      push: count_brackets
+    - match: (\}\s*)
+      captures:
+        1: string.punctuation.bracket.end
+      set: need_coma
+
+  pop_on_quotes:
+    - match: \{
+      push: count_brackets
+    - match: '(\"\s*)'
+      captures:
+        1: string.punctuation.quote.end
+      set: need_coma
+
+  count_brackets:
+    - match: \{
+      push: count_brackets
+    - match: \}
+      pop: true
+
+  need_coma:
+    - meta_scope: need_coma
+    - match: ','
+      pop: true
+    - match: ^\s*(?=\})
+      pop: true
+    - match: ^\s*
+      scope: invalid.illegal.missing-comma
+      pop: true
+    # - match: $
+    #   scope: invalid.illegal.missing-comma
+    #   pop: true
+
+# holder                        ^
+# bookauthor        ^
+# annotator, commentator  ^   ^   ^   ^     ^   ^   ^
+# translator, origlanguage  ^   ^   ^   ^     ^   ^   ^
+# afterword, foreword, introduction     ^   ^   ^     ^   ^   ^
+# title   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +
+# titleaddon, subtitle  ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ˇ   ^   ^   ^   ^   ^   ^
+# maintitle, mainsubtitle, maintitleaddon     ^   –   ^     ^   –   ^             ^   –   ^
+# booktitle         +         +                 +
+# booksubtitle, booktitleaddon        ^         ^                 ^
+# journalsubtitle   ^
+# journaltitle  +
+# eventdate, eventtitle, eventtitleaddon, venue                             ^   ^   ^
+# date, year  ±   ±   ±   ±   ±   ±   ±   ±   ±   ±   ±   ±   ±   ±   ±   ±   ±   ±   ±
+# month   ^                   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^
+# edition     ^   ^   ^     ^   ^   ^
+# issue, issuetitle, issuesubtitle  ^                         ^
+# number  ^   ^   ^   ^     ^   ^   ^         +   ^   ^   ^   ^   ^
+# series  ^   ^   ^   ^     ^   ^   ^   ^         ^   ^   ^   ^
+# chapter     ^   –   ^   ^   ^   –   ^   ^           ^   –   ^   ^   ^
+# part    ^   –   ^     ^   –   ^             ^   –   ^
+# volume  ^   ^   –   ^     ^   –   ^           ^   ^   –   ^
+# volumes     ^   ^   ^     ^   ^   ^             ^   ^   ^
+# version   ^                 ^   ^   ^   ^           ^
+# doi, eprint, eprintclass, eprinttype  ^   ^   ^   ^   ^   ^   ^   ^   ^   ^     ^   ^   ^   ^   ^   ^   ^   ^
+# eid   ^
+# isbn    ^   ^   ^     ^   ^   ^   ^           ^   ^   ^     ^   ^
+# isrn                                  ^
+# issn  ^                         ^
+# isan, ismn, iswc
+# url   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   +   ^   ^   ^   ^   ^   ^   ^   ^
+# urldate   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^   ^
+# location    ^   ^   ^   ^   ^   ^   ^   ^   ^     ^     ^   ^   ^   ^   ^   ^
+# publisher     ^   ^   ^     ^   ^   ^   ^           ^   ^   ^
+# organization                  ^   ^   ^       ^   ^   ^
+# institution                                   +   +
+# type          ^         ^   ^     ^           +   +
+# howpublished          ^           ^                   ^
+# pages   ^   ^   –   ^   ^   ^   –   ^   ^           ^   –   ^   ^   ^
+# pagetotal
