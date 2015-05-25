@@ -16,8 +16,20 @@ settings:
     fontStyle: italic
     foreground: '#0066FF'
 
+- name: Keyword declaration
+  scope: keyword.declaration, storage
+  settings:
+    fontStyle: bold
+    foreground: '#388bc4'
+
 - name: Keyword
-  scope: keyword, storage
+  scope: keyword.control, keyword.other
+  settings:
+    fontStyle: bold
+    foreground: '#43A8ED'
+
+- name: Keyword others
+  scope: keyword, keyword.other
   settings:
     fontStyle: bold
     foreground: '#43A8ED'
@@ -52,11 +64,27 @@ settings:
     fontStyle: ''
     foreground: '#049B0A'
 
-- name: String interpolation
-  scope: constant.character.escape, string source
+- name: String escaped
+  scope: constant.character.escape
   settings:
     fontStyle: ''
     foreground: '#2FE420'
+
+- name: String interpolated
+  scope: string source
+  settings:
+    fontStyle: ''
+    foreground: '#BDAE9D'
+
+- name: String formatting
+  scope: string.formatting
+  settings:
+    foreground: '#C5656B'
+
+- name: Punctuation separator
+  scope: punctuation.separator
+  settings:
+    foreground: '#C5656B'
 
 - name: Preprocessor line
   scope: meta.preprocessor
