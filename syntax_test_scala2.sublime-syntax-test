@@ -20,11 +20,12 @@ package scala_syntax {
 //     ^ keyword.documentation.parameter.scala
    * @todo finish Bar
    */
-  class Bar(a: Int) {
+  class Bar(protected a: Int) {
 // ^ keyword.declaration.scala
 //      ^ entity.name.class.declaration
-//          ^ variable.parameter
-//             ^ support.type.scala
+//          ^ storage.modifier.other
+//                    ^ variable.parameter
+//                       ^ support.type.scala
     val unbar = a
 //  ^ keyword.declaration
 
@@ -74,14 +75,14 @@ package scala_syntax {
       extends Foo[Bar]
       with Bar(2 + 1)
   {
-    val z= 1e-12
+    val z= 1e+12f
 //      ^ entity.name.val.declaration
 //       ^ keyword.eq.scala
 //         ^ constant.numeric.scala
 //             ^ constant.numeric.scala
-    val y: Int = 0x3ff
-//               ^ constant.numeric.scala
-//                   ^ constant.numeric.scala
+    val y: Int = 0.1
+//                ^ constant.numeric.scala
+//                 ^ constant.numeric.scala
 
 
     val !#%&*+-/:<=>?@\^|~ : Int = 1 // all simple opchars
@@ -92,7 +93,7 @@ package scala_syntax {
 //                               ^ keyword.eq.scala
 //                                 ^ constant.numeric.scala
 //                                   ^ comment.line.double-slash
-    val !#%&*+-/:<=>?@\^ = 2
+    val !#%&*+-/:<=>?@\^ = 2.15f
     val simpleName = 1
     val simpleName2: Float with Foo = 1
     var withDigitsAndUnderscores_ab_12_ab12 = 1
