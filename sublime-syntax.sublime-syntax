@@ -1,16 +1,18 @@
 %YAML 1.2
 ---
 # http://www.sublimetext.com/docs/3/syntax.html
-name: YAML
+name: YAML sublime-syntax
 file_extensions:
-  - yaml
-  - yml
   - sublime-syntax
 first_line_match: ^%YAML( 1.\d)?$
 scope: source.yaml
+
+variables:
+  variable: '(\{\{)([a-zA-Z_0-9])(\}\})'
+
 contexts:
   main:
-    - match: ^(\s*)(?:(-)|(?:(-\s*)?(\w+\s*(:))))\s*(\||>)
+    - match: '^(\s*)(?:(-)|(?:(-\s*)?(\w+\s*(:))))\s*(\||>)'
       captures:
         2: punctuation.definition.entry.yaml
         3: punctuation.definition.entry.yaml
@@ -18,7 +20,7 @@ contexts:
         5: punctuation.separator.key-value.yaml
       push:
         - meta_scope: string.unquoted.block.yaml
-        - match: ^(?!^\1)|^(?=\1(-|\w+\s*:)|#)
+        - match: '^(?!^\1)|^(?=\1(-|\w+\s*:)|#)'
           pop: true
 
     # Keyword literals
@@ -49,6 +51,8 @@ contexts:
       scope: variable.other.yaml
       captures:
         1: punctuation.definition.variable.yaml
+
+    # double quoted
     - match: '"'
       captures:
         0: punctuation.definition.string.begin.yaml
@@ -58,19 +62,22 @@ contexts:
           captures:
             0: punctuation.definition.string.end.yaml
           pop: true
-        - match: \\.
-          scope: constant.character.escape.yaml
+        - include: regex
+
+    # simple quoted regex
     - match: "'"
       captures:
         0: punctuation.definition.string.begin.yaml
       push:
-        - meta_scope: string.quoted.single.yaml
+        # - meta_scope: string.quoted.single.yaml
         - match: "''"
           scope: constant.character.escape.yaml
         - match: "'"
           captures:
             0: punctuation.definition.string.end.yaml
           pop: true
+        - include: regex
+
     - match: '(\<\<): ((\*).*)$'
       scope: keyword.operator.merge-key.yaml
       captures:
@@ -87,3 +94,47 @@ contexts:
 
     - match: '[^''"%\-:?@`&*!,#|>\s\[\]{}](?:[^\[\]{}:#,]|:[^ ]|(?<! )#)*'
       scope: string.unquoted.yaml
+
+  regex:
+    - match: '(\{\{)([a-zA-Z_0-9]*)(\}\})'
+      captures:
+        2: variable.other.variables
+    - match: '(\?)(=|:|!|<=|<!)'
+      scope: support.function.syntax
+      # captures:
+      #   1: keyword.operator.syntax
+      #   2: punctuation.separator
+    - match: '\\[sSbdDwWhH]'
+      scope: constant.language.syntax
+    - match: '\\\d+'
+      scope: variable.other.captured
+    - match: '[.+*|^$?]'
+      scope: keyword.operator.syntax
+    - match: '\\[.+*|^$?]'
+      scope: constant.language.syntax
+    - match: '\\[\\\[\]\(\)\{\}]'
+      scope: constant.character.escape.yaml
+    - match: '[\(\)\{\}]'
+      scope: punctuation.separator
+    - match: '\['
+      scope: punctuation.separator
+      push:
+        - match: "''"
+          scope: constant.character.escape.yaml
+        - include: character-class
+
+  character-class:
+    - match: '\\[sbdw]'
+      scope: constant.language.syntax
+    - match: '(?<=[\[&]\^)'
+      scope: keyword.operator.syntax
+    - match: '&&'
+      scope: keyword.operator.syntax
+    - match: '\\[\\\[\]\-]'
+      scope: constant.character.escape.yaml
+    - match: '[^\[](-)[^\]]'
+      captures:
+        1: keyword.operator.syntax
+    - match: '\]'
+      scope: punctuation.separator
+      pop: true
