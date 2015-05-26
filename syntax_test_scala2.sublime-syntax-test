@@ -81,6 +81,7 @@ package scala_syntax {
 //         ^ constant.numeric.scala
 //             ^ constant.numeric.scala
     val y: Int = 0.1
+//       ^ punctuation.separator.colon.scala
 //                ^ constant.numeric.scala
 //                 ^ constant.numeric.scala
 
@@ -97,16 +98,20 @@ package scala_syntax {
     val simpleName = 1
     val simpleName2: Float with Foo = 1
     var withDigitsAndUnderscores_ab_12_ab12 = 1
-//                              ^ entity.name.val.declaration
+//                               ^ entity.name.val.declaration
 //                                  ^ entity.name.val.declaration
 //                                        ^ entity.name.val.declaration
     val wordEndingInOpChars_!^ : Int = 1
     val !^© = 1 // opchars ans symbols
+//        ^ entity.name.val.declaration
     val abc_!^= : Int = 1 // mixing letters and symbols
+//            ^ entity.name.val.declaration
     def abc_*^= : Int = 1
+//            ^ entity.name.function.declaration
 
     def abc_^= : Foo[Bar]
 //  ^ keyword.declaration.scala
+//           ^ entity.name.function.declaration
 //               ^ support.type.scala
 //                   ^ support.type.scala
 
@@ -189,8 +194,7 @@ package scala_syntax {
       }
     }
 
-    val scalaBook = new ScalaBook(0.1, List(" Martin Odersky"))
-
+    val scalaBook = new ScalaBook(0.1, List("Martin Odersky"))
     val b =  <book>
           <title>The Scala Language Specification</title>
           <version>{scalaBook.version + 1}</version>

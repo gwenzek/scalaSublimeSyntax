@@ -37,7 +37,6 @@ contexts:
   ###        Reference types         ###
   ##################################
 
-  # TODO: distinguish between @article and @inproceedings
   article:
     - meta_scope: meta.article
     # Required fields:
@@ -46,18 +45,23 @@ contexts:
     - include: journal_title
     - include: date
     - include: year
-  # Optional fields:
+
+    # Optional fields:
     - include: url
     - include: editor_etc
     - include: organization_etc
     - include: issue_title
 
-  #   language, origlanguage, series, eid, version, note, issn, addendum, pubstate, doi, eprint, eprintclass, eprinttype
+    # Optional fields:
+    #   language, origlanguage, series, eid, version, note, issn, addendum, pubstate, doi, eprint, eprintclass, eprinttype
     - include: range_fields
     - include: int_fields
     - include: issn
+
+    # support unknown
     - include: unknown
-    - include: count_brackets
+    - match: \}
+      pop: true
 
   inproceedings:
     - meta_scope: meta.inproceedings
@@ -81,8 +85,8 @@ contexts:
     - include: int_fields
 
     - include: unknown
-    - include: count_brackets
-
+    - match: \}
+      pop: true
 
   ##################################
   ###        Field types         ###
@@ -118,9 +122,12 @@ contexts:
       captures:
         1: support.function.biblatex
         2: keyword.eq
-      push:
-        - meta_scope: meta.url
-        - include: literal_field
+      # push: [need_coma, literal_field]
+      push: need_coma
+      # push: literal_field
+      # push:
+      #   - meta_content_scope: meta.url
+      #   - include: literal_field
     - match: \b(urldate)\s*(=)\s*
       captures:
         1: support.function.biblatex
@@ -134,7 +141,7 @@ contexts:
       captures:
         1: support.function.biblatex
         2: keyword.eq
-      push:
+      push: #literal_field
         - meta_scope: meta.literal_field.title
         - include: literal_field
 
@@ -303,7 +310,7 @@ contexts:
   literal_field:
     - match: \s*(\{)
       scope: string.punctuation.bracket.begin
-      set: pop_on_bracket
+      set: [need_coma, pop_on_bracket]
     - match: '\s*(")'
       scope: string.punctuation.bracket.begin
       set: pop_on_quotes
@@ -361,6 +368,27 @@ contexts:
       scope: invalid.should-be-int
       set: need_coma
 
+  # int_field:
+  #   - match: \s*(\{)
+  #     scope: string.punctuation.bracket.begin
+  #     set:
+  #       - include: int_field_in
+  #       - include: pop_on_bracket
+  #   - match: '\s*(")'
+  #     scope: string.punctuation.bracket.begin
+  #     set:
+  #       - include: int_field_in
+  #       - include: pop_on_quotes
+  #   - match: .*$
+  #     scope: invalid.illegal
+  #     pop: true
+
+  # int_field_in:
+  #   - match: '{{int}}'
+  #     scope: constant.numeric
+  #   - match: '([^\}\"]*)'
+  #     scope: invalid.should-be-int
+
   year_field:
     - match: '(\{)\s*{{year}}\s*(\})\s*'
       scope: meta.year
@@ -416,7 +444,7 @@ contexts:
     - match: (\}\s*)
       captures:
         1: string.punctuation.bracket.end
-      set: need_coma
+      pop: true
 
   pop_on_quotes:
     - match: \{
@@ -424,7 +452,7 @@ contexts:
     - match: '(\"\s*)'
       captures:
         1: string.punctuation.quote.end
-      set: need_coma
+      pop: true
 
   count_brackets:
     - match: \{
