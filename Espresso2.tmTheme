@@ -172,7 +172,7 @@
 			<key>name</key>
 			<string>String formatting</string>
 			<key>scope</key>
-			<string>string.formatting</string>
+			<string>punctuation.definition.string.interpolated.element</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -233,11 +233,13 @@
 			<key>name</key>
 			<string>Type name</string>
 			<key>scope</key>
-			<string>entity.name.type</string>
+			<string>entity.name.type, variable.other.type</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>underline</string>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#6D79DE</string>
 			</dict>
 		</dict>
 		<dict>
@@ -487,6 +489,61 @@
 			<dict>
 				<key>foreground</key>
 				<string>#DDB700</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Punctuation parameters</string>
+			<key>scope</key>
+			<string>punctuation.definition.parameters</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#D1D187</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Punctuation block</string>
+			<key>scope</key>
+			<string>punctuation.definition.block</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#D1D187</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Punctuation block</string>
+			<key>scope</key>
+			<string>punctuation.definition.block</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#D1D187</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Punctuation string</string>
+			<key>scope</key>
+			<string>punctuation.definition.string</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#049B0A</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Punctuation module-binding</string>
+			<key>scope</key>
+			<string>punctuation.definition.module-binding</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#D1D187</string>
 			</dict>
 		</dict>
 	</array>

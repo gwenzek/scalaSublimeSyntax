@@ -1,10 +1,14 @@
 // SYNTAX TEST "Packages/User/scala-sublime-syntax/Scala2.sublime-syntax"
 
 import scala.collection.mutable._
-import scala.collection.immutable.{List, Set}
+import scala.collection.immutable.{List => MutList, Set => _}
 // ^ meta.import.scala keyword.other.import
 //      ^ variable.package.scala
-//                                  ! entity.name.class
+//          ^ punctuation.separator.dot
+//                                ^ punctuation.definition.module-binding.begin
+//                                          ^ entity.name.class
+//                                                          ^ punctuation.definition.module-binding.end
+
 
 /** top level scala doc */
 // < comment.block.documentation.scala
@@ -23,22 +27,22 @@ package scala_syntax {
    */
   class Bar(protected a: Int) {
 // ^ keyword.declaration.scala
-//      ^ entity.name.class.declaration
+//      ^ entity.name.class
 //          ^ storage.modifier.other
 //                    ^ variable.parameter
-//                       ^ support.type.scala
-    val unbar = a
+//                       ^ variable.other.type
+    val unbar = MutList(1)
 //  ^ keyword.declaration
+//        ^ entity.name.val
 
     // this is a comment
 //     ^ comment.line.double-slash.scala
     def combine(that: Bar) = Bar(this.a + that.bar)
 //  ^ keyword.declaration.scala
-//        ^ entity.name.function.declaration
+//        ^ entity.name.function
 //               ^ variable.parameter
-//                     ^ support.type.scala
+//                     ^ variable.other.type
 //                         ^ keyword.eq.scala
-//                            ^ entity.name.class
 //                                 ^ variable.language.scala
 //                                      ^ keyword.operator.scala
 
@@ -47,12 +51,11 @@ package scala_syntax {
     */
     def +=(x: Int) : Bar = Bar(a /* plus */  + x)
 //  ^ keyword.declaration.scala
-//       ^ entity.name.function.declaration
+//       ^ entity.name.function
 //         ^ variable.parameter
-//             ^ support.type.scala
-//                    ^ support.type.scala
+//             ^ variable.other.type
+//                    ^ variable.other.type
 //                       ^ keyword.eq.scala
-//                         ^ entity.name.class
 //                                  ^ comment.block.scala
 //                                           ^ keyword.operator.scala
   }
@@ -63,7 +66,7 @@ package scala_syntax {
 //                  ^ variable.parameter
 //                           ^ constant.numeric.scala
 //                              ^ variable.parameter
-//                                  ^ support.type.scala
+//                                  ^ variable.other.type
 //                                           ^ constant.language.scala
 //                                                    ^ keyword.declaration.scala
 //                                                          ^ entity.other.inherited-class.scala
@@ -77,7 +80,7 @@ package scala_syntax {
       with Bar(2 + 1)
   {
     val z= 1e+12f
-//      ^ entity.name.val.declaration
+//      ^ entity.name.val
 //       ^ keyword.eq.scala
 //         ^ constant.numeric.scala
 //             ^ constant.numeric.scala
@@ -89,9 +92,9 @@ package scala_syntax {
 
     val !#%&*+-/:<=>?@\^|~ : Int = 1 // all simple opchars
 //  ^ keyword.declaration.scala
-//              ^ entity.name.val.declaration
-//                ^ entity.name.val.declaration
-//                           ^ support.type.scala
+//              ^ entity.name.val
+//                ^ entity.name.val
+//                           ^ variable.other.type
 //                               ^ keyword.eq.scala
 //                                 ^ constant.numeric.scala
 //                                   ^ comment.line.double-slash
@@ -99,36 +102,52 @@ package scala_syntax {
     val simpleName = 1
     val simpleName2: Float with Foo = 1
     var withDigitsAndUnderscores_ab_12_ab12 = 1
-//                               ^ entity.name.val.declaration
-//                                  ^ entity.name.val.declaration
-//                                        ^ entity.name.val.declaration
+//                               ^ entity.name.val
+//                                  ^ entity.name.val
+//                                        ^ entity.name.val
     val wordEndingInOpChars_!^ : Int = 1
     val !^© = 1 // opchars ans symbols
-//        ^ entity.name.val.declaration
+//        ^ entity.name.val
     val abc_!^= : Int = 1 // mixing letters and symbols
-//            ^ entity.name.val.declaration
+//            ^ entity.name.val
     def abc_*^= : Int = 1
-//            ^ entity.name.function.declaration
+//            ^ entity.name.function
 
     def abc_^= : Foo[Bar]
 //  ^ keyword.declaration.scala
-//           ^ entity.name.function.declaration
-//               ^ support.type.scala
-//                   ^ support.type.scala
+//           ^ entity.name.function
+//               ^ variable.other.type
+//                  ^ punctuation.definition.parameters.begin.scala
+//                   ^ variable.other.type
+//                      ^ punctuation.definition.parameters.end.scala
 
     @tailrec
 //  ^ entity.name.tag
     def abc(a: Int)(implicit b: Boolean) : Int =
 //  ^ keyword.declaration.scala
-//      ^ entity.name.function.declaration
+//      ^ entity.name.function
 //          ^ variable.parameter
-//              ^ support.type.scala
+//              ^ variable.other.type
+//                 ^ punctuation.definition.parameters.begin.scala
 //                     ^ storage.modifier.other
 //                           ^ variable.parameter
+//                                     ^ punctuation.definition.parameters.end.scala
       if(b) 1 else abc(a - 1)(a < 0)
 
-    def printMessage(foo: Foo, a: Int) =
+    /** Prints the message with the given foo
+      * @tparam F the type of the given foo
+//    ^ comment.block.documentation.scala
+//      ^ keyword.documentation.parameter.scala
+//              ^ variable.other.type
+      */
+    def printMessage[F <: Foo](foo: F, a: Int) =
       println(s"Foo: $foo, n: ${a + 2}")
+//            ^ punctuation.definition.string.interpolated.begin.scala
+//                   ^ punctuation.definition.string.interpolated.element.scala
+//                    ^ source string source
+//                            ^ punctuation.definition.string.interpolated.element.begin.scala
+//                                   ^ punctuation.definition.string.interpolated.element.end.scala
+//                                    ^ punctuation.definition.string.interpolated.end.scala
   }
 
   trait Readable[T] {
@@ -180,7 +199,6 @@ package scala_syntax {
     val bar = new Bar(2)
     val barbar = new BarBar(1, b = 2)
     val interpolated = s"${barbar + 1} and $bar love to go to the be\u1ea1ch."
-
     val x = 3.054e2
     val formatted1 = f"x: $x%+,.3f ca"
     val formatted2 = f"date: $x%T \u0002 \124 \ "

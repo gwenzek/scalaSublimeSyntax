@@ -77,7 +77,7 @@ settings:
     foreground: '#BDAE9D'
 
 - name: String formatting
-  scope: string.formatting
+  scope: punctuation.definition.string.interpolated.element
   settings:
     foreground: '#C5656B'
 
@@ -105,9 +105,11 @@ settings:
     foreground: '#FF9358'
 
 - name: Type name
-  scope: entity.name.type
+  scope: entity.name.type, variable.other.type
   settings:
-    fontStyle: underline
+    fontStyle: bold
+    foreground: '#6D79DE'
+
 
 - name: Inherited class name
   scope: entity.other.inherited-class
@@ -222,4 +224,30 @@ settings:
   scope: sublimelinter.mark.warning
   settings:
     foreground: '#DDB700'
+
+- name: Punctuation parameters
+  scope: punctuation.definition.parameters
+  settings:
+    foreground: '#D1D187'
+
+- name: Punctuation block
+  scope: punctuation.definition.block
+  settings:
+    foreground: '#D1D187'
+
+- name: Punctuation block
+  scope: punctuation.definition.block
+  settings:
+    foreground: '#D1D187'
+
+- name: Punctuation string
+  scope: punctuation.definition.string
+  settings:
+    foreground: '#049B0A'
+
+- name: Punctuation module-binding
+  scope: punctuation.definition.module-binding
+  settings:
+    foreground: '#D1D187'
+
 uuid: 6B90703E-4E4B-43C8-9D32-921BEDF6D725
