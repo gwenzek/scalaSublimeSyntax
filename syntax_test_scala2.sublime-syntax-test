@@ -6,7 +6,8 @@ import scala.collection.immutable.{List, Set}
 //      ^ variable.package.scala
 //                                  ! entity.name.class
 
-
+/** top level scala doc */
+// < comment.block.documentation.scala
 package scala_syntax {
 // ^ keyword.other.scoping
 //      ^ entity.name.package.scala
