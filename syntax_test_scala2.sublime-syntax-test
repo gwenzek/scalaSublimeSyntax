@@ -56,7 +56,8 @@ package scala_syntax {
 //         ^ variable.parameter
 //             ^ variable.other.type
 //                    ^ variable.other.type
-//                       ^ keyword.eq.scala
+//                       ^ punctuation.definition.function.declaration
+//                         ^ variable.type.constructor
 //                                  ^ comment.block.scala
 //                                           ^ keyword.operator.scala
   }
@@ -65,6 +66,7 @@ package scala_syntax {
   case class BarBar(a: Int = 1, b: Boolean = false) extends Bar(a)
 //  ^ storage.type.class.case-class
 //      ^ storage.type.class.case-class
+//           ^ entity.name.class
 //                  ^ variable.parameter
 //                           ^ constant.numeric.scala
 //                              ^ variable.parameter
@@ -129,7 +131,7 @@ package scala_syntax {
 
     val List((x1: Int, y1), (x2, y2)) = ((10, 5), (1, 2))
 //  ^ storage.type.variable.val.scala
-//      ^ variable.other.type.unapply
+//      ^ variable.type.constructor.unapply
 //          ^ punctuation.definition.comprehension.array.begin
 //           ^ punctuation.definition.comprehension.array.begin
 //            ^ entity.name.val.scala
@@ -151,6 +153,7 @@ package scala_syntax {
 //        ^ keyword.operator.infix-pattern
 //           ^ entity.name.val.scala
 //              ^ keyword.operator.assignment
+//                      ^ punctuation.separator.argument
     var (x: Int) :: (xs: List[Int]) = List(1, 2, 3)
 //  ^ storage.type.variable.var.scala
 //       ^ entity.name.val.scala
@@ -168,6 +171,8 @@ package scala_syntax {
 //                     ^ storage.modifier.other
 //                           ^ variable.parameter
 //                                     ^ punctuation.definition.parameters.end.scala
+//                                       ^ punctuation.definition.type.scala
+//                                             ^ punctuation.definition.function.declaration.scala
       if (b) ) 1 else abc(a - 1, a)(a < 0)
 //           ^ invalid.illegal
 
@@ -177,7 +182,7 @@ package scala_syntax {
 //      ^ keyword.documentation.parameter.scala
 //              ^ variable.other.type
       */
-    def printMessage[F <: Foo](foo: F, a: Int): int =
+    def printMessage[F <: Foo](foo: F, a: Int) =
       println(s"Foo: $foo, n: ${a + 2}")
 //  ^ string.unquoted.block-indent
 //       ^ support.function.builtin.scala
@@ -210,6 +215,7 @@ package scala_syntax {
     val f = x => x + 5 / 2f * 2.0f * 1.98 * 1e-12 * 1.01E+15
 
     if (1 + 1 == 2) println("Bazinga!")
+//                  ^ support.function.builtin.scala
     else println("***stack underflow error***")
 
     for(i <- 0 to 10)
@@ -220,7 +226,7 @@ package scala_syntax {
     )
 
     val chars = List('a', 'oko', '\n', '\u0002', '\', '\\', '1')
-
+//               ^ support.class.builtin.scala
     val how = "how"
     val e = "e"
     val quotes = List(

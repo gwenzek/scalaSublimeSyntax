@@ -105,11 +105,15 @@ settings:
     foreground: '#FF9358'
 
 - name: Type name
-  scope: entity.name.type, variable.other.type
+  scope: entity.name.type, variable.other.type, variable.type
   settings:
     fontStyle: bold
     foreground: '#6D79DE'
-
+- name: Type constructor
+  scope: variable.type.constructor
+  settings:
+    fontStyle: ''
+    foreground: '#6D79DE'
 
 - name: Inherited class name
   scope: entity.other.inherited-class
@@ -224,6 +228,11 @@ settings:
   scope: sublimelinter.mark.warning
   settings:
     foreground: '#DDB700'
+
+- name: Punctuation definition type
+  scope: punctuation.definition.type
+  settings:
+    foreground: '#C5656B'
 
 - name: Punctuation parameters
   scope: punctuation.definition.parameters
