@@ -515,9 +515,9 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Punctuation block</string>
+			<string>Punctuation class</string>
 			<key>scope</key>
-			<string>punctuation.definition.block</string>
+			<string>punctuation.definition.class</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>

@@ -9,9 +9,8 @@ import scala.collection.immutable.{List => MutList, Set => _}
 //                                          ^ entity.name.class
 //                                                          ^ punctuation.definition.module-binding.end
 
-
 /** top level scala doc */
-// < comment.block.documentation.scala
+// <- comment.block.documentation.scala
 package scala_syntax {
 // ^ keyword.other.scoping
 //      ^ entity.name.package.scala
@@ -26,23 +25,25 @@ package scala_syntax {
    * @todo finish Bar
    */
   class Bar(protected a: Int) {
-// ^ keyword.declaration.scala
+//  ^ storage.type.class.class
 //      ^ entity.name.class
 //          ^ storage.modifier.other
 //                    ^ variable.parameter
 //                       ^ variable.other.type
+//                            ^ punctuation.definition.class.begin
     val unbar = MutList(1)
-//  ^ keyword.declaration
+//  <- meta.class.scala
+//  ^ storage.type.variable.val.scala
 //        ^ entity.name.val
 
     // this is a comment
 //     ^ comment.line.double-slash.scala
     def combine(that: Bar) = Bar(this.a + that.bar)
-//  ^ keyword.declaration.scala
+//  ^ storage.type.function
 //        ^ entity.name.function
 //               ^ variable.parameter
 //                     ^ variable.other.type
-//                         ^ keyword.eq.scala
+//                         ^ punctuation.definition.function.declaration
 //                                 ^ variable.language.scala
 //                                      ^ keyword.operator.scala
 
@@ -50,7 +51,7 @@ package scala_syntax {
 //     ^ comment.block.scala
     */
     def +=(x: Int) : Bar = Bar(a /* plus */  + x)
-//  ^ keyword.declaration.scala
+//  ^ storage.type.function
 //       ^ entity.name.function
 //         ^ variable.parameter
 //             ^ variable.other.type
@@ -59,10 +60,11 @@ package scala_syntax {
 //                                  ^ comment.block.scala
 //                                           ^ keyword.operator.scala
   }
+//^ punctuation.definition.class.end
 
   case class BarBar(a: Int = 1, b: Boolean = false) extends Bar(a)
-// ^ keyword.declaration.scala
-//      ^ keyword.declaration.scala
+//  ^ storage.type.class.case-class
+//      ^ storage.type.class.case-class
 //                  ^ variable.parameter
 //                           ^ constant.numeric.scala
 //                              ^ variable.parameter
@@ -73,29 +75,33 @@ package scala_syntax {
 
   trait Foo[T] {
     def add(t: T): T
+// <- meta.class.scala
   }
 
   abstract class FooBar
       extends Foo[Bar]
+//      ^ keyword.declaration.scala
       with Bar(2 + 1)
+//      ^ keyword.declaration.scala
   {
     val z= 1e+12f
 //      ^ entity.name.val
-//       ^ keyword.eq.scala
+//       ^ keyword.operator.assignment
 //         ^ constant.numeric.scala
 //             ^ constant.numeric.scala
     val y: Int = 0.1
-//       ^ punctuation.separator.colon.scala
+//  ^ storage.type.variable.val.scala
+//       ^ punctuation.definition.type.scala
 //                ^ constant.numeric.scala
 //                 ^ constant.numeric.scala
 
 
-    val !#%&*+-/:<=>?@\^|~ : Int = 1 // all simple opchars
-//  ^ keyword.declaration.scala
-//              ^ entity.name.val
-//                ^ entity.name.val
+    var !#%&*+-/:<=>?@\^|~ : Int = 1 // all simple opchars
+//  ^ storage.type.variable.var.scala
+//              ^ entity.name.val.scala
+//                ^ entity.name.val.scala
 //                           ^ variable.other.type
-//                               ^ keyword.eq.scala
+//                               ^ keyword.operator.assignment
 //                                 ^ constant.numeric.scala
 //                                   ^ comment.line.double-slash
     val !#%&*+-/:<=>?@\^ = 2.15f
@@ -114,17 +120,47 @@ package scala_syntax {
 //            ^ entity.name.function
 
     def abc_^= : Foo[Bar]
-//  ^ keyword.declaration.scala
+//  ^ storage.type.function
 //           ^ entity.name.function
 //               ^ variable.other.type
 //                  ^ punctuation.definition.parameters.begin.scala
 //                   ^ variable.other.type
 //                      ^ punctuation.definition.parameters.end.scala
 
+    val List((x1: Int, y1), (x2, y2)) = ((10, 5), (1, 2))
+//  ^ storage.type.variable.val.scala
+//      ^ variable.other.type.unapply
+//          ^ punctuation.definition.comprehension.array.begin
+//           ^ punctuation.definition.comprehension.array.begin
+//            ^ entity.name.val.scala
+//              ^ punctuation.definition.type.scala
+//                   ^ punctuation.separator.array-element
+//                     ^ entity.name.val.scala
+//                       ^ punctuation.definition.comprehension.array.end
+//                        ^ punctuation.separator.array-element
+//                          ^ punctuation.definition.comprehension.array.begin
+//                                 ^ punctuation.definition.comprehension.array.end
+//                                  ^ punctuation.definition.comprehension.array.end
+//                                    ^ keyword.operator.assignment
+
+    val Some(x) = f()         // a pattern definition
+//  ^ storage.type.variable.val.scala
+    val x :: xs = List(1, 2, 3)      // an infix pattern definition
+//  ^ storage.type.variable.val.scala
+//      ^ entity.name.val.scala
+//        ^ keyword.operator.infix-pattern
+//           ^ entity.name.val.scala
+//              ^ keyword.operator.assignment
+    var (x: Int) :: (xs: List[Int]) = List(1, 2, 3)
+//  ^ storage.type.variable.var.scala
+//       ^ entity.name.val.scala
+//               ^ keyword.operator.infix-pattern
+//                   ^ entity.name.val.scala
+//                                  ^ keyword.operator.assignment
     @tailrec
 //  ^ entity.name.tag
     def abc(a: Int)(implicit b: Boolean) : Int =
-//  ^ keyword.declaration.scala
+//  ^ storage.type.function
 //      ^ entity.name.function
 //          ^ variable.parameter
 //              ^ variable.other.type
@@ -132,7 +168,8 @@ package scala_syntax {
 //                     ^ storage.modifier.other
 //                           ^ variable.parameter
 //                                     ^ punctuation.definition.parameters.end.scala
-      if(b) 1 else abc(a - 1)(a < 0)
+      if (b) ) 1 else abc(a - 1, a)(a < 0)
+//           ^ invalid.illegal
 
     /** Prints the message with the given foo
       * @tparam F the type of the given foo
@@ -140,8 +177,10 @@ package scala_syntax {
 //      ^ keyword.documentation.parameter.scala
 //              ^ variable.other.type
       */
-    def printMessage[F <: Foo](foo: F, a: Int) =
+    def printMessage[F <: Foo](foo: F, a: Int): int =
       println(s"Foo: $foo, n: ${a + 2}")
+//  ^ string.unquoted.block-indent
+//       ^ support.function.builtin.scala
 //            ^ punctuation.definition.string.interpolated.begin.scala
 //                   ^ punctuation.definition.string.interpolated.element.scala
 //                    ^ source string source
@@ -152,7 +191,7 @@ package scala_syntax {
 
   trait Readable[T] {
     type Tbis = T
-    def read(s: String): Option[T]
+    def read(s: String): Option[T] = 1
   }
 
   class Endo[T] extends Function1[T, T] {

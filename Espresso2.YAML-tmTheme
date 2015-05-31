@@ -235,8 +235,8 @@ settings:
   settings:
     foreground: '#D1D187'
 
-- name: Punctuation block
-  scope: punctuation.definition.block
+- name: Punctuation class
+  scope: punctuation.definition.class
   settings:
     foreground: '#D1D187'
 
