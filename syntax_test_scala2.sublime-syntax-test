@@ -30,7 +30,7 @@ package scala_syntax {
 //          ^ storage.modifier.other
 //                    ^ variable.parameter
 //                       ^ variable.other.type
-//                            ^ punctuation.definition.class.begin
+//                            ^ punctuation.definition.class.body.begin
     val unbar = MutList(1)
 //  <- meta.class.scala
 //  ^ storage.type.variable.val.scala
@@ -61,7 +61,7 @@ package scala_syntax {
 //                                  ^ comment.block.scala
 //                                           ^ keyword.operator.scala
   }
-//^ punctuation.definition.class.end
+//^ punctuation.definition.class.body.end
 
   case class BarBar(a: Int = 1, b: Boolean = false) extends Bar(a)
 //  ^ storage.type.class.case-class
@@ -72,7 +72,7 @@ package scala_syntax {
 //                              ^ variable.parameter
 //                                  ^ variable.other.type
 //                                           ^ constant.language.scala
-//                                                    ^ keyword.declaration.scala
+//                                                    ^ storage.modifier.extends.scala
 //                                                          ^ entity.other.inherited-class.scala
 
   trait Foo[T] {
@@ -82,9 +82,9 @@ package scala_syntax {
 
   abstract class FooBar
       extends Foo[Bar]
-//      ^ keyword.declaration.scala
+//      ^ storage.modifier.extends.scala
       with Bar(2 + 1)
-//      ^ keyword.declaration.scala
+//      ^ storage.modifier.extends.scala
   {
     val z= 1e+12f
 //      ^ entity.name.val
@@ -93,7 +93,7 @@ package scala_syntax {
 //             ^ constant.numeric.scala
     val y: Int = 0.1
 //  ^ storage.type.variable.val.scala
-//       ^ punctuation.definition.type.scala
+//       ^ punctuation.separator.key-value.type.scala
 //                ^ constant.numeric.scala
 //                 ^ constant.numeric.scala
 
@@ -125,9 +125,9 @@ package scala_syntax {
 //  ^ storage.type.function
 //           ^ entity.name.function
 //               ^ variable.other.type
-//                  ^ punctuation.definition.parameters.begin.scala
+//                  ^ punctuation.definition.arguments.begin.scala
 //                   ^ variable.other.type
-//                      ^ punctuation.definition.parameters.end.scala
+//                      ^ punctuation.definition.arguments.end.scala
 
     val List((x1: Int, y1), (x2, y2)) = ((10, 5), (1, 2))
 //  ^ storage.type.variable.val.scala
@@ -135,7 +135,7 @@ package scala_syntax {
 //          ^ punctuation.definition.comprehension.array.begin
 //           ^ punctuation.definition.comprehension.array.begin
 //            ^ entity.name.val.scala
-//              ^ punctuation.definition.type.scala
+//              ^ punctuation.separator.key-value.type.scala
 //                   ^ punctuation.separator.array-element
 //                     ^ entity.name.val.scala
 //                       ^ punctuation.definition.comprehension.array.end
@@ -167,11 +167,11 @@ package scala_syntax {
 //      ^ entity.name.function
 //          ^ variable.parameter
 //              ^ variable.other.type
-//                 ^ punctuation.definition.parameters.begin.scala
+//                 ^ punctuation.definition.arguments.begin.scala
 //                     ^ storage.modifier.other
 //                           ^ variable.parameter
-//                                     ^ punctuation.definition.parameters.end.scala
-//                                       ^ punctuation.definition.type.scala
+//                                     ^ punctuation.definition.arguments.end.scala
+//                                       ^ punctuation.separator.key-value.type.scala
 //                                             ^ punctuation.definition.function.declaration.scala
       if (b) ) 1 else abc(a - 1, a)(a < 0)
 //           ^ invalid.illegal
@@ -253,8 +253,12 @@ package scala_syntax {
       val maybeRes : Option[T] = x.read(expr_!:.substring(start))
 
       res match {
+//    ^ variable.other
+//        ^ keyword.control.switch.scala
         case Some(y) => y
-        case _ => throw new Exception("Can't parse: " + expr_!:)
+//        ^ keyword.control.switch.case.scala
+//                   ^ punctuation.separator.key-value.switch.scala
+        case _: Int => throw new Exception("Can't parse: " + expr_!:)
       }
     }
 
@@ -265,5 +269,4 @@ package scala_syntax {
           <authors>{scalaBook.authors}</authors>
         </book>
         </book>
-
 }
