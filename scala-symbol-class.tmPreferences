@@ -5,7 +5,7 @@
     <key>name</key>
     <string>Class Symbol</string>
     <key>scope</key>
-    <string>source.scala entity.name.class</string>
+    <string>source.scala meta.class.identifier</string>
     <key>settings</key>
     <dict>
         <key>showInIndexedSymbolList</key>

@@ -43,7 +43,7 @@ package scala_syntax {
 //        ^ entity.name.function
 //               ^ variable.parameter
 //                     ^ variable.other.type
-//                         ^ punctuation.definition.function.declaration
+//                         ^ punctuation.definition.function.body
 //                                 ^ variable.language.scala
 //                                      ^ keyword.operator.scala
 
@@ -56,8 +56,8 @@ package scala_syntax {
 //         ^ variable.parameter
 //             ^ variable.other.type
 //                    ^ variable.other.type
-//                       ^ punctuation.definition.function.declaration
-//                         ^ variable.type.constructor
+//                       ^ punctuation.definition.function.body
+//                         ^ variable.other.type.constructor
 //                                  ^ comment.block.scala
 //                                           ^ keyword.operator.scala
   }
@@ -125,24 +125,24 @@ package scala_syntax {
 //  ^ storage.type.function
 //           ^ entity.name.function
 //               ^ variable.other.type
-//                  ^ punctuation.definition.arguments.begin.scala
+//                  ^ punctuation.definition.arguments.type.begin.scala
 //                   ^ variable.other.type
-//                      ^ punctuation.definition.arguments.end.scala
+//                      ^ punctuation.definition.arguments.type.end.scala
 
     val List((x1: Int, y1), (x2, y2)) = ((10, 5), (1, 2))
 //  ^ storage.type.variable.val.scala
-//      ^ variable.type.constructor.unapply
-//          ^ punctuation.definition.comprehension.array.begin
-//           ^ punctuation.definition.comprehension.array.begin
+//      ^ variable.other.type.constructor.unapply
+//          ^ punctuation.definition.array.begin
+//           ^ punctuation.definition.array.begin
 //            ^ entity.name.val.scala
 //              ^ punctuation.separator.key-value.type.scala
 //                   ^ punctuation.separator.array-element
 //                     ^ entity.name.val.scala
-//                       ^ punctuation.definition.comprehension.array.end
+//                       ^ punctuation.definition.array.end
 //                        ^ punctuation.separator.array-element
-//                          ^ punctuation.definition.comprehension.array.begin
-//                                 ^ punctuation.definition.comprehension.array.end
-//                                  ^ punctuation.definition.comprehension.array.end
+//                          ^ punctuation.definition.array.begin
+//                                 ^ punctuation.definition.array.end
+//                                  ^ punctuation.definition.array.end
 //                                    ^ keyword.operator.assignment
 
     val Some(x) = f()         // a pattern definition
@@ -167,12 +167,12 @@ package scala_syntax {
 //      ^ entity.name.function
 //          ^ variable.parameter
 //              ^ variable.other.type
-//                 ^ punctuation.definition.arguments.begin.scala
+//                 ^ punctuation.definition.parameters.function.begin.scala
 //                     ^ storage.modifier.other
 //                           ^ variable.parameter
-//                                     ^ punctuation.definition.arguments.end.scala
+//                                     ^ punctuation.definition.parameters.function.end.scala
 //                                       ^ punctuation.separator.key-value.type.scala
-//                                             ^ punctuation.definition.function.declaration.scala
+//                                             ^ punctuation.definition.function.body.scala
       if (b) ) 1 else abc(a - 1, a)(a < 0)
 //           ^ invalid.illegal
 
@@ -185,7 +185,7 @@ package scala_syntax {
     def printMessage[F <: Foo](foo: F, a: Int) =
       println(s"Foo: $foo, n: ${a + 2}")
 //  ^ string.unquoted.block-indent
-//       ^ support.function.builtin.scala
+//       ^ support.function.scala
 //            ^ punctuation.definition.string.interpolated.begin.scala
 //                   ^ punctuation.definition.string.interpolated.element.scala
 //                    ^ source string source
@@ -215,7 +215,8 @@ package scala_syntax {
     val f = x => x + 5 / 2f * 2.0f * 1.98 * 1e-12 * 1.01E+15
 
     if (1 + 1 == 2) println("Bazinga!")
-//                  ^ support.function.builtin.scala
+//  ^ keyword.control.conditional.if.scala
+//                  ^ support.function.scala
     else println("***stack underflow error***")
 
     for(i <- 0 to 10)
@@ -226,7 +227,7 @@ package scala_syntax {
     )
 
     val chars = List('a', 'oko', '\n', '\u0002', '\', '\\', '1')
-//               ^ support.class.builtin.scala
+//               ^ support.class.constructor.scala
     val how = "how"
     val e = "e"
     val quotes = List(
@@ -239,6 +240,7 @@ package scala_syntax {
       |1: A robot may not injure a human being or, through inaction, allow a human being to come to harm;
       |2: A robot must obey the orders given it by human beings except where such orders would conflict with the First Law;
       |3: A robot must protect its own existence as long as such protection does not conflict with the First or Second Law;
+//  <- string.quoted.triple.scala
     """.stripMargin
 
     val bar = new Bar(2)
@@ -249,7 +251,7 @@ package scala_syntax {
     val formatted2 = f"date: $x%T \u0002 \124 \ "
     val raw_string = raw"toto\u1221n\125\n"
 
-    private def read[T <: Readable[T] ](x: T, expr_!: : String, start: Int): T = {
+    private def read[T <: Readable[T]](x: T, expr_!: : String, start: Int): T = {
       val maybeRes : Option[T] = x.read(expr_!:.substring(start))
 
       res match {
