@@ -78,7 +78,17 @@ package scala_syntax {
   trait Foo[T] {
     def add(t: T): T
 // <- meta.class.scala
+//  ^ meta.method.identifier.scala
+//        ^ meta.method.identifier.scala
+//                 ^ meta.method.identifier.scala
+    def outer(x: T) = {
+      def inner(y: Int) = {
+        x + y
+      }
+      inner(x) + y
+    }
   }
+//^ punctuation.definition.class.body.end
 
   abstract class FooBar
       extends Foo[Bar]
@@ -205,6 +215,9 @@ package scala_syntax {
     }
   }
 
+  def toplevel[A](x: List[A], f: A => Boolean) =
+    x.filter(f)
+
   case class Foo[T](a: T, n: Int = 0 + 1)
     extends FooBar(n + 1) with Bar
 
@@ -254,15 +267,30 @@ package scala_syntax {
     private def read[T <: Readable[T]](x: T, expr_!: : String, start: Int): T = {
       val maybeRes : Option[T] = x.read(expr_!:.substring(start))
 
-      res match {
-//    ^ variable.other
-//        ^ keyword.control.switch.scala
-        case Some(y) => y
-//        ^ keyword.control.switch.case.scala
-//                   ^ punctuation.separator.key-value.switch.scala
-        case _: Int => throw new Exception("Can't parse: " + expr_!:)
+      try {
+//    ^ keyword.control.trycatch.try.scala
+//        ^ punctuation.definition.block.trycatch.begin.scala
+        res match {
+//        ^ variable.other
+//            ^ keyword.control.switch.scala
+          case Some(y) => y
+//          ^ keyword.control.switch.case.scala
+//                     ^ punctuation.separator.key-value.switch.scala
+          case _: Int => throw new Exception("Can't parse: " + expr_!:)
+        }
+      } catch {
+//    ^ punctuation.definition.block.trycatch.end.scala
+//       ^ keyword.control.trycatch.catch.scala
+//            ^ punctuation.definition.block.trycatch.begin.scala
+        case e: Exception => println("plouf")
+//       ^ keyword.control.trycatch.case.scala
+//                        ^ punctuation.separator.key-value.switch.scala
+      } finally {
+//       ^ keyword.control.trycatch.finally.scala
       }
+   m
     }
+//  ^ punctuation.definition.function.body.end.scala
 
     val scalaBook = new ScalaBook(0.1, List("Martin Odersky"))
     val b =  <book>
