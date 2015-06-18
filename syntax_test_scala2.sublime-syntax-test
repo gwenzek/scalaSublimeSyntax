@@ -3,7 +3,7 @@
 import scala.collection.mutable._
 import scala.collection.immutable.{List => MutList, Set => _}
 // ^ meta.import.scala keyword.other.import
-//      ^ variable.package.scala
+//      ^ variable.module.scala
 //          ^ punctuation.separator.dot
 //                                ^ punctuation.definition.module-binding.begin
 //                                          ^ entity.name.class
@@ -12,8 +12,8 @@ import scala.collection.immutable.{List => MutList, Set => _}
 /** top level scala doc */
 // <- comment.block.documentation.scala
 package scala_syntax {
-// ^ keyword.other.scoping
-//      ^ entity.name.package.scala
+// ^ storage.type.module
+//      ^ entity.name.module.scala
 
   /**
 // ^ comment.block.documentation.scala
@@ -27,7 +27,7 @@ package scala_syntax {
   class Bar(protected a: Int) {
 //  ^ storage.type.class.class
 //      ^ entity.name.class
-//          ^ storage.modifier.other
+//          ^ storage.modifier.access
 //                    ^ variable.parameter
 //                       ^ variable.other.type
 //                            ^ punctuation.definition.class.body.begin
@@ -57,7 +57,7 @@ package scala_syntax {
 //             ^ variable.other.type
 //                    ^ variable.other.type
 //                       ^ punctuation.definition.function.body
-//                         ^ variable.other.type.constructor
+//                         ^ entity.name.constructor
 //                                  ^ comment.block.scala
 //                                           ^ keyword.operator.scala
   }
@@ -141,7 +141,7 @@ package scala_syntax {
 
     val List((x1: Int, y1), (x2, y2)) = ((10, 5), (1, 2))
 //  ^ storage.type.variable.val.scala
-//      ^ variable.other.type.constructor.unapply
+//      ^ entity.name.constructor.unapply
 //          ^ punctuation.definition.array.begin
 //           ^ punctuation.definition.array.begin
 //            ^ entity.name.val.scala
@@ -194,7 +194,6 @@ package scala_syntax {
       */
     def printMessage[F <: Foo](foo: F, a: Int) =
       println(s"Foo: $foo, n: ${a + 2}")
-//  ^ string.unquoted.block-indent
 //       ^ support.function.scala
 //            ^ punctuation.definition.string.interpolated.begin.scala
 //                   ^ punctuation.definition.string.interpolated.element.scala
@@ -240,7 +239,7 @@ package scala_syntax {
     )
 
     val chars = List('a', 'oko', '\n', '\u0002', '\', '\\', '1')
-//               ^ support.class.constructor.scala
+//               ^ support.class entity.name.constructor.scala
     val how = "how"
     val e = "e"
     val quotes = List(
