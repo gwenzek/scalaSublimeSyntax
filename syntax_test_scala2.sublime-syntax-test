@@ -4,7 +4,7 @@ import scala.collection.mutable._
 import scala.collection.immutable.{List => MutList, Set => _}
 // ^ meta.import.scala keyword.other.import
 //      ^ variable.module.scala
-//          ^ punctuation.separator.dot
+//          ^ keyword.operator.access.scala
 //                                ^ punctuation.definition.module-binding.begin
 //                                          ^ entity.name.class
 //                                                          ^ punctuation.definition.module-binding.end
@@ -29,7 +29,7 @@ package scala_syntax {
 //      ^ entity.name.class
 //          ^ storage.modifier.access
 //                    ^ variable.parameter
-//                       ^ variable.other.type
+//                       ^ support.language.type.scala
 //                            ^ punctuation.definition.class.body.begin
     val unbar = MutList(1)
 //  <- meta.class.scala
@@ -54,7 +54,7 @@ package scala_syntax {
 //  ^ storage.type.function
 //       ^ entity.name.function
 //         ^ variable.parameter
-//             ^ variable.other.type
+//             ^ support.language.type.scala
 //                    ^ variable.other.type
 //                       ^ punctuation.definition.function.body
 //                         ^ entity.name.constructor
@@ -70,7 +70,7 @@ package scala_syntax {
 //                  ^ variable.parameter
 //                           ^ constant.numeric.scala
 //                              ^ variable.parameter
-//                                  ^ variable.other.type
+//                                  ^ support.language.type.scala
 //                                           ^ constant.language.scala
 //                                                    ^ storage.modifier.extends.scala
 //                                                          ^ entity.other.inherited-class.scala
@@ -112,7 +112,7 @@ package scala_syntax {
 //  ^ storage.type.variable.var.scala
 //              ^ entity.name.val.scala
 //                ^ entity.name.val.scala
-//                           ^ variable.other.type
+//                           ^ support.language.type.scala
 //                               ^ keyword.operator.assignment
 //                                 ^ constant.numeric.scala
 //                                   ^ comment.line.double-slash
@@ -176,15 +176,26 @@ package scala_syntax {
 //  ^ storage.type.function
 //      ^ entity.name.function
 //          ^ variable.parameter
-//              ^ variable.other.type
+//              ^ support.language.type.scala
 //                 ^ punctuation.definition.parameters.function.begin.scala
 //                     ^ storage.modifier.other
 //                           ^ variable.parameter
 //                                     ^ punctuation.definition.parameters.function.end.scala
 //                                       ^ punctuation.separator.key-value.type.scala
 //                                             ^ punctuation.definition.function.body.scala
-      if (b) ) 1 else abc(a - 1, a)(a < 0)
-//           ^ invalid.illegal
+      if (b) 1 else abc(a - 1, a)(a < 0)
+//    ^ keyword.control.conditional.if.scala
+//             ^ keyword.control.conditional.else.scala
+      else 3
+//    ^ - keyword.control.conditional.else.scala
+//    ^ invalid.illegal
+
+      if(b) 1
+//    ^ keyword.control.conditional.if.scala
+      else if (!b) 0
+//    ^ keyword.control.conditional.elseif.scala
+      else throw new Exception("Boolean algebra is bullshit")
+//    ^ keyword.control.conditional.else.scala
 
     /** Prints the message with the given foo
       * @tparam F the type of the given foo
@@ -287,7 +298,7 @@ package scala_syntax {
       } finally {
 //       ^ keyword.control.trycatch.finally.scala
       }
-   m
+      m
     }
 //  ^ punctuation.definition.function.body.end.scala
 
