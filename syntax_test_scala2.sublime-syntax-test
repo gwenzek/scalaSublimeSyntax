@@ -172,7 +172,7 @@ package scala_syntax {
 //                                  ^ keyword.operator.assignment
     @tailrec
 //  ^ entity.name.tag
-    def abc(a: Int)(implicit b: Boolean) : Int =
+    def abc(a: Int)(implicit b: Boolean) : Int = {
 //  ^ storage.type.function
 //      ^ entity.name.function
 //          ^ variable.parameter
@@ -196,6 +196,7 @@ package scala_syntax {
 //    ^ keyword.control.conditional.elseif.scala
       else throw new Exception("Boolean algebra is bullshit")
 //    ^ keyword.control.conditional.else.scala
+    }
 
     /** Prints the message with the given foo
       * @tparam F the type of the given foo
@@ -301,6 +302,14 @@ package scala_syntax {
       m
     }
 //  ^ punctuation.definition.function.body.end.scala
+
+    def complex_contructor(a: Int) = {
+      new Foo(a) with Bar[Int] with Any
+//    ^ keyword.operator.new
+//         ^ variable.other.type.scala meta.instantiation.scala
+//               ^ keyword.operator.new.with
+//                    ^ variable.other.type.scala meta.instantiation.scala
+    }
 
     val scalaBook = new ScalaBook(0.1, List("Martin Odersky"))
     val b =  <book>
