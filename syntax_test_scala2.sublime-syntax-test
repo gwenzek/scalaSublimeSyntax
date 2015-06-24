@@ -2,10 +2,11 @@
 
 import scala.collection.mutable._
 import scala.collection.immutable.{List => MutList, Set => _}
-// ^ meta.import.scala keyword.other.import
+// ^ storage.type.module.import.scala
 //      ^ variable.module.scala
 //          ^ keyword.operator.access.scala
 //                                ^ punctuation.definition.module-binding.begin
+//                                   ^ variable.other.type.scala
 //                                          ^ entity.name.class
 //                                                          ^ punctuation.definition.module-binding.end
 
@@ -119,7 +120,9 @@ package scala_syntax {
 //                                 ^ constant.numeric.scala
 //                                   ^ comment.line.double-slash
     val !#%&*+-/:<=>?@\^ = 2.15f
-    val simpleName = 1
+    val simpleName = 0xAEF
+//                   ^ constant.numeric.scala
+//                    ^ constant.numeric.scala
     val simpleName2: Float with Foo = 1
     var withDigitsAndUnderscores_ab_12_ab12 = 1
 //                               ^ entity.name.val
@@ -314,12 +317,18 @@ package scala_syntax {
     }
 
     val scalaBook = new ScalaBook(0.1, List("Martin Odersky"))
-    val b =  <book>
+    val b = <book>
           <title>The Scala Language Specification</title>
           <version>{scalaBook.version + 1}</version>
           <authors>{scalaBook.authors}</authors>
         </book>
         </book>
+
+    class Inline { def inline = x }
+//               ^ punctuation.definition.class.body.begin
+//                                ^ punctuation.definition.class.body.end
+//                               ^ meta.def
+//                                ^ -meta.def
   }
 }
 
