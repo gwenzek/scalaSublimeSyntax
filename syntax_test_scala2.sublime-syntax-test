@@ -49,6 +49,8 @@ package scala_syntax {
 
     /* this is another comment
 //     ^ comment.block.scala
+       with a TODO !
+//             ^ comment.line.todo
     */
     def +=(x: Int) : Bar = Bar(a /* plus */  + x)
 //  ^ storage.type.function
@@ -318,4 +320,8 @@ package scala_syntax {
           <authors>{scalaBook.authors}</authors>
         </book>
         </book>
+  }
 }
+
+}
+// <- invalid.illegal
