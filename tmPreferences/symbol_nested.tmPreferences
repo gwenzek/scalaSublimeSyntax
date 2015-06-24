@@ -3,9 +3,10 @@
 <plist version="1.0">
 <dict>
     <key>name</key>
-    <string>Val Symbol</string>
+    <string>Simple Nested Symbol</string>
     <key>scope</key>
-    <string>source.scala meta.class.scala meta.method.identifier.scala</string>
+    <string>source.scala meta.class.scala meta.method.identifier.scala, source.scala meta.class.scala meta.class.identifier.scala
+    </string>
     <key>settings</key>
     <dict>
         <key>showInIndexedSymbolList</key>

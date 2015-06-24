@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
     <key>name</key>
-    <string>Val Symbol</string>
+    <string>Class Symbol</string>
     <key>scope</key>
-    <string>source.scala meta.class.scala entity.name.val</string>
+    <string>source.scala meta.class.identifier, source.scala meta.method.identifier</string>
     <key>settings</key>
     <dict>
         <key>showInIndexedSymbolList</key>
-        <integer>0</integer>
+        <integer>1</integer>
         <key>showInSymbolList</key>
         <integer>1</integer>
-        <key>symbolTransformation</key>
-        <string>s/\s*(.+)/\t$1/</string>
+        <!-- <key>symbolTransformation</key>
+        <string>s/(.+)/function $1/;</string> -->
     </dict>
     <key>uuid</key>
     <string>eb868b79-51c7-4da6-af14-fe238b367963</string>
