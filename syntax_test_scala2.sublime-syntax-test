@@ -329,6 +329,16 @@ package scala_syntax {
 //                                ^ punctuation.definition.class.body.end
 //                               ^ meta.def
 //                                ^ -meta.def
+
+    def matchCaseWithIf(pure: Expr) = {
+      pure match {
+        case x if(!x.isNice) => punish(x)
+//       ^ keyword.control.switch.case.scala
+//             ^ keyword.control.conditional.if.scala
+        case Father(y) if(!y.isNice) => Father.punish(y)
+        case x => giveSweety(x)
+      }
+    }
   }
 }
 
