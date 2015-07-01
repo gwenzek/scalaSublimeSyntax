@@ -147,17 +147,17 @@ package scala_syntax {
     val List((x1: Int, y1), (x2, y2)) = ((10, 5), (1, 2))
 //  ^ storage.type.variable.val.scala
 //      ^ entity.name.constructor.unapply
-//          ^ punctuation.definition.array.begin
-//           ^ punctuation.definition.array.begin
+//          ^ punctuation.definition.arguments.begin
+//           ^ punctuation.definition.arguments.begin
 //            ^ entity.name.val.scala
 //              ^ punctuation.separator.key-value.type.scala
-//                   ^ punctuation.separator.array-element
+//                   ^ punctuation.separator.argument
 //                     ^ entity.name.val.scala
-//                       ^ punctuation.definition.array.end
-//                        ^ punctuation.separator.array-element
-//                          ^ punctuation.definition.array.begin
-//                                 ^ punctuation.definition.array.end
-//                                  ^ punctuation.definition.array.end
+//                       ^ punctuation.definition.arguments.end
+//                        ^ punctuation.separator.argument
+//                          ^ punctuation.definition.arguments.begin
+//                                 ^ punctuation.definition.arguments.end
+//                                  ^ punctuation.definition.arguments.end
 //                                    ^ keyword.operator.assignment
 
     val Some(x) = f()         // a pattern definition
@@ -289,10 +289,10 @@ package scala_syntax {
         res match {
 //        ^ variable.other
 //            ^ keyword.control.switch.scala
-          case Some(y) => y
+          case Some(y): Int => y
+          case _ : Int => throw new Exception("Can't parse: " + expr_!:)
 //          ^ keyword.control.switch.case.scala
 //                     ^ punctuation.separator.key-value.switch.scala
-          case _: Int => throw new Exception("Can't parse: " + expr_!:)
         }
       } catch {
 //    ^ punctuation.definition.block.trycatch.end.scala
@@ -332,11 +332,12 @@ package scala_syntax {
 
     def matchCaseWithIf(pure: Expr) = {
       pure match {
-        case x if(!x.isNice) => punish(x)
+        case x: Children if(!x.isNice) => punish(x)
 //       ^ keyword.control.switch.case.scala
-//             ^ keyword.control.conditional.if.scala
+//            ^ punctuation.separator.key-value.type.scala
+//                       ^ keyword.control.conditional.if.scala
         case Father(y) if(!y.isNice) => Father.punish(y)
-        case x => giveSweety(x)
+        case 1 :: None(a) => giveSweety(x)
       }
     }
   }
