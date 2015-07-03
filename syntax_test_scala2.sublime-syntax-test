@@ -120,6 +120,7 @@ package scala_syntax {
 //                                 ^ constant.numeric.scala
 //                                   ^ comment.line.double-slash
     val !#%&*+-/:<=>?@\^ = 2.15f
+//              ^ entity.name.val.scala
     val simpleName = 0xAEF
 //                   ^ constant.numeric.scala
 //                    ^ constant.numeric.scala
@@ -147,32 +148,32 @@ package scala_syntax {
     val List((x1: Int, y1), (x2, y2)) = ((10, 5), (1, 2))
 //  ^ storage.type.variable.val.scala
 //      ^ entity.name.constructor.unapply
-//          ^ punctuation.definition.arguments.begin
-//           ^ punctuation.definition.arguments.begin
+//          ^ punctuation.definition.arguments
+//           ^ punctuation.definition.arguments
 //            ^ entity.name.val.scala
 //              ^ punctuation.separator.key-value.type.scala
 //                   ^ punctuation.separator.argument
 //                     ^ entity.name.val.scala
-//                       ^ punctuation.definition.arguments.end
+//                       ^ punctuation.definition.arguments
 //                        ^ punctuation.separator.argument
-//                          ^ punctuation.definition.arguments.begin
-//                                 ^ punctuation.definition.arguments.end
-//                                  ^ punctuation.definition.arguments.end
+//                          ^ punctuation.definition.arguments
+//                                 ^ punctuation.definition.arguments
+//                                  ^ punctuation.definition.arguments
 //                                    ^ keyword.operator.assignment
 
-    val Some(x) = f()         // a pattern definition
+    val Some(x, a) = f()         // a pattern definition
 //  ^ storage.type.variable.val.scala
     val x :: xs = List(1, 2, 3)      // an infix pattern definition
 //  ^ storage.type.variable.val.scala
 //      ^ entity.name.val.scala
-//        ^ keyword.operator.infix-pattern
+//        ^ keyword.operator.scala
 //           ^ entity.name.val.scala
 //              ^ keyword.operator.assignment
 //                      ^ punctuation.separator.argument
     var (x: Int) :: (xs: List[Int]) = List(1, 2, 3)
 //  ^ storage.type.variable.var.scala
 //       ^ entity.name.val.scala
-//               ^ keyword.operator.infix-pattern
+//               ^ keyword.operator.scala
 //                   ^ entity.name.val.scala
 //                                  ^ keyword.operator.assignment
     @tailrec
@@ -330,14 +331,15 @@ package scala_syntax {
 //                               ^ meta.def
 //                                ^ -meta.def
 
-    def matchCaseWithIf(pure: Expr) = {
-      pure match {
-        case x: Children if(!x.isNice) => punish(x)
+    def matchCaseWithIf(animal: Animal) = {
+      animal match {
+        case x: Duck if(x.hasTwoLegs) => x.qwack
 //       ^ keyword.control.switch.case.scala
+//           ^ entity.name.val.scala
 //            ^ punctuation.separator.key-value.type.scala
-//                       ^ keyword.control.conditional.if.scala
-        case Father(y) if(!y.isNice) => Father.punish(y)
-        case 1 :: None(a) => giveSweety(x)
+//                    ^ keyword.control.conditional.if.scala
+        case SonOf(y) if(y.hasFourLegs) => animal.run
+        case _ => do_default
       }
     }
   }
