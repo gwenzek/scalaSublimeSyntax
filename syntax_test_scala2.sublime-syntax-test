@@ -4,7 +4,7 @@ import scala.collection.mutable._
 import scala.collection.immutable.{List => MutList, Set => _}
 // ^ storage.type.module.import.scala
 //      ^ variable.module.scala
-//          ^ keyword.operator.access.scala
+//          ^ keyword.operator.accessor.scala
 //                                ^ punctuation.definition.module-binding.begin
 //                                   ^ variable.other.type.scala
 //                                          ^ entity.name.class
@@ -12,10 +12,10 @@ import scala.collection.immutable.{List => MutList, Set => _}
 
 /** top level scala doc */
 // <- comment.block.documentation.scala
-package scala_syntax {
+package scala_syntax.test {
 // ^ storage.type.module
 //      ^ entity.name.module.scala
-
+//                  ^ keyword.operator.accessor
   /**
 // ^ comment.block.documentation.scala
    * Bar documentation
@@ -23,7 +23,7 @@ package scala_syntax {
 //     ^ keyword.documentation.inventory.scala
    * @param a the content of this Bar
 //     ^ keyword.documentation.parameter.scala
-   * @todo finish Bar
+   * @todo finish Ba
    */
   class Bar(protected a: Int) {
 //  ^ storage.type.class.class
@@ -121,6 +121,11 @@ package scala_syntax {
 //                                   ^ comment.line.double-slash
     val !#%&*+-/:<=>?@\^ = 2.15f
 //              ^ entity.name.val.scala
+    val `val` = Math.Pi
+//      ^ entity.name.val.scala
+//          ^ entity.name.val.scala
+//            ^ keyword.operator.assignment
+
     val simpleName = 0xAEF
 //                   ^ constant.numeric.scala
 //                    ^ constant.numeric.scala
@@ -222,7 +227,10 @@ package scala_syntax {
   }
 
   trait Readable[T] {
-    type Tbis = T
+    type Tbis=T
+    type Tter[T] = Func[T, T]
+    type Reader
+
     def read(s: String): Option[T] = 1
   }
 
@@ -280,6 +288,7 @@ package scala_syntax {
     val formatted1 = f"x: $x%+,.3f ca"
     val formatted2 = f"date: $x%T \u0002 \124 \ "
     val raw_string = raw"toto\u1221n\125\n"
+    val tuple = (1 , 2)
 
     private def read[T <: Readable[T]](x: T, expr_!: : String, start: Int): T = {
       val maybeRes : Option[T] = x.read(expr_!:.substring(start))
@@ -333,15 +342,77 @@ package scala_syntax {
 
     def matchCaseWithIf(animal: Animal) = {
       animal match {
-        case x: Duck if(x.hasTwoLegs) => x.qwack
+        case x: Duck if x.hasTwoLegs => x.qwack
 //       ^ keyword.control.switch.case.scala
 //           ^ entity.name.val.scala
 //            ^ punctuation.separator.key-value.type.scala
 //                    ^ keyword.control.conditional.if.scala
-        case SonOf(y) if(y.hasFourLegs) => animal.run
+//                                    ^ punctuation.separator.key-value.switch.scala
+        case Legged(4) if true => animal.run
+//                  ^ constant.numeric.scala
+//                     ^ keyword.control.conditional.if.scala
+//                              ^ punctuation.separator.key-value.switch.scala
+        case Shout("waf") => animal.shout
+//                 ^ punctuation.definition.string
         case _ => do_default
       }
     }
+
+    def forLoop(bound: Int) = {
+      for(i <- 1 to bound; j <- 1 to 2 * bound if j % 5 == 0)
+//    ^ keyword.control.loop.for.scala
+//       ^ punctuation.definition.expression.loop.begin
+//        ^ entity.name.val
+//          ^ punctuation.separator.key-value
+//                  ^ variable.other.scala
+//                       ^ punctuation.separator.loop-expression
+//                         ^ entity.name.val
+        println(s"($i, $j)")
+    }
+
+    def forLoop(bound: Int) = {
+      for(i <- 1 to bound; j <- 1 to 2 * bound if j % 5 == 0)
+//    ^ keyword.control.loop.for.scala
+//       ^ punctuation.definition.expression.loop.begin
+//        ^ entity.name.val
+//          ^ punctuation.separator.key-value
+//                  ^ variable.other.scala
+//                       ^ punctuation.separator.loop-expression
+//                         ^ entity.name.val
+        println(s"($i, $j)")
+    }
+
+    def doLoop(x: Int) = {
+      var i = 0
+      do {
+//    ^ keyword.control.loop.do.scala
+//       ^ punctuation.definition.block.loop.begin
+        i += 1
+      } while (i < x)
+//      ^ keyword.control.loop.while.scala
+//            ^ punctuation.definition.expression.loop.begin
+      i = 0
+      do
+//    ^ keyword.control.loop.do.scala
+        i += 1
+      while (i < x)
+//      ^ keyword.control.loop.while.scala
+//          ^ punctuation.definition.expression.loop.begin
+    }
+
+    def whileLoop(x: Int) = {
+      var i = 0
+      while (i < x){
+//      ^ keyword.control.loop.while.scala
+//          ^ punctuation.definition.expression.loop.begin
+//                 ^ punctuation.definition.block.loop.begin
+        i += 1
+      }
+      while (i < x)
+        i += 1
+//      ^ meta.block.loop.while
+    }
+//^ - meta.block.loop.while
   }
 }
 
