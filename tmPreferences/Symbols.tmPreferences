@@ -5,7 +5,8 @@
     <key>name</key>
     <string>Class Symbol</string>
     <key>scope</key>
-    <string>source.scala meta.class.identifier, source.scala meta.method.identifier</string>
+    <string>(source.scala meta.class.identifier -source.scala meta.class.scala, source.scala meta.method.identifier -source.scala meta.class.scala)
+    </string>
     <key>settings</key>
     <dict>
         <key>showInIndexedSymbolList</key>

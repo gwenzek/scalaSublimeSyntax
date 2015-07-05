@@ -337,8 +337,8 @@ package scala_syntax.test {
     class Inline { def inline = x }
 //               ^ punctuation.definition.class.body.begin
 //                                ^ punctuation.definition.class.body.end
-//                               ^ meta.def
-//                                ^ -meta.def
+//                               ^ meta.method
+//                                ^ -meta.method
 
     def matchCaseWithIf(animal: Animal) = {
       animal match {
