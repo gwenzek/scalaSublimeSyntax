@@ -233,7 +233,7 @@
 			<key>name</key>
 			<string>Type name</string>
 			<key>scope</key>
-			<string>entity.name.type, variable.other.type, variable.type</string>
+			<string>entity.name.type, variable.other.type</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -244,9 +244,35 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Library object</string>
+			<key>scope</key>
+			<string>support.class, support.type</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#6D79DE</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Class definition</string>
+			<key>scope</key>
+			<string>entity.name.class, punctuation.definition.parameters.constructor</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#C5656B</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Type constructor</string>
 			<key>scope</key>
-			<string>variable.type.constructor</string>
+			<string>entity.name.constructor, punctuation.definition.arguments.constructor</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -310,6 +336,17 @@
 			<dict>
 				<key>fontStyle</key>
 				<string>bold</string>
+				<key>foreground</key>
+				<string>#7290D9</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Function call</string>
+			<key>scope</key>
+			<string>variable.function, punctuation.definition.arguments</string>
+			<key>settings</key>
+			<dict>
 				<key>foreground</key>
 				<string>#7290D9</string>
 			</dict>
@@ -517,6 +554,17 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Punctuation type arguments</string>
+			<key>scope</key>
+			<string>punctuation.definition.arguments.type</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#D1D187</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Punctuation parameters</string>
 			<key>scope</key>
 			<string>punctuation.definition.parameters</string>
@@ -539,13 +587,35 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Punctuation block</string>
+			<key>scope</key>
+			<string>punctuation.definition.block.loop, punctuation.definition.block.switch, punctuation.definition.block.conditionnal, punctuation.definition.block.trycatch, punctuation.definition.expression.loop, punctuation.definition.expression.switch, punctuation.definition.expression.conditionnal punctuation.definition.expression.trycatch</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#43A8ED</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Punctuation class</string>
 			<key>scope</key>
 			<string>punctuation.definition.class</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#D1D187</string>
+				<string>#388bc4</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Punctuation function</string>
+			<key>scope</key>
+			<string>punctuation.definition.function, punctuation.definition.parameters.function</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#FF9358</string>
 			</dict>
 		</dict>
 		<dict>

@@ -30,7 +30,7 @@ package scala_syntax.test {
 //      ^ entity.name.class
 //          ^ storage.modifier.access
 //                    ^ variable.parameter
-//                       ^ support.language.type.scala
+//                       ^ support.type.scala
 //                            ^ punctuation.definition.class.body.begin
     val unbar = MutList(1)
 //  <- meta.class.scala
@@ -45,7 +45,7 @@ package scala_syntax.test {
 //               ^ variable.parameter
 //                     ^ variable.other.type
 //                         ^ punctuation.definition.function.body
-//                                 ^ variable.language.scala
+//                                 ^ support.variable.scala
 //                                      ^ keyword.operator.scala
 
     /* this is another comment
@@ -57,7 +57,7 @@ package scala_syntax.test {
 //  ^ storage.type.function
 //       ^ entity.name.function
 //         ^ variable.parameter
-//             ^ support.language.type.scala
+//             ^ support.type.scala
 //                    ^ variable.other.type
 //                       ^ punctuation.definition.function.body
 //                         ^ entity.name.constructor
@@ -73,7 +73,7 @@ package scala_syntax.test {
 //                  ^ variable.parameter
 //                           ^ constant.numeric.scala
 //                              ^ variable.parameter
-//                                  ^ support.language.type.scala
+//                                  ^ support.type.scala
 //                                           ^ constant.language.scala
 //                                                    ^ storage.modifier.extends.scala
 //                                                          ^ entity.other.inherited-class.scala
@@ -115,7 +115,7 @@ package scala_syntax.test {
 //  ^ storage.type.variable.var.scala
 //              ^ entity.name.val.scala
 //                ^ entity.name.val.scala
-//                           ^ support.language.type.scala
+//                           ^ support.type.scala
 //                               ^ keyword.operator.assignment
 //                                 ^ constant.numeric.scala
 //                                   ^ comment.line.double-slash
@@ -168,6 +168,7 @@ package scala_syntax.test {
 
     val Some(x, a) = f()         // a pattern definition
 //  ^ storage.type.variable.val.scala
+//      ^ entity.name.constructor.unapply
     val x :: xs = List(1, 2, 3)      // an infix pattern definition
 //  ^ storage.type.variable.val.scala
 //      ^ entity.name.val.scala
@@ -187,7 +188,7 @@ package scala_syntax.test {
 //  ^ storage.type.function
 //      ^ entity.name.function
 //          ^ variable.parameter
-//              ^ support.language.type.scala
+//              ^ support.type.scala
 //                 ^ punctuation.definition.parameters.function.begin.scala
 //                     ^ storage.modifier.other
 //                           ^ variable.parameter
@@ -300,6 +301,7 @@ package scala_syntax.test {
 //        ^ variable.other
 //            ^ keyword.control.switch.scala
           case Some(y): Int => y
+//             ^ entity.name.constructor.unapply
           case _ : Int => throw new Exception("Can't parse: " + expr_!:)
 //          ^ keyword.control.switch.case.scala
 //                     ^ punctuation.separator.key-value.switch.scala
@@ -348,11 +350,12 @@ package scala_syntax.test {
 //            ^ punctuation.separator.key-value.type.scala
 //                    ^ keyword.control.conditional.if.scala
 //                                    ^ punctuation.separator.key-value.switch.scala
-        case Legged(4) if true => animal.run
+        case Legged(4, 1) if true => animal.run
 //                  ^ constant.numeric.scala
-//                     ^ keyword.control.conditional.if.scala
-//                              ^ punctuation.separator.key-value.switch.scala
-        case Shout("waf") => animal.shout
+//                   ^ punctuation.separator.argument
+//                        ^ keyword.control.conditional.if.scala
+//                                ^ punctuation.separator.key-value.switch.scala
+        case Shout("waf") => animal.shout()
 //                 ^ punctuation.definition.string
         case _ => do_default
       }

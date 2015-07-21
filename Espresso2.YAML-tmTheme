@@ -105,12 +105,25 @@ settings:
     foreground: '#FF9358'
 
 - name: Type name
-  scope: entity.name.type, variable.other.type, variable.type
+  scope: entity.name.type, variable.other.type
   settings:
     fontStyle: bold
     foreground: '#6D79DE'
+
+- name: Library object
+  scope: support.class, support.type
+  settings:
+    fontStyle: bold
+    foreground: '#6D79DE'
+
+- name: Class definition
+  scope: entity.name.class, punctuation.definition.parameters.constructor
+  settings:
+    fontStyle: bold
+    foreground: '#C5656B'
+
 - name: Type constructor
-  scope: variable.type.constructor
+  scope: entity.name.constructor, punctuation.definition.arguments.constructor
   settings:
     fontStyle: ''
     foreground: '#6D79DE'
@@ -142,10 +155,15 @@ settings:
     fontStyle: bold
     foreground: '#7290D9'
 
+- name: Function call
+  scope: variable.function, punctuation.definition.arguments
+  settings:
+    foreground: '#7290D9'
+
 - name: Library object
   scope: support.class, support.type
   settings:
-    fontStyle: bold
+    fontStyle: 'bold'
     foreground: '#6D79DE'
 
 - name: Library constant
@@ -234,6 +252,11 @@ settings:
   settings:
     foreground: '#C5656B'
 
+- name: Punctuation type arguments
+  scope: punctuation.definition.arguments.type
+  settings:
+    foreground: '#D1D187'
+
 - name: Punctuation parameters
   scope: punctuation.definition.parameters
   settings:
@@ -244,10 +267,30 @@ settings:
   settings:
     foreground: '#D1D187'
 
+- name: Punctuation block
+  scope:
+    punctuation.definition.block.loop,
+    punctuation.definition.block.switch,
+    punctuation.definition.block.conditionnal,
+    punctuation.definition.block.trycatch,
+    punctuation.definition.expression.loop,
+    punctuation.definition.expression.switch,
+    punctuation.definition.expression.conditionnal
+    punctuation.definition.expression.trycatch
+  settings:
+    foreground: '#43A8ED'
+
 - name: Punctuation class
   scope: punctuation.definition.class
   settings:
-    foreground: '#D1D187'
+    foreground: '#388bc4'
+
+- name: Punctuation function
+  scope:
+    punctuation.definition.function,
+    punctuation.definition.parameters.function
+  settings:
+    foreground: '#FF9358'
 
 - name: Punctuation string
   scope: punctuation.definition.string
