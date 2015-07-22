@@ -351,4 +351,22 @@ settings:
   settings:
     foreground: '#D1D187'
 
+# git diff
+- scope: meta.diff.header
+  settings:
+    foreground: '#6D79DE'
+
+- scope: markup.inserted
+  settings:
+    background: '#44FF4330'
+
+- scope: markup.deleted
+  settings:
+    background: '#FF103030'
+
+- scope: meta.toc-list.line-number
+  settings:
+    foreground: '#44AA43'
+
+
 uuid: 6B90703E-4E4B-43C8-9D32-921BEDF6D725

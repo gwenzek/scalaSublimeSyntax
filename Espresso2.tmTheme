@@ -704,6 +704,42 @@
 				<string>#D1D187</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>scope</key>
+			<string>meta.diff.header</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#6D79DE</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.inserted</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#44FF4330</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.deleted</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#FF103030</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>meta.toc-list.line-number</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#44AA43</string>
+			</dict>
+		</dict>
 	</array>
 	<key>uuid</key>
 	<string>6B90703E-4E4B-43C8-9D32-921BEDF6D725</string>
