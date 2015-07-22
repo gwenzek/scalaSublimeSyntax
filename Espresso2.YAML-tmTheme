@@ -53,7 +53,7 @@ settings:
     foreground: '#585CF6'
 
 - name: Variable
-  scope: variable.language, variable.other
+  scope: variable.language
   settings:
     fontStyle: ''
     foreground: '#318495'
@@ -81,8 +81,11 @@ settings:
   settings:
     foreground: '#C5656B'
 
-- name: Punctuation separator
-  scope: punctuation.separator
+- scope: punctuation.separator
+  settings:
+    foreground: '#D1D187'
+
+- scope: punctuation.separator.key-value
   settings:
     foreground: '#C5656B'
 
@@ -105,7 +108,7 @@ settings:
     foreground: '#FF9358'
 
 - name: Type name
-  scope: entity.name.type, variable.other.type
+  scope: entity.name.type, variable.other.type, entity.name.constructor
   settings:
     fontStyle: bold
     foreground: '#6D79DE'
@@ -117,13 +120,21 @@ settings:
     foreground: '#6D79DE'
 
 - name: Class definition
-  scope: entity.name.class, punctuation.definition.parameters.constructor
+  scope: entity.name.class
   settings:
     fontStyle: bold
     foreground: '#C5656B'
 
-- name: Type constructor
-  scope: entity.name.constructor, punctuation.definition.arguments.constructor
+- name: Punctuation parameters
+  scope:
+    meta.class.identifier punctuation.separator,
+    meta.class.identifier punctuation.definition,
+    punctuation.definition.class
+  settings:
+    foreground: '#C5656B'
+
+- name: Constructor punctuation
+  scope: punctuation.definition.arguments.constructor
   settings:
     fontStyle: ''
     foreground: '#6D79DE'
@@ -132,6 +143,7 @@ settings:
   scope: entity.other.inherited-class
   settings:
     fontStyle: italic
+    foreground: '#6D79DE'
 
 - name: Function parameter
   scope: variable.parameter
@@ -156,8 +168,12 @@ settings:
     foreground: '#7290D9'
 
 - name: Function call
-  scope: variable.function, punctuation.definition.arguments
+  scope:
+    variable.function,
+    punctuation.definition.arguments,
+    punctuation.separator.argument
   settings:
+    fontStyle: ''
     foreground: '#7290D9'
 
 - name: Library object
@@ -257,11 +273,6 @@ settings:
   settings:
     foreground: '#D1D187'
 
-- name: Punctuation parameters
-  scope: punctuation.definition.parameters
-  settings:
-    foreground: '#D1D187'
-
 - name: Punctuation block
   scope: punctuation.definition.block
   settings:
@@ -271,31 +282,64 @@ settings:
   scope:
     punctuation.definition.block.loop,
     punctuation.definition.block.switch,
-    punctuation.definition.block.conditionnal,
+    punctuation.definition.block.conditional,
     punctuation.definition.block.trycatch,
     punctuation.definition.expression.loop,
     punctuation.definition.expression.switch,
-    punctuation.definition.expression.conditionnal
+    punctuation.definition.expression.conditional,
     punctuation.definition.expression.trycatch
   settings:
     foreground: '#43A8ED'
 
-- name: Punctuation class
-  scope: punctuation.definition.class
-  settings:
-    foreground: '#388bc4'
+# - name: Punctuation class
+#   scope: punctuation.definition.class
+#   settings:
+#     # foreground: '#388bc4'
+#     foreground: '#C5656B'
 
 - name: Punctuation function
   scope:
-    punctuation.definition.function,
-    punctuation.definition.parameters.function
+    meta.method.identifier punctuation.definition,
+    meta.method.identifier punctuation.separator,
+    punctuation.definition.function
   settings:
     foreground: '#FF9358'
+
+- name: Punctuation variable
+  scope:
+    meta.variable.identifier punctuation.definition,
+    meta.variable.identifier punctuation.separator
+  settings:
+    foreground: '#388bc4'
+
+- name: end of identifier
+  scope: keyword.operator.assignment
+  settings:
+    foreground: '#388bc4'
+
+- scope: keyword.operator.accessor
+  settings:
+    fontStyle: ''
+    foreground: '#D1D187'
 
 - name: Punctuation string
   scope: punctuation.definition.string
   settings:
     foreground: '#049B0A'
+
+- name: Type punctuation
+  scope:
+    punctuation.definition.arguments.type,
+    punctuation.separator.argument.type
+  settings:
+    foreground: '#D1D187'
+
+- name: Array punctuation
+  scope:
+    punctuation.definition.array,
+    punctuation.separator.array-element
+  settings:
+    foreground: '#D1D187'
 
 - name: Punctuation module-binding
   scope: punctuation.definition.module-binding

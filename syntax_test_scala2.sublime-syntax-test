@@ -44,7 +44,7 @@ package scala_syntax.test {
 //        ^ entity.name.function
 //               ^ variable.parameter
 //                     ^ variable.other.type
-//                         ^ punctuation.definition.function.body
+//                         ^ keyword.operator.assignment
 //                                 ^ support.variable.scala
 //                                      ^ keyword.operator.scala
 
@@ -59,7 +59,7 @@ package scala_syntax.test {
 //         ^ variable.parameter
 //             ^ support.type.scala
 //                    ^ variable.other.type
-//                       ^ punctuation.definition.function.body
+//                       ^ keyword.operator.assignment.function
 //                         ^ entity.name.constructor
 //                                  ^ comment.block.scala
 //                                           ^ keyword.operator.scala
@@ -106,7 +106,7 @@ package scala_syntax.test {
 //             ^ constant.numeric.scala
     val y: Int = 0.1
 //  ^ storage.type.variable.val.scala
-//       ^ punctuation.separator.key-value.type.scala
+//       ^ punctuation.separator.type.scala
 //                ^ constant.numeric.scala
 //                 ^ constant.numeric.scala
 
@@ -156,7 +156,7 @@ package scala_syntax.test {
 //          ^ punctuation.definition.arguments
 //           ^ punctuation.definition.arguments
 //            ^ entity.name.val.scala
-//              ^ punctuation.separator.key-value.type.scala
+//              ^ punctuation.separator.type.scala
 //                   ^ punctuation.separator.argument
 //                     ^ entity.name.val.scala
 //                       ^ punctuation.definition.arguments
@@ -193,8 +193,8 @@ package scala_syntax.test {
 //                     ^ storage.modifier.other
 //                           ^ variable.parameter
 //                                     ^ punctuation.definition.parameters.function.end.scala
-//                                       ^ punctuation.separator.key-value.type.scala
-//                                             ^ punctuation.definition.function.body.scala
+//                                       ^ punctuation.separator.type.scala
+//                                             ^ keyword.operator.assignment.function.scala
       if (b) 1 else abc(a - 1, a)(a < 0)
 //    ^ keyword.control.conditional.if.scala
 //             ^ keyword.control.conditional.else.scala
@@ -347,7 +347,7 @@ package scala_syntax.test {
         case x: Duck if x.hasTwoLegs => x.qwack
 //       ^ keyword.control.switch.case.scala
 //           ^ entity.name.val.scala
-//            ^ punctuation.separator.key-value.type.scala
+//            ^ punctuation.separator.type.scala
 //                    ^ keyword.control.conditional.if.scala
 //                                    ^ punctuation.separator.key-value.switch.scala
         case Legged(4, 1) if true => animal.run
@@ -416,6 +416,13 @@ package scala_syntax.test {
 //      ^ meta.block.loop.while
     }
 //^ - meta.block.loop.while
+
+    private[this] a = 1
+//         ^ punctuation.definition.arguments.begin
+//              ^ punctuation.definition.arguments.end
+    private[thiz] a_ = 1
+//         ^ punctuation.definition.arguments.begin
+//              ^ punctuation.definition.arguments.end
   }
 }
 

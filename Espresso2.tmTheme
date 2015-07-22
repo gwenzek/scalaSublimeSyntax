@@ -120,7 +120,7 @@
 			<key>name</key>
 			<string>Variable</string>
 			<key>scope</key>
-			<string>variable.language, variable.other</string>
+			<string>variable.language</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -180,10 +180,17 @@
 			</dict>
 		</dict>
 		<dict>
-			<key>name</key>
-			<string>Punctuation separator</string>
 			<key>scope</key>
 			<string>punctuation.separator</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#D1D187</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>punctuation.separator.key-value</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -233,7 +240,7 @@
 			<key>name</key>
 			<string>Type name</string>
 			<key>scope</key>
-			<string>entity.name.type, variable.other.type</string>
+			<string>entity.name.type, variable.other.type, entity.name.constructor</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -259,7 +266,7 @@
 			<key>name</key>
 			<string>Class definition</string>
 			<key>scope</key>
-			<string>entity.name.class, punctuation.definition.parameters.constructor</string>
+			<string>entity.name.class</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -270,9 +277,20 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Type constructor</string>
+			<string>Punctuation parameters</string>
 			<key>scope</key>
-			<string>entity.name.constructor, punctuation.definition.arguments.constructor</string>
+			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition, punctuation.definition.class</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#C5656B</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Constructor punctuation</string>
+			<key>scope</key>
+			<string>punctuation.definition.arguments.constructor</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -290,6 +308,8 @@
 			<dict>
 				<key>fontStyle</key>
 				<string>italic</string>
+				<key>foreground</key>
+				<string>#6D79DE</string>
 			</dict>
 		</dict>
 		<dict>
@@ -344,9 +364,11 @@
 			<key>name</key>
 			<string>Function call</string>
 			<key>scope</key>
-			<string>variable.function, punctuation.definition.arguments</string>
+			<string>variable.function, punctuation.definition.arguments, punctuation.separator.argument</string>
 			<key>settings</key>
 			<dict>
+				<key>fontStyle</key>
+				<string></string>
 				<key>foreground</key>
 				<string>#7290D9</string>
 			</dict>
@@ -565,17 +587,6 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Punctuation parameters</string>
-			<key>scope</key>
-			<string>punctuation.definition.parameters</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#D1D187</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
 			<string>Punctuation block</string>
 			<key>scope</key>
 			<string>punctuation.definition.block</string>
@@ -589,7 +600,7 @@
 			<key>name</key>
 			<string>Punctuation block</string>
 			<key>scope</key>
-			<string>punctuation.definition.block.loop, punctuation.definition.block.switch, punctuation.definition.block.conditionnal, punctuation.definition.block.trycatch, punctuation.definition.expression.loop, punctuation.definition.expression.switch, punctuation.definition.expression.conditionnal punctuation.definition.expression.trycatch</string>
+			<string>punctuation.definition.block.loop, punctuation.definition.block.switch, punctuation.definition.block.conditional, punctuation.definition.block.trycatch, punctuation.definition.expression.loop, punctuation.definition.expression.switch, punctuation.definition.expression.conditional, punctuation.definition.expression.trycatch</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -598,9 +609,20 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Punctuation class</string>
+			<string>Punctuation function</string>
 			<key>scope</key>
-			<string>punctuation.definition.class</string>
+			<string>meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#FF9358</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Punctuation variable</string>
+			<key>scope</key>
+			<string>meta.variable.identifier punctuation.definition, meta.variable.identifier punctuation.separator</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -609,13 +631,24 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Punctuation function</string>
+			<string>end of identifier</string>
 			<key>scope</key>
-			<string>punctuation.definition.function, punctuation.definition.parameters.function</string>
+			<string>keyword.operator.assignment</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#FF9358</string>
+				<string>#388bc4</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>keyword.operator.accessor</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#D1D187</string>
 			</dict>
 		</dict>
 		<dict>
@@ -627,6 +660,28 @@
 			<dict>
 				<key>foreground</key>
 				<string>#049B0A</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Type punctuation</string>
+			<key>scope</key>
+			<string>punctuation.definition.arguments.type, punctuation.separator.argument.type</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#D1D187</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Array punctuation</string>
+			<key>scope</key>
+			<string>punctuation.definition.array, punctuation.separator.array-element</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#D1D187</string>
 			</dict>
 		</dict>
 		<dict>
