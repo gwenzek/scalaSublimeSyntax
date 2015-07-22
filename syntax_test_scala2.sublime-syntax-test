@@ -290,6 +290,10 @@ package scala_syntax.test {
     val formatted2 = f"date: $x%T \u0002 \124 \ "
     val raw_string = raw"toto\u1221n\125\n"
     val tuple = (1 , 2)
+    val X11 = X12a.x11b
+//       ^ entity.name.val
+//             ^ variable
+//                   ^ variable
 
     private def read[T <: Readable[T]](x: T, expr_!: : String, start: Int): T = {
       val maybeRes : Option[T] = x.read(expr_!:.substring(start))

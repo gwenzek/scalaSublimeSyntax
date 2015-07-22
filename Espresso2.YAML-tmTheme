@@ -10,11 +10,20 @@ settings:
     lineHighlight: '#3A312C'
     selection: '#C3DCFF'
 
+- scope: punctuation
+  settings:
+    foreground: '#D1D187'
+
 - name: Comment
-  scope: comment
+  scope: comment, comment punctuation
   settings:
     fontStyle: italic
     foreground: '#0066FF'
+
+- scope: comment.line.todo
+  settings:
+    foreground: '#FF6600'
+
 
 - name: Keyword declaration
   scope: keyword.declaration, storage
@@ -80,10 +89,6 @@ settings:
   scope: punctuation.definition.string.interpolated.element
   settings:
     foreground: '#C5656B'
-
-- scope: punctuation.separator
-  settings:
-    foreground: '#D1D187'
 
 - scope: punctuation.separator.key-value
   settings:
