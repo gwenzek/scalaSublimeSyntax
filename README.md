@@ -7,6 +7,8 @@ Improved syntax for Scala in Sublime
 This plugin is available on [package control](https://packagecontrol.io/packages/Scala%20Syntax).
 It's recommended you get it from there.  
 If you know what you're doing you can also clone the repository in your Packages/User folder.  
+If you don't see this plugin in package control is likely because you have a too old version.
+The plugin will only be visible with a build >= 3084.
 
 Then you can change a given file using the command `set syntax: Scala2`, or through the menu: `View > Syntax > Scala2`.  
 If you like it you can set it as default for .scala files with `View > Syntax > Open all with current extension as ... > Scala2`.  
