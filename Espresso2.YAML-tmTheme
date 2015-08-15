@@ -134,7 +134,8 @@ settings:
   scope:
     meta.class.identifier punctuation.separator,
     meta.class.identifier punctuation.definition,
-    punctuation.definition.class
+    punctuation.definition.class,
+    punctuation.section.class
   settings:
     foreground: '#C5656B'
 
@@ -297,7 +298,7 @@ settings:
     foreground: '#43A8ED'
 
 # - name: Punctuation class
-#   scope: punctuation.definition.class
+#   scope: punctuation.section.class
 #   settings:
 #     # foreground: '#388bc4'
 #     foreground: '#C5656B'
@@ -306,7 +307,9 @@ settings:
   scope:
     meta.method.identifier punctuation.definition,
     meta.method.identifier punctuation.separator,
-    punctuation.definition.function
+    punctuation.definition.function,
+    punctuation.section.function,
+    punctuation.section.method
   settings:
     foreground: '#FF9358'
 

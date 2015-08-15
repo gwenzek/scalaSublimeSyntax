@@ -288,7 +288,7 @@
 			<key>name</key>
 			<string>Punctuation parameters</string>
 			<key>scope</key>
-			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition, punctuation.definition.class</string>
+			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -620,7 +620,7 @@
 			<key>name</key>
 			<string>Punctuation function</string>
 			<key>scope</key>
-			<string>meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function</string>
+			<string>meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function, punctuation.section.function, punctuation.section.method</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
