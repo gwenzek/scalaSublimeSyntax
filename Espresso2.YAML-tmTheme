@@ -212,8 +212,9 @@ settings:
     foreground: '#FFFFFF'
 
 - name: Invalid trailing whitespace
-  scope: invalid.deprecated.trailing-whitespace
+  scope: invalid.deprecated
   settings:
+    foreground: '#802020'
     background: '#FFD0D0'
 
 - name: Embedded source

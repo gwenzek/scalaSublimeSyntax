@@ -449,11 +449,13 @@
 			<key>name</key>
 			<string>Invalid trailing whitespace</string>
 			<key>scope</key>
-			<string>invalid.deprecated.trailing-whitespace</string>
+			<string>invalid.deprecated</string>
 			<key>settings</key>
 			<dict>
 				<key>background</key>
 				<string>#FFD0D0</string>
+				<key>foreground</key>
+				<string>#802020</string>
 			</dict>
 		</dict>
 		<dict>
