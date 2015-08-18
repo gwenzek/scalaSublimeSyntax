@@ -31,7 +31,7 @@ package scala_syntax.test {
 //          ^ storage.modifier.access
 //                    ^ variable.parameter
 //                       ^ support.type.scala
-//                            ^ punctuation.definition.class.body.begin
+//                            ^ punctuation.section.class.body.begin
     val unbar = MutList(1)
 //  <- meta.class.scala
 //  ^ storage.type.variable.val.scala
@@ -64,7 +64,7 @@ package scala_syntax.test {
 //                                  ^ comment.block.scala
 //                                           ^ keyword.operator.scala
   }
-//^ punctuation.definition.class.body.end
+//^ punctuation.section.class.body.end
 
   case class BarBar(a: Int = 1, b: Boolean = false) extends Bar(a)
 //  ^ storage.type.class.case-class
@@ -91,7 +91,7 @@ package scala_syntax.test {
       inner(x) + y
     }
   }
-//^ punctuation.definition.class.body.end
+//^ punctuation.section.class.body.end
 
   abstract class FooBar
       extends Foo[Bar]
@@ -322,7 +322,7 @@ package scala_syntax.test {
       }
       m
     }
-//  ^ punctuation.definition.function.body.end.scala
+//  ^ punctuation.section.function.body.end.scala
 
     def complex_contructor(a: Int) = {
       new Foo(a) with Bar[Int] with Any
@@ -341,8 +341,8 @@ package scala_syntax.test {
         </book>
 
     class Inline { def inline = x }
-//               ^ punctuation.definition.class.body.begin
-//                                ^ punctuation.definition.class.body.end
+//               ^ punctuation.section.class.body.begin
+//                                ^ punctuation.section.class.body.end
 //                               ^ meta.method
 //                                ^ -meta.method
 
