@@ -38,13 +38,39 @@
 			<key>name</key>
 			<string>Comment</string>
 			<key>scope</key>
-			<string>comment, comment punctuation</string>
+			<string>comment, comment punctuation.definition</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string>italic</string>
 				<key>foreground</key>
-				<string>#0066FF</string>
+				<string>#0066FFF5</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Comment</string>
+			<key>scope</key>
+			<string>comment.block.documentation text</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#0077FF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Comment</string>
+			<key>scope</key>
+			<string>comment.block.documentation punctuation.definition.tag</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#D1D187D0</string>
 			</dict>
 		</dict>
 		<dict>
@@ -611,7 +637,7 @@
 			<key>name</key>
 			<string>Punctuation block</string>
 			<key>scope</key>
-			<string>punctuation.definition.block.loop, punctuation.definition.block.switch, punctuation.definition.block.conditional, punctuation.definition.block.trycatch, punctuation.section.block.loop, punctuation.section.block.switch, punctuation.section.block.conditional, punctuation.section.block.trycatch, punctuation.definition.expression.loop, punctuation.definition.expression.switch, punctuation.definition.expression.conditional, punctuation.definition.expression.trycatch</string>
+			<string>punctuation.definition.block.loop, punctuation.definition.block.switch, punctuation.definition.block.conditional, punctuation.definition.block.trycatch, punctuation.section.block.loop, punctuation.section.block.switch, punctuation.section.block.conditional, punctuation.section.block.trycatch, punctuation.definition.expression.loop, punctuation.definition.expression.switch, punctuation.definition.expression.conditional, punctuation.definition.expression.trycatch, punctuation.definition.expression.other, punctuation.definition.block.other, punctuation.definition.section.other</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>

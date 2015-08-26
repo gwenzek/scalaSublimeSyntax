@@ -15,10 +15,25 @@ settings:
     foreground: '#D1D187'
 
 - name: Comment
-  scope: comment, comment punctuation
+  scope: comment, comment punctuation.definition
   settings:
     fontStyle: italic
-    foreground: '#0066FF'
+    # foreground: '#0066FF'
+    foreground: '#0066FFF5'
+
+- name: Comment
+  scope: comment.block.documentation text
+  settings:
+    fontStyle: italic
+    # foreground: '#BDAE9DC0'
+    # foreground: '#0088FF'
+    foreground: '#0077FF'
+
+- name: Comment
+  scope: comment.block.documentation punctuation.definition.tag
+  settings:
+    fontStyle: ''
+    foreground: '#D1D187D0'
 
 - scope: comment.line.todo
   settings:
@@ -298,7 +313,10 @@ settings:
     punctuation.definition.expression.loop,
     punctuation.definition.expression.switch,
     punctuation.definition.expression.conditional,
-    punctuation.definition.expression.trycatch
+    punctuation.definition.expression.trycatch,
+    punctuation.definition.expression.other,
+    punctuation.definition.block.other,
+    punctuation.definition.section.other
   settings:
     foreground: '#43A8ED'
 
