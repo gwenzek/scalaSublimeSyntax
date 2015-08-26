@@ -300,7 +300,7 @@ package scala_syntax.test {
 
       try {
 //    ^ keyword.control.trycatch.try.scala
-//        ^ punctuation.definition.block.trycatch.begin.scala
+//        ^ punctuation.section.trycatch.begin.scala
         res match {
 //        ^ variable.other
 //            ^ keyword.control.switch.scala
@@ -311,9 +311,9 @@ package scala_syntax.test {
 //                     ^ punctuation.separator.key-value.switch.scala
         }
       } catch {
-//    ^ punctuation.definition.block.trycatch.end.scala
+//    ^ punctuation.section.trycatch.end.scala
 //       ^ keyword.control.trycatch.catch.scala
-//            ^ punctuation.definition.block.trycatch.begin.scala
+//            ^ punctuation.section.trycatch.begin.scala
         case e: Exception => println("plouf")
 //       ^ keyword.control.trycatch.case.scala
 //                        ^ punctuation.separator.key-value.switch.scala
@@ -393,7 +393,7 @@ package scala_syntax.test {
       var i = 0
       do {
 //    ^ keyword.control.loop.do.scala
-//       ^ punctuation.definition.block.loop.begin
+//       ^ punctuation.section.loop.begin
         i += 1
       } while (i < x)
 //      ^ keyword.control.loop.while.scala
@@ -412,7 +412,7 @@ package scala_syntax.test {
       while (i < x){
 //      ^ keyword.control.loop.while.scala
 //          ^ punctuation.definition.expression.loop.begin
-//                 ^ punctuation.definition.block.loop.begin
+//                 ^ punctuation.section.loop.begin
         i += 1
       }
       while (i < x)

@@ -127,7 +127,7 @@ settings:
     foreground: '#FF9358'
 
 - name: Type name
-  scope: entity.name.type, variable.other.type, entity.name.constructor
+  scope: entity.name.type, variable.type, variable.other.type, entity.name.constructor
   settings:
     fontStyle: bold
     foreground: '#6D79DE'
