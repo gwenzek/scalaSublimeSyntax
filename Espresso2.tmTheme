@@ -38,7 +38,7 @@
 			<key>name</key>
 			<string>Comment</string>
 			<key>scope</key>
-			<string>comment, comment punctuation.definition</string>
+			<string>comment, comment punctuation.definition.comment</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -637,7 +637,7 @@
 			<key>name</key>
 			<string>Punctuation block</string>
 			<key>scope</key>
-			<string>punctuation.definition.block.loop, punctuation.definition.block.switch, punctuation.definition.block.conditional, punctuation.definition.block.trycatch, punctuation.section.block.loop, punctuation.section.block.switch, punctuation.section.block.conditional, punctuation.section.block.trycatch, punctuation.definition.expression.loop, punctuation.definition.expression.switch, punctuation.definition.expression.conditional, punctuation.definition.expression.trycatch, punctuation.definition.expression.other, punctuation.definition.block.other, punctuation.definition.section.other</string>
+			<string>punctuation.definition.block.loop, punctuation.definition.block.switch, punctuation.definition.block.conditional, punctuation.definition.block.trycatch, punctuation.definition.block.other, punctuation.section.loop, punctuation.section.switch, punctuation.section.conditional, punctuation.section.trycatch, punctuation.section.other, punctuation.definition.expression.loop, punctuation.definition.expression.switch, punctuation.definition.expression.conditional, punctuation.definition.expression.trycatch, punctuation.definition.expression.other</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
