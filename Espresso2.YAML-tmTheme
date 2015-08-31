@@ -69,6 +69,12 @@ settings:
     fontStyle: bold
     foreground: '#C5656B'
 
+- name: Characters
+  scope: constant
+  settings:
+    fontStyle: ''
+    foreground: '#C5656B'
+
 - name: Built-in constant
   scope: constant.language
   settings:
@@ -234,7 +240,7 @@ settings:
 - name: Embedded source
   scope: text source, string.unquoted
   settings:
-    background: '#F5AA7730'
+    background: '#F5AA7715'
 
 - name: Markup XML declaration
   scope: meta.tag.preprocessor.xml

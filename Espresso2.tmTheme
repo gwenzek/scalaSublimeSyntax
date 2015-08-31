@@ -149,6 +149,19 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Characters</string>
+			<key>scope</key>
+			<string>constant</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#C5656B</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Built-in constant</string>
 			<key>scope</key>
 			<string>constant.language</string>
@@ -492,7 +505,7 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#F5AA7730</string>
+				<string>#F5AA7715</string>
 			</dict>
 		</dict>
 		<dict>
