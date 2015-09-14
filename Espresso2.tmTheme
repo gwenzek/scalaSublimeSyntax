@@ -292,7 +292,7 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>bold</string>
+				<string></string>
 				<key>foreground</key>
 				<string>#6D79DE</string>
 			</dict>
@@ -412,7 +412,7 @@
 			<key>name</key>
 			<string>Function call</string>
 			<key>scope</key>
-			<string>variable.function, punctuation.definition.arguments, punctuation.separator.argument</string>
+			<string>variable.function, punctuation.definition.arguments, punctuation.separator.arguments, punctuation.separator.argument</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -661,7 +661,7 @@
 			<key>name</key>
 			<string>Punctuation function</string>
 			<key>scope</key>
-			<string>meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function, punctuation.section.function, punctuation.section.method</string>
+			<string>meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function, punctuation.definition.parameters, punctuation.separator.parameters, punctuation.section.function, punctuation.section.method</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -727,7 +727,7 @@
 			<key>name</key>
 			<string>Array punctuation</string>
 			<key>scope</key>
-			<string>punctuation.definition.array, punctuation.separator.array-element</string>
+			<string>punctuation.definition.array, punctuation.definition.tuple, punctuation.separator.array-element</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -765,11 +765,47 @@
 		</dict>
 		<dict>
 			<key>scope</key>
+			<string>markup.inserted.git_gutter</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#44FF43</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
 			<string>markup.deleted</string>
 			<key>settings</key>
 			<dict>
 				<key>background</key>
 				<string>#FF103030</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.deleted.git_gutter</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#FF1030</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.changed.git_gutter</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#388bc4</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.ignored.git_gutter</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#FF9358</string>
 			</dict>
 		</dict>
 		<dict>

@@ -135,7 +135,7 @@ settings:
 - name: Type name
   scope: entity.name.type, variable.type, variable.other.type, entity.name.constructor
   settings:
-    fontStyle: bold
+    fontStyle: ''
     foreground: '#6D79DE'
 
 - name: Library object
@@ -197,6 +197,7 @@ settings:
   scope:
     variable.function,
     punctuation.definition.arguments,
+    punctuation.separator.arguments,
     punctuation.separator.argument
   settings:
     fontStyle: ''
@@ -336,6 +337,8 @@ settings:
     meta.method.identifier punctuation.definition,
     meta.method.identifier punctuation.separator,
     punctuation.definition.function,
+    punctuation.definition.parameters,
+    punctuation.separator.parameters,
     punctuation.section.function,
     punctuation.section.method
   settings:
@@ -373,6 +376,7 @@ settings:
 - name: Array punctuation
   scope:
     punctuation.definition.array,
+    punctuation.definition.tuple,
     punctuation.separator.array-element
   settings:
     foreground: '#D1D187'
@@ -390,10 +394,23 @@ settings:
 - scope: markup.inserted
   settings:
     background: '#44FF4330'
+- scope: markup.inserted.git_gutter
+  settings:
+    foreground: '#44FF43'
 
 - scope: markup.deleted
   settings:
     background: '#FF103030'
+- scope: markup.deleted.git_gutter
+  settings:
+    foreground: '#FF1030'
+
+- scope: markup.changed.git_gutter
+  settings:
+    foreground: '#388bc4'
+- scope: markup.ignored.git_gutter
+  settings:
+    foreground: '#FF9358'
 
 - scope: meta.toc-list.line-number
   settings:
