@@ -453,9 +453,9 @@ contexts:
   variable_call:
     - match: '(\{\{)([a-zA-Z_0-9]*)(\}\})'
       captures:
-        1: punctuation.definition.parameters.begin.syntax
+        1: punctuation.definition.arguments.begin.syntax
         2: variable.other.variables
-        3: punctuation.definition.parameters.end.syntax
+        3: punctuation.definition.arguments.end.syntax
 
   character_class:
     - include: character
