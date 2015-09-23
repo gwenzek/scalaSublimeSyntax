@@ -267,7 +267,7 @@ settings:
     foreground: '#43A8ED'
 
 - name: Markup name of tag
-  scope: entity.name.tag
+  scope: entity.name.tag, entity.name.section
   settings:
     fontStyle: bold
 
@@ -411,6 +411,14 @@ settings:
 - scope: markup.ignored.git_gutter
   settings:
     foreground: '#FF9358'
+
+- scope: markup.italic
+  settings:
+    fontStyle: 'italic'
+
+- scope: markup.bold
+  settings:
+    fontStyle: 'bold'
 
 - scope: meta.toc-list.line-number
   settings:
