@@ -66,11 +66,10 @@ settings:
 - name: User-defined constant
   scope: constant
   settings:
-    fontStyle: bold
-    foreground: '#C5656B'
+    foreground: '#44AA43'
 
 - name: Characters
-  scope: constant
+  scope: constant.character
   settings:
     fontStyle: ''
     foreground: '#C5656B'
