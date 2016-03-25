@@ -8,7 +8,8 @@ settings:
     foreground: '#BDAE9D'
     invisibles: '#BFBFBF'
     lineHighlight: '#3A312C'
-    selection: '#C3DCFF'
+    # selection: '#C3DCFF'
+    selection: '#4A414C'
 
 - scope: punctuation
   settings:
@@ -69,7 +70,7 @@ settings:
     foreground: '#44AA43'
 
 - name: Characters
-  scope: constant.character
+  scope: constant.character, constant.other
   settings:
     fontStyle: ''
     foreground: '#C5656B'

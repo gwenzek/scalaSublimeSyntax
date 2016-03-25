@@ -302,12 +302,16 @@ contexts:
         2: punctuation.definition.arguments.begin.scala
       push: function_args
 
-    - match: \b(new)\s{{name}}
+    - match: \b(new)\s+{{name}}
       captures:
         1: keyword.operator.new.scala
         # 2: entity.name.type.new.scala
         2: variable.other.type.scala meta.instantiation.scala
       push: [constructor_block, constructor_mixin, constructor_arguments, constructor_type_arguments]
+    - match: \b(new)\s*(?=\{|$)
+      captures:
+        1: keyword.operator.new.scala
+      push: constructor_block
 
     - match: '{{cap_name}}(\()'
       captures:
@@ -421,7 +425,7 @@ contexts:
       scope: invalid.illegal.unexpected.closing-par
     - match: '{{operator}}'
       scope: keyword.operator.type.scala
-    - match: '(List|Array|Map|Int|Float|Double|String|Char|Boolean)'
+    - match: '\b(List|Array|Map|Int|Float|Double|String|Char|Boolean)\b'
       scope: support.type.scala
     - match: '({{name}}(\.))*(type)'
       captures:
@@ -435,7 +439,7 @@ contexts:
         4: variable.other.type.scala
     - match: '{{name}}'
       scope: variable.other.type.scala
-    - match: '(?=,|=|})'
+    - match: '(?=;|,|=|})'
       pop: true
     - match: '$'
       pop: true
@@ -722,7 +726,7 @@ contexts:
   class_params:
     # - meta_content_scope: meta.constructor.scala
     - meta_scope: meta.class.identifier.scala
-    - match: '\b(val|protected|private)\b'
+    - match: '\b(override|var|val|protected|private)\b'
       scope: storage.modifier.access.scala
     - match: '\b(implicit)\b'
       scope: storage.modifier.other.implicit.scala
@@ -781,7 +785,7 @@ contexts:
     - include: main
 
   pattern_val:
-    - match: '_'
+    - match: '_(?=:|\s|\b)'
       scope: keyword.wildcard.pattern-matching.scala
     - match: '({{simple_name}}\s*|{{operator}}\s)?(:)\s'
       captures:
@@ -830,6 +834,11 @@ contexts:
     - match: (=)(\s|\b)
       captures:
         1: keyword.operator.assignment.variable.scala
+      pop: true
+    - match: ';'
+      scope: punctuation.terminator.declaration.scala
+      pop: true
+    - match: $
       pop: true
     - match: (\S)
       scope: invalid.illegal.expected.equal

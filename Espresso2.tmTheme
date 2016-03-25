@@ -22,7 +22,7 @@
 				<key>lineHighlight</key>
 				<string>#3A312C</string>
 				<key>selection</key>
-				<string>#C3DCFF</string>
+				<string>#4A414C</string>
 			</dict>
 		</dict>
 		<dict>
@@ -149,7 +149,7 @@
 			<key>name</key>
 			<string>Characters</string>
 			<key>scope</key>
-			<string>constant.character</string>
+			<string>constant.character, constant.other</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>

@@ -8,6 +8,8 @@
 	<string>source.scala meta.class.identifier</string>
 	<key>settings</key>
 	<dict>
+        <key>showInIndexedSymbolList</key>
+        <integer>1</integer>
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 	</dict>
