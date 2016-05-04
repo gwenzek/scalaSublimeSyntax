@@ -34,3 +34,11 @@ variables:
     x13: \p{Katakana}\p{Kana}(?#<- this is supposed to not be highlighted)[[:^alnum:]\p{Alnum}]
 ##                             ^ comment
 ##                                 ^ comment
+
+contexts:
+
+  main:
+    - match: '([eE]-?\d+)'
+##                 ^ -keyword.operator
+      scope: bug.fix.1
+      comment: https://github.com/sublimehq/Packages/pull/95#issuecomment-216036011
