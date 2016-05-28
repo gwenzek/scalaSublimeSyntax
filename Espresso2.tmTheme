@@ -286,7 +286,7 @@
 			<key>name</key>
 			<string>Type name</string>
 			<key>scope</key>
-			<string>entity.name.type, variable.type, variable.other.type, entity.name.constructor</string>
+			<string>variable.type, variable.other.type, entity.name.constructor</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -312,7 +312,7 @@
 			<key>name</key>
 			<string>Class definition</string>
 			<key>scope</key>
-			<string>entity.name.class</string>
+			<string>entity.name.class, entity.name.type</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -831,6 +831,87 @@
 			<dict>
 				<key>foreground</key>
 				<string>#44AA43</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.background.green</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#61bd4fb0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.background.red</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#eb5a46b0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.background.blue</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#0079bfb0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.background.yellow</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#f2d600b0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.background.sky</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#00c2e0b0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.background.purple</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#c377e0b0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.background.black</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#4d4d4db0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.background.pink</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#ff80ceb0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.background.orange</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#ffab4ab0</string>
 			</dict>
 		</dict>
 	</array>

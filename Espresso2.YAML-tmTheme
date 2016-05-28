@@ -133,7 +133,7 @@ settings:
     foreground: '#FF9358'
 
 - name: Type name
-  scope: entity.name.type, variable.type, variable.other.type, entity.name.constructor
+  scope: variable.type, variable.other.type, entity.name.constructor
   settings:
     fontStyle: ''
     foreground: '#6D79DE'
@@ -145,7 +145,7 @@ settings:
     foreground: '#6D79DE'
 
 - name: Class definition
-  scope: entity.name.class
+  scope: entity.name.class, entity.name.type
   settings:
     fontStyle: bold
     foreground: '#C5656B'
@@ -424,5 +424,41 @@ settings:
   settings:
     foreground: '#44AA43'
 
+# markup color
+- scope: markup.background.green
+  settings:
+    background: '#61bd4fb0'
+
+- scope: markup.background.red
+  settings:
+    background: '#eb5a46b0'
+
+- scope: markup.background.blue
+  settings:
+    background: '#0079bfb0'
+
+- scope: markup.background.yellow
+  settings:
+    background: '#f2d600b0'
+
+- scope: markup.background.sky
+  settings:
+    background: '#00c2e0b0'
+
+- scope: markup.background.purple
+  settings:
+    background: '#c377e0b0'
+
+- scope: markup.background.black
+  settings:
+    background: '#4d4d4db0'
+
+- scope: markup.background.pink
+  settings:
+    background: '#ff80ceb0'
+
+- scope: markup.background.orange
+  settings:
+    background: '#ffab4ab0'
 
 uuid: 6B90703E-4E4B-43C8-9D32-921BEDF6D725
