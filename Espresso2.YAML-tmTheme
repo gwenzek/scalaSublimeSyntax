@@ -9,8 +9,26 @@ settings:
     invisibles: '#BFBFBF'
     lineHighlight: '#3A312C'
     # selection: '#C3DCFF'
-    selection: '#4A414C'
+    selection: '#5A514C'
+    popupCss: |
 
+      html {
+        background-color: #42342C;
+        color: #BDAE9D;
+      }
+      a {
+        color: #43A8ED;
+      }
+      .error, .deleted {
+        color: #D44949;
+      }
+      .success, .inserted {
+        color: #049B0A;
+      }
+      .warning, .modified {
+        color: #FF9358;
+      }
+      
 - scope: punctuation
   settings:
     foreground: '#D1D187'
@@ -18,14 +36,14 @@ settings:
 - name: Comment
   scope: comment, comment punctuation.definition.comment
   settings:
-    fontStyle: italic
+    # fontStyle: italic
     # foreground: '#0066FF'
     foreground: '#0066FFF5'
 
 - name: Comment
   scope: comment.block.documentation text
   settings:
-    fontStyle: italic
+    # fontStyle: italic
     # foreground: '#BDAE9DC0'
     # foreground: '#0088FF'
     foreground: '#0077FF'
@@ -110,7 +128,7 @@ settings:
   settings:
     foreground: '#C5656B'
 
-- scope: punctuation.separator.key-value
+- scope: punctuation.separator.key-value, punctuation.definition.dictionary, punctuation.separator.dictionary
   settings:
     foreground: '#C5656B'
 
@@ -121,10 +139,10 @@ settings:
     foreground: '#1A921C'
 
 - name: Preprocessor directive
-  scope: keyword.control.import
+  scope: keyword.control.import, storage.modifier.module, punctuation.section.module, entity.name.module, storage.modifier.namespace, entity.name.namespace
   settings:
     fontStyle: bold
-    foreground: '#9AFF87'
+    foreground: '#9AFF87C0'
 
 - name: Function name
   scope: entity.name.function, keyword.other.name-of-parameter.objc
@@ -133,7 +151,7 @@ settings:
     foreground: '#FF9358'
 
 - name: Type name
-  scope: variable.type, variable.other.type, entity.name.constructor
+  scope: variable.type, variable.other.type, entity.name.constructor, entity.name.tag.branch-name, storage.type.java
   settings:
     fontStyle: ''
     foreground: '#6D79DE'
@@ -153,6 +171,8 @@ settings:
 - name: Punctuation parameters
   scope:
     meta.class.identifier punctuation.separator,
+    meta.class.identifier punctuation.definition.arguments.type,
+    meta.class.identifier punctuation.definition.arguments,
     meta.class.identifier punctuation.definition,
     punctuation.definition.class,
     punctuation.section.class
@@ -386,6 +406,12 @@ settings:
   settings:
     foreground: '#D1D187'
 
+- name: Punctuation formatting
+  scope: punctuation.formatting, punctuation.definition.comment
+  settings:
+    foreground: '#0066FFF5'
+    fontStyle: ''
+
 # git diff
 - scope: meta.diff.header
   settings:
@@ -460,5 +486,9 @@ settings:
 - scope: markup.background.orange
   settings:
     background: '#ffab4ab0'
+
+- scope: markup.raw
+  settings:
+    background: '#F5AA7715'
 
 uuid: 6B90703E-4E4B-43C8-9D32-921BEDF6D725

@@ -21,8 +21,27 @@
 				<string>#BFBFBF</string>
 				<key>lineHighlight</key>
 				<string>#3A312C</string>
+				<key>popupCss</key>
+				<string>
+html {
+  background-color: #42342C;
+  color: #BDAE9D;
+}
+a {
+  color: #43A8ED;
+}
+.error, .deleted {
+  color: #D44949;
+}
+.success, .inserted {
+  color: #049B0A;
+}
+.warning, .modified {
+  color: #FF9358;
+}
+</string>
 				<key>selection</key>
-				<string>#4A414C</string>
+				<string>#5A514C</string>
 			</dict>
 		</dict>
 		<dict>
@@ -41,8 +60,6 @@
 			<string>comment, comment punctuation.definition.comment</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string>italic</string>
 				<key>foreground</key>
 				<string>#0066FFF5</string>
 			</dict>
@@ -54,8 +71,6 @@
 			<string>comment.block.documentation text</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string>italic</string>
 				<key>foreground</key>
 				<string>#0077FF</string>
 			</dict>
@@ -236,7 +251,7 @@
 		</dict>
 		<dict>
 			<key>scope</key>
-			<string>punctuation.separator.key-value</string>
+			<string>punctuation.separator.key-value, punctuation.definition.dictionary, punctuation.separator.dictionary</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -260,13 +275,13 @@
 			<key>name</key>
 			<string>Preprocessor directive</string>
 			<key>scope</key>
-			<string>keyword.control.import</string>
+			<string>keyword.control.import, storage.modifier.module, punctuation.section.module, entity.name.module, storage.modifier.namespace, entity.name.namespace</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#9AFF87</string>
+				<string>#9AFF87C0</string>
 			</dict>
 		</dict>
 		<dict>
@@ -286,7 +301,7 @@
 			<key>name</key>
 			<string>Type name</string>
 			<key>scope</key>
-			<string>variable.type, variable.other.type, entity.name.constructor</string>
+			<string>variable.type, variable.other.type, entity.name.constructor, entity.name.tag.branch-name, storage.type.java</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -325,7 +340,7 @@
 			<key>name</key>
 			<string>Punctuation parameters</string>
 			<key>scope</key>
-			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class</string>
+			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition.arguments.type, meta.class.identifier punctuation.definition.arguments, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -744,6 +759,19 @@
 			</dict>
 		</dict>
 		<dict>
+			<key>name</key>
+			<string>Punctuation formatting</string>
+			<key>scope</key>
+			<string>punctuation.formatting, punctuation.definition.comment</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#0066FFF5</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>scope</key>
 			<string>meta.diff.header</string>
 			<key>settings</key>
@@ -912,6 +940,15 @@
 			<dict>
 				<key>background</key>
 				<string>#ffab4ab0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>markup.raw</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#F5AA7715</string>
 			</dict>
 		</dict>
 	</array>
