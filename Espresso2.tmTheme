@@ -272,8 +272,30 @@ a {
 			</dict>
 		</dict>
 		<dict>
+			<key>scope</key>
+			<string>meta.preprocessor keyword.control, meta.preprocessor keyword.other, meta.preprocessor storage</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#1A921C</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>meta.preprocessor entity.name.section, meta.preprocessor variable</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#1A921C</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>name</key>
-			<string>Preprocessor directive</string>
+			<string>Import directive</string>
 			<key>scope</key>
 			<string>keyword.control.import, storage.modifier.module, punctuation.section.module, entity.name.module, storage.modifier.namespace, entity.name.namespace</string>
 			<key>settings</key>

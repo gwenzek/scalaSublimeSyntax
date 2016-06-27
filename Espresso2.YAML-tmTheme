@@ -138,7 +138,17 @@ settings:
     fontStyle: ''
     foreground: '#1A921C'
 
-- name: Preprocessor directive
+- scope: meta.preprocessor keyword.control, meta.preprocessor keyword.other, meta.preprocessor storage
+  settings:
+    fontStyle: 'bold'
+    foreground: '#1A921C'
+
+- scope: meta.preprocessor entity.name.section, meta.preprocessor variable
+  settings:
+    fontStyle: 'italic'
+    foreground: '#1A921C'
+
+- name: Import directive
   scope: keyword.control.import, storage.modifier.module, punctuation.section.module, entity.name.module, storage.modifier.namespace, entity.name.namespace
   settings:
     fontStyle: bold
