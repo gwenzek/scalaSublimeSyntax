@@ -1,0 +1,452 @@
+@name "Espresso Libre";
+@author "Chris Thomas";
+
+$namespace_header: #9AFF87; // light green
+$class_header: #C5656B; // pink
+$function_header: #FF9358; // orange
+
+$documentation: #0077FF; // dark blue
+$comment: darken($documentation, 8%);
+
+$keyword: #43A8ED;
+$keyword_dimmed: transparentize($keyword, 0.20);
+$punctuation: #D1D187;
+
+* {
+  background: #2A211C;
+  caret: #889AFF;
+  foreground: #CCC0B5;
+  invisibles: #BFBFBF;
+  lineHighlight: #3A312C;
+  selection: #4A414C;
+}
+
+punctuation {
+  foreground: $punctuation;
+}
+
+// Comments
+
+comment {
+  @name "Comments and documentation";
+
+  foreground: $comment;
+  fontStyle: italic;
+
+
+  &.block.documentation, &.block.documentation text {
+    foreground: $documentation;
+  }
+
+  &.comment.block.documentation punctuation.definition.tag {
+    foreground: transparentize($punctuation, 0.20);
+    fontStyle: none;
+  }
+
+  comment.line.todo {
+    foreground: #FF6600;
+  }
+}
+
+punctuation.definition.comment, punctuation.definition.line-comment {
+  foreground: $comment;
+}
+
+// Keywords
+
+keyword {
+  @name "Keyword declaration";
+
+  foreground: $keyword;
+  fontStyle: bold;
+
+  &.declaration {
+    foreground: $keyword_dimmed;
+    fontStyle: bold;
+  }
+}
+
+storage {
+  foreground: $keyword_dimmed;
+  fontStyle: bold;
+}
+
+// Constants
+
+constant.numeric {
+  @name "Number";
+  foreground: #44AA43;
+  fontStyle: none;
+}
+
+constant, entity.name.constant {
+  @name "User-defined constant";
+  foreground: #44AA43;
+}
+
+constant.character, constant.other {
+  @name "Characters";
+  foreground: #C5656B;
+  fontStyle: none;
+}
+
+constant.language {
+  @name "Built-in constant";
+  foreground: #585CF6;
+  fontStyle: bold;
+}
+
+variable.language {
+  @name "Variable";
+  foreground: #318495;
+  fontStyle: none;
+}
+
+string {
+  @name "String";
+  foreground: #049B0A;
+  fontStyle: none;
+}
+
+constant.character.escape {
+  @name "String escaped";
+  foreground: #2FE420;
+  fontStyle: none;
+}
+
+string source {
+  @name "String interpolated";
+  foreground: #CCC0B5;
+  fontStyle: none;
+}
+
+punctuation.definition.string.interpolated.element {
+  @name "String formatting";
+  foreground: #C5656B;
+}
+
+punctuation.separator.key-value, punctuation.separator.dictionary.key-value, punctuation.definition.dictionary, punctuation.section.dictionary, punctuation.section.dictionary-or-set {
+  foreground: #C5656B;
+}
+
+meta.preprocessor {
+  @name "Preprocessor line";
+  foreground: #1A921C;
+  fontStyle: none;
+}
+
+keyword.control.import {
+  @name "Preprocessor directive";
+  foreground: #9AFF87;
+  fontStyle: bold;
+}
+
+entity.name.function, keyword.other.name-of-parameter.objc {
+  @name "Function name";
+  foreground: #FF9358;
+  fontStyle: bold;
+}
+
+variable.type, variable.other.type, entity.name.constructor {
+  @name "Type name";
+  foreground: #6D79DE;
+  fontStyle: none;
+}
+
+support.class, support.type, storage.type.primitive {
+  @name "Library object";
+  foreground: #6D79DE;
+  fontStyle: bold;
+}
+
+entity.name {
+  @name "Class definition";
+  foreground: #C5656B;
+  fontStyle: bold;
+}
+
+entity.name.namespace {
+  @name "Namespace declaration";
+  foreground: #9AFF87CC;
+  fontStyle: bold;
+}
+
+meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class {
+  @name "Punctuation parameters";
+  foreground: #C5656B;
+}
+
+punctuation.definition.arguments.constructor {
+  @name "Constructor punctuation";
+  foreground: #6D79DE;
+  fontStyle: none;
+}
+
+entity.other.inherited-class {
+  @name "Inherited class name";
+  foreground: #6D79DE;
+  fontStyle: italic;
+}
+
+variable.parameter {
+  @name "Function parameter";
+  fontStyle: italic;
+}
+
+storage.type.method {
+  @name "Function argument and result types";
+  foreground: #8B8E9C;
+  fontStyle: none;
+}
+
+meta.section entity.name.section, declaration.section entity.name.section {
+  @name "Section";
+  fontStyle: italic;
+}
+
+support.function {
+  @name "Library function";
+  foreground: #7290D9;
+  fontStyle: bold;
+}
+
+variable.function, punctuation.definition.arguments, punctuation.section.arguments, meta.function-call punctuation.separator.parameters, punctuation.separator.arguments, punctuation.separator.argument {
+  @name "Function call";
+  foreground: #7290D9;
+  fontStyle: none;
+}
+
+support.class, support.type {
+  @name "Library object";
+  foreground: #6D79DE;
+  fontStyle: bold;
+}
+
+support.constant {
+  @name "Library constant";
+  foreground: #00AF0E;
+  fontStyle: bold;
+}
+
+support.variable {
+  @name "Library variable";
+  foreground: #2F5FE0;
+  fontStyle: bold;
+}
+
+keyword.operator.js {
+  @name "JS: Operator";
+  foreground: #687687;
+}
+
+invalid {
+  @name "Invalid";
+  foreground: #FFFFFF;
+  background: #990000;
+}
+
+invalid.deprecated {
+  @name "Invalid trailing whitespace";
+  foreground: #802020;
+  background: #FFD0D0;
+}
+
+text source, string.unquoted {
+  @name "Embedded source";
+  background: #F5AA7715;
+}
+
+meta.tag.preprocessor.xml {
+  @name "Markup XML declaration";
+  foreground: #8F7E65;
+  fontStyle: none;
+}
+
+meta.tag.sgml.doctype {
+  @name "Markup DOCTYPE";
+  foreground: #888888;
+  fontStyle: none;
+}
+
+string.quoted.docinfo.doctype.DTD {
+  @name "Markup DTD";
+  fontStyle: italic;
+}
+
+meta.tag, declaration.tag {
+  @name "Markup tag";
+  foreground: $keyword_dimmed;
+  fontStyle: none;
+}
+
+entity.name.tag, entity.name.section, variable.annotation {
+  @name "Markup name of tag";
+  foreground: #CCC0B5;
+  fontStyle: bold;
+}
+
+entity.other.attribute-name {
+  @name "Markup tag attribute";
+  fontStyle: italic;
+}
+
+sublimelinter.mark.error {
+  @name "SublimeLinter Error";
+  foreground: #D02000;
+}
+
+sublimelinter.gutter-mark {
+  @name "SublimeLinter Gutter Mark";
+  foreground: #FFFFFF;
+}
+
+sublimelinter.mark.warning {
+  @name "SublimeLinter Warning";
+  foreground: #DDB700;
+}
+
+punctuation.definition.type {
+  @name "Punctuation definition type";
+  foreground: #C5656B;
+}
+
+punctuation.definition.arguments.type {
+  @name "Punctuation type arguments";
+  foreground: #D1D187;
+}
+
+punctuation.definition.block {
+  @name "Punctuation block";
+  foreground: #D1D187;
+}
+
+punctuation.definition.block.loop, punctuation.definition.block.switch, punctuation.definition.block.conditional, punctuation.definition.block.trycatch, punctuation.definition.block.other, punctuation.section.loop, punctuation.section.switch, punctuation.section.conditional, punctuation.section.trycatch, punctuation.section.other, punctuation.definition.expression.loop, punctuation.definition.expression.switch, punctuation.definition.expression.conditional, punctuation.definition.expression.trycatch, punctuation.definition.expression.other {
+  @name "Punctuation block";
+  foreground: $keyword;
+}
+
+meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function, punctuation.section.parameters, punctuation.definition.parameters, punctuation.separator.parameters, punctuation.section.function, punctuation.section.method {
+  @name "Punctuation function";
+  foreground: #FF9358;
+}
+
+meta.variable.identifier punctuation.definition, meta.variable.identifier punctuation.separator {
+  @name "Punctuation variable";
+  foreground: $keyword_dimmed;
+}
+
+keyword.operator.assignment {
+  @name "end of identifier";
+  foreground: $keyword_dimmed;
+}
+
+keyword.operator.accessor {
+  foreground: #D1D187;
+  fontStyle: none;
+}
+
+punctuation.definition.string {
+  @name "Punctuation string";
+  foreground: #049B0A;
+}
+
+punctuation.definition.arguments.type, punctuation.separator.argument.type {
+  @name "Type punctuation";
+  foreground: #D1D187;
+}
+
+punctuation.definition.array, punctuation.definition.tuple, punctuation.separator.array-element {
+  @name "Array punctuation";
+  foreground: #D1D187;
+}
+
+punctuation.definition.module-binding {
+  @name "Punctuation module-binding";
+  foreground: #D1D187;
+}
+
+meta.diff.header {
+  foreground: #6D79DE;
+}
+
+markup.inserted {
+  background: #44FF4330;
+}
+
+markup.inserted.git_gutter {
+  foreground: #44FF43;
+}
+
+markup.deleted {
+  background: #FF103030;
+}
+
+markup.deleted.git_gutter {
+  foreground: #FF1030;
+}
+
+markup.changed.git_gutter {
+  foreground: $keyword_dimmed;
+}
+
+markup.ignored.git_gutter {
+  foreground: #FF9358;
+}
+
+markup.italic {
+  fontStyle: italic;
+}
+
+markup.bold {
+  fontStyle: bold;
+}
+
+meta.toc-list.line-number {
+  foreground: #44AA43;
+}
+
+markup.background.green {
+  background: #61bd4fb0;
+}
+
+markup.background.red {
+  background: #eb5a46b0;
+}
+
+markup.background.blue {
+  background: #0079bfb0;
+}
+
+markup.background.yellow {
+  background: #f2d600b0;
+}
+
+markup.background.sky {
+  background: #00c2e0b0;
+}
+
+markup.background.purple {
+  background: #c377e0b0;
+}
+
+markup.background.black {
+  background: #4d4d4db0;
+}
+
+markup.background.pink {
+  background: #ff80ceb0;
+}
+
+markup.background.orange {
+  background: #ffab4ab0;
+}
+
+entity.name.filename {
+  foreground: #FF9358;
+  fontStyle: italic;
+}
+
+storage.modifier.annotation, meta.statement.decorator, meta.statement.decorator support.function, meta.statement.decorator variable.function, keyword.other.decorator {
+  foreground: #8B8E9C;
+  fontStyle: bold;
+}

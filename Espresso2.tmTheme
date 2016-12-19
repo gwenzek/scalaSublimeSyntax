@@ -21,27 +21,8 @@
 				<string>#BFBFBF</string>
 				<key>lineHighlight</key>
 				<string>#3A312C</string>
-				<key>popupCss</key>
-				<string>
-html {
-  background-color: #42342C;
-  color: #BDAE9D;
-}
-a {
-  color: #43A8ED;
-}
-.error, .deleted {
-  color: #D44949;
-}
-.success, .inserted {
-  color: #049B0A;
-}
-.warning, .modified {
-  color: #FF9358;
-}
-</string>
 				<key>selection</key>
-				<string>#5A514C</string>
+				<string>#4A414C</string>
 			</dict>
 		</dict>
 		<dict>
@@ -50,47 +31,45 @@ a {
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#D1D187</string>
+				<string>#d1d187</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Comment</string>
+			<string>Comments and documentation</string>
 			<key>scope</key>
-			<string>comment, comment punctuation.definition.comment</string>
+			<string>comment</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#0064d6</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>comment.block.documentation, comment.block.documentation text</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#0066FFF5</string>
+				<string>#0077ff</string>
 			</dict>
 		</dict>
 		<dict>
-			<key>name</key>
-			<string>Comment</string>
 			<key>scope</key>
-			<string>comment.block.documentation text</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#0077FF</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Comment</string>
-			<key>scope</key>
-			<string>comment.block.documentation punctuation.definition.tag</string>
+			<string>comment.comment.block.documentation punctuation.definition.tag</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#D1D187D0</string>
+				<string>#D1D187CC</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>scope</key>
-			<string>comment.line.todo</string>
+			<string>comment comment.line.todo</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -98,42 +77,47 @@ a {
 			</dict>
 		</dict>
 		<dict>
+			<key>scope</key>
+			<string>punctuation.definition.comment, punctuation.definition.line-comment</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#0064d6</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>name</key>
 			<string>Keyword declaration</string>
 			<key>scope</key>
-			<string>keyword.declaration, storage</string>
+			<string>keyword</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#388bc4</string>
+				<string>#43a8ed</string>
 			</dict>
 		</dict>
 		<dict>
-			<key>name</key>
-			<string>Keyword</string>
 			<key>scope</key>
-			<string>keyword.control, keyword.other</string>
+			<string>keyword.declaration</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#43A8ED</string>
+				<string>#43A8EDCC</string>
 			</dict>
 		</dict>
 		<dict>
-			<key>name</key>
-			<string>Keyword others</string>
 			<key>scope</key>
-			<string>keyword, keyword.other</string>
+			<string>storage</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#43A8ED</string>
+				<string>#43A8EDCC</string>
 			</dict>
 		</dict>
 		<dict>
@@ -153,7 +137,7 @@ a {
 			<key>name</key>
 			<string>User-defined constant</string>
 			<key>scope</key>
-			<string>constant</string>
+			<string>constant, entity.name.constant</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -251,7 +235,7 @@ a {
 		</dict>
 		<dict>
 			<key>scope</key>
-			<string>punctuation.separator.key-value, punctuation.definition.dictionary, punctuation.separator.dictionary</string>
+			<string>punctuation.separator.key-value, punctuation.separator.dictionary.key-value, punctuation.definition.dictionary, punctuation.section.dictionary, punctuation.section.dictionary-or-set</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -272,38 +256,16 @@ a {
 			</dict>
 		</dict>
 		<dict>
-			<key>scope</key>
-			<string>meta.preprocessor keyword.control, meta.preprocessor keyword.other, meta.preprocessor storage</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string>bold</string>
-				<key>foreground</key>
-				<string>#1A921C</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>scope</key>
-			<string>meta.preprocessor entity.name.section, meta.preprocessor variable</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string>italic</string>
-				<key>foreground</key>
-				<string>#1A921C</string>
-			</dict>
-		</dict>
-		<dict>
 			<key>name</key>
-			<string>Import directive</string>
+			<string>Preprocessor directive</string>
 			<key>scope</key>
-			<string>keyword.control.import, storage.modifier.module, punctuation.section.module, entity.name.module, storage.modifier.namespace, entity.name.namespace</string>
+			<string>keyword.control.import</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#9AFF87C0</string>
+				<string>#9AFF87</string>
 			</dict>
 		</dict>
 		<dict>
@@ -323,7 +285,7 @@ a {
 			<key>name</key>
 			<string>Type name</string>
 			<key>scope</key>
-			<string>variable.type, variable.other.type, entity.name.constructor, entity.name.tag.branch-name, storage.type.java</string>
+			<string>variable.type, variable.other.type, entity.name.constructor</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -336,7 +298,7 @@ a {
 			<key>name</key>
 			<string>Library object</string>
 			<key>scope</key>
-			<string>support.class, support.type, storage.type.primitive</string>
+			<string>support.class, support.type</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -349,7 +311,7 @@ a {
 			<key>name</key>
 			<string>Class definition</string>
 			<key>scope</key>
-			<string>entity.name.class, entity.name.type</string>
+			<string>entity.name</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -360,9 +322,22 @@ a {
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Namespace declaration</string>
+			<key>scope</key>
+			<string>entity.name.namespace</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#9AFF87CC</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Punctuation parameters</string>
 			<key>scope</key>
-			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition.arguments.type, meta.class.identifier punctuation.definition.arguments, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class</string>
+			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -447,7 +422,7 @@ a {
 			<key>name</key>
 			<string>Function call</string>
 			<key>scope</key>
-			<string>variable.function, punctuation.definition.arguments, punctuation.separator.arguments, punctuation.separator.argument</string>
+			<string>variable.function, punctuation.definition.arguments, punctuation.section.arguments, meta.function-call punctuation.separator.parameters, punctuation.separator.arguments, punctuation.separator.argument</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -590,18 +565,20 @@ a {
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#43A8ED</string>
+				<string>#43A8EDCC</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Markup name of tag</string>
 			<key>scope</key>
-			<string>entity.name.tag, entity.name.section, variable.annotation</string>
+			<string>entity.name.tag, entity.name.section</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string>bold</string>
+				<key>foreground</key>
+				<string>#CCC0B5</string>
 			</dict>
 		</dict>
 		<dict>
@@ -689,14 +666,14 @@ a {
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#43A8ED</string>
+				<string>#43a8ed</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Punctuation function</string>
 			<key>scope</key>
-			<string>meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function, punctuation.definition.parameters, punctuation.separator.parameters, punctuation.section.function, punctuation.section.method</string>
+			<string>meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function, punctuation.section.parameters, punctuation.definition.parameters, punctuation.separator.parameters, punctuation.section.function, punctuation.section.method</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -711,7 +688,7 @@ a {
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#388bc4</string>
+				<string>#43A8EDCC</string>
 			</dict>
 		</dict>
 		<dict>
@@ -722,7 +699,7 @@ a {
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#388bc4</string>
+				<string>#43A8EDCC</string>
 			</dict>
 		</dict>
 		<dict>
@@ -744,7 +721,7 @@ a {
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#049B0AA0</string>
+				<string>#049B0A</string>
 			</dict>
 		</dict>
 		<dict>
@@ -778,19 +755,6 @@ a {
 			<dict>
 				<key>foreground</key>
 				<string>#D1D187</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Punctuation formatting</string>
-			<key>scope</key>
-			<string>punctuation.formatting, punctuation.definition.comment</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string></string>
-				<key>foreground</key>
-				<string>#0066FFF5</string>
 			</dict>
 		</dict>
 		<dict>
@@ -844,7 +808,7 @@ a {
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#388bc4</string>
+				<string>#43A8EDCC</string>
 			</dict>
 		</dict>
 		<dict>
@@ -966,15 +930,26 @@ a {
 		</dict>
 		<dict>
 			<key>scope</key>
-			<string>markup.raw</string>
+			<string>entity.name.filename</string>
 			<key>settings</key>
 			<dict>
-				<key>background</key>
-				<string>#F5AA7715</string>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#FF9358</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>storage.modifier.annotation, meta.statement.decorator, meta.statement.decorator support.function, meta.statement.decorator variable.function, keyword.other.decorator</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#8B8E9C</string>
 			</dict>
 		</dict>
 	</array>
-	<key>uuid</key>
-	<string>6B90703E-4E4B-43C8-9D32-921BEDF6D725</string>
 </dict>
 </plist>
