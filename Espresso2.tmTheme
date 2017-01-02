@@ -111,6 +111,26 @@
 		</dict>
 		<dict>
 			<key>scope</key>
+			<string>keyword.operator.assignment</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#43A8EDCC</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>keyword.operator.accessor</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#d1d187</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
 			<string>storage</string>
 			<key>settings</key>
 			<dict>
@@ -122,26 +142,15 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Number</string>
+			<string>Constants</string>
 			<key>scope</key>
-			<string>constant.numeric</string>
+			<string>constant</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#44AA43</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>User-defined constant</string>
-			<key>scope</key>
-			<string>constant, entity.name.constant</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#44AA43</string>
+				<string>#44aa43</string>
 			</dict>
 		</dict>
 		<dict>
@@ -151,10 +160,8 @@
 			<string>constant.character, constant.other</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
-				<string>#C5656B</string>
+				<string>#c5656b</string>
 			</dict>
 		</dict>
 		<dict>
@@ -168,6 +175,17 @@
 				<string>bold</string>
 				<key>foreground</key>
 				<string>#585CF6</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>User-defined constant</string>
+			<key>scope</key>
+			<string>entity.name.constant</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#44AA43</string>
 			</dict>
 		</dict>
 		<dict>
@@ -193,20 +211,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#049B0A</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>String escaped</string>
-			<key>scope</key>
-			<string>constant.character.escape</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string></string>
-				<key>foreground</key>
-				<string>#2FE420</string>
+				<string>#049b0a</string>
 			</dict>
 		</dict>
 		<dict>
@@ -224,13 +229,46 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>String formatting</string>
+			<string>String</string>
+			<key>scope</key>
+			<string>string source string</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#049b0a</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Punctuation string</string>
+			<key>scope</key>
+			<string>punctuation.definition.string</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#049b0a</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>constant.character.escape</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#2FE420</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>scope</key>
 			<string>punctuation.definition.string.interpolated.element</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#C5656B</string>
+				<string>#c5656b</string>
 			</dict>
 		</dict>
 		<dict>
@@ -278,7 +316,36 @@
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#FF9358</string>
+				<string>#ff9358</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function, punctuation.section.parameters, punctuation.definition.parameters, punctuation.separator.parameters, punctuation.section.function, punctuation.section.method</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#ff9358</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>variable.parameter</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>entity.name.filename</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#ff9358</string>
 			</dict>
 		</dict>
 		<dict>
@@ -317,20 +384,7 @@
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#C5656B</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Namespace declaration</string>
-			<key>scope</key>
-			<string>entity.name.namespace</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string>bold</string>
-				<key>foreground</key>
-				<string>#9AFF87CC</string>
+				<string>#c5656b</string>
 			</dict>
 		</dict>
 		<dict>
@@ -341,7 +395,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#C5656B</string>
+				<string>#c5656b</string>
 			</dict>
 		</dict>
 		<dict>
@@ -372,26 +426,35 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Function parameter</string>
+			<string>Namespace declaration</string>
 			<key>scope</key>
-			<string>variable.parameter</string>
+			<string>entity.name.namespace</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>italic</string>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#9AFF87CC</string>
 			</dict>
 		</dict>
 		<dict>
-			<key>name</key>
-			<string>Function argument and result types</string>
 			<key>scope</key>
-			<string>storage.type.method</string>
+			<string>storage.modifier.annotation, meta.statement.decorator, meta.statement.decorator support.function, meta.statement.decorator variable.function, keyword.other.decorator, variable.annotation</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string></string>
+				<string>bold</string>
 				<key>foreground</key>
-				<string>#8B8E9C</string>
+				<string>#8b8e9c</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>punctuation.separator.annotation, punctuation.section.annotation</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#8b8e9c</string>
 			</dict>
 		</dict>
 		<dict>
@@ -495,8 +558,6 @@
 			</dict>
 		</dict>
 		<dict>
-			<key>name</key>
-			<string>Invalid trailing whitespace</string>
 			<key>scope</key>
 			<string>invalid.deprecated</string>
 			<key>settings</key>
@@ -633,7 +694,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#C5656B</string>
+				<string>#c5656b</string>
 			</dict>
 		</dict>
 		<dict>
@@ -666,18 +727,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#43a8ed</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Punctuation function</string>
-			<key>scope</key>
-			<string>meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function, punctuation.section.parameters, punctuation.definition.parameters, punctuation.separator.parameters, punctuation.section.function, punctuation.section.method</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#FF9358</string>
+				<string>#43A8EDCC</string>
 			</dict>
 		</dict>
 		<dict>
@@ -689,39 +739,6 @@
 			<dict>
 				<key>foreground</key>
 				<string>#43A8EDCC</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>end of identifier</string>
-			<key>scope</key>
-			<string>keyword.operator.assignment</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#43A8EDCC</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>scope</key>
-			<string>keyword.operator.accessor</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string></string>
-				<key>foreground</key>
-				<string>#D1D187</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Punctuation string</string>
-			<key>scope</key>
-			<string>punctuation.definition.string</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#049B0A</string>
 			</dict>
 		</dict>
 		<dict>
@@ -848,12 +865,20 @@
 			</dict>
 		</dict>
 		<dict>
+			<key>name</key>
+			<string>Explicit background markup (for Trello)</string>
+			<key>scope</key>
+			<string>markup.background</string>
+			<key>settings</key>
+			<dict/>
+		</dict>
+		<dict>
 			<key>scope</key>
 			<string>markup.background.green</string>
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#61bd4fb0</string>
+				<string>#9aff87</string>
 			</dict>
 		</dict>
 		<dict>
@@ -871,7 +896,7 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#0079bfb0</string>
+				<string>#0064d6</string>
 			</dict>
 		</dict>
 		<dict>
@@ -889,7 +914,7 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#00c2e0b0</string>
+				<string>#43a8ed</string>
 			</dict>
 		</dict>
 		<dict>
@@ -925,29 +950,7 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#ffab4ab0</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>scope</key>
-			<string>entity.name.filename</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string>italic</string>
-				<key>foreground</key>
-				<string>#FF9358</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>scope</key>
-			<string>storage.modifier.annotation, meta.statement.decorator, meta.statement.decorator support.function, meta.statement.decorator variable.function, keyword.other.decorator</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string>bold</string>
-				<key>foreground</key>
-				<string>#8B8E9C</string>
+				<string>#ff9358</string>
 			</dict>
 		</dict>
 	</array>

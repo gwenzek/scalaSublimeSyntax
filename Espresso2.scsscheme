@@ -4,6 +4,7 @@
 $namespace_header: #9AFF87; // light green
 $class_header: #C5656B; // pink
 $function_header: #FF9358; // orange
+$annotations: #8B8E9C; // grey
 
 $documentation: #0077FF; // dark blue
 $comment: darken($documentation, 8%);
@@ -11,6 +12,11 @@ $comment: darken($documentation, 8%);
 $keyword: #43A8ED;
 $keyword_dimmed: transparentize($keyword, 0.20);
 $punctuation: #D1D187;
+
+$constant_numeric: #44AA43;
+$constant_language: #585CF6; // boolean, null, ...
+$constant_other: #C5656B;
+$string: #049B0A;
 
 * {
   background: #2A211C;
@@ -26,7 +32,6 @@ punctuation {
 }
 
 // Comments
-
 comment {
   @name "Comments and documentation";
 
@@ -64,6 +69,15 @@ keyword {
     foreground: $keyword_dimmed;
     fontStyle: bold;
   }
+
+  &.operator.assignment {
+    foreground: $keyword_dimmed;
+  }
+
+  &.operator.accessor {
+    foreground: $punctuation;
+    fontStyle: none;
+  }
 }
 
 storage {
@@ -73,27 +87,26 @@ storage {
 
 // Constants
 
-constant.numeric {
-  @name "Number";
-  foreground: #44AA43;
+constant {
+  @name "Constants";
+  foreground: $constant_numeric;
   fontStyle: none;
+
+  &.character, &.other {
+    @name "Characters";
+    foreground: $constant_other;
+  }
+
+  &.language {
+    @name "Built-in constant";
+    foreground: #585CF6;
+    fontStyle: bold;
+  }
 }
 
-constant, entity.name.constant {
+entity.name.constant {
   @name "User-defined constant";
   foreground: #44AA43;
-}
-
-constant.character, constant.other {
-  @name "Characters";
-  foreground: #C5656B;
-  fontStyle: none;
-}
-
-constant.language {
-  @name "Built-in constant";
-  foreground: #585CF6;
-  fontStyle: bold;
 }
 
 variable.language {
@@ -102,30 +115,47 @@ variable.language {
   fontStyle: none;
 }
 
+// Strings
+
 string {
   @name "String";
-  foreground: #049B0A;
+  foreground: $string;
   fontStyle: none;
+
+  source {
+    @name "String interpolated";
+    foreground: #CCC0B5;
+    fontStyle: none;
+
+    string {
+      @name "String";
+      foreground: $string;
+      fontStyle: none;
+    }
+  }
+}
+
+punctuation.definition.string {
+  @name "Punctuation string";
+  foreground: $string;
 }
 
 constant.character.escape {
-  @name "String escaped";
   foreground: #2FE420;
   fontStyle: none;
 }
 
-string source {
-  @name "String interpolated";
-  foreground: #CCC0B5;
-  fontStyle: none;
-}
-
 punctuation.definition.string.interpolated.element {
-  @name "String formatting";
-  foreground: #C5656B;
+  foreground: $constant_other;
 }
 
-punctuation.separator.key-value, punctuation.separator.dictionary.key-value, punctuation.definition.dictionary, punctuation.section.dictionary, punctuation.section.dictionary-or-set {
+// Dictionaries
+
+punctuation.separator.key-value,
+punctuation.separator.dictionary.key-value,
+punctuation.definition.dictionary,
+punctuation.section.dictionary,
+punctuation.section.dictionary-or-set {
   foreground: #C5656B;
 }
 
@@ -141,11 +171,36 @@ keyword.control.import {
   fontStyle: bold;
 }
 
+// Functions declaration
+
 entity.name.function, keyword.other.name-of-parameter.objc {
   @name "Function name";
-  foreground: #FF9358;
+  foreground: $function_header;
   fontStyle: bold;
 }
+
+meta.method.identifier punctuation.definition,
+meta.method.identifier punctuation.separator,
+punctuation.definition.function,
+punctuation.section.parameters,
+punctuation.definition.parameters,
+punctuation.separator.parameters,
+punctuation.section.function,
+punctuation.section.method
+{
+  foreground: $function_header;
+}
+
+variable.parameter {
+  fontStyle: italic;
+}
+
+entity.name.filename {
+  foreground: $function_header;
+  fontStyle: italic;
+}
+
+// Types
 
 variable.type, variable.other.type, entity.name.constructor {
   @name "Type name";
@@ -159,21 +214,21 @@ support.class, support.type, storage.type.primitive {
   fontStyle: bold;
 }
 
+// Class
+
 entity.name {
   @name "Class definition";
-  foreground: #C5656B;
+  foreground: $class_header;
   fontStyle: bold;
 }
 
-entity.name.namespace {
-  @name "Namespace declaration";
-  foreground: #9AFF87CC;
-  fontStyle: bold;
-}
-
-meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class {
+meta.class.identifier punctuation.separator,
+meta.class.identifier punctuation.definition,
+punctuation.definition.class,
+punctuation.section.class
+{
   @name "Punctuation parameters";
-  foreground: #C5656B;
+  foreground: $class_header;
 }
 
 punctuation.definition.arguments.constructor {
@@ -188,15 +243,31 @@ entity.other.inherited-class {
   fontStyle: italic;
 }
 
-variable.parameter {
-  @name "Function parameter";
-  fontStyle: italic;
+// Namespace
+
+entity.name.namespace {
+  @name "Namespace declaration";
+  foreground: #9AFF87CC;
+  fontStyle: bold;
 }
 
-storage.type.method {
-  @name "Function argument and result types";
-  foreground: #8B8E9C;
-  fontStyle: none;
+// Annotations
+
+storage.modifier.annotation,
+meta.statement.decorator,
+meta.statement.decorator support.function,
+meta.statement.decorator variable.function,
+keyword.other.decorator,
+variable.annotation,
+{
+  foreground: $annotations;
+  fontStyle: bold;
+}
+
+punctuation.separator.annotation,
+punctuation.section.annotation
+{
+  foreground: $annotations;
 }
 
 meta.section entity.name.section, declaration.section entity.name.section {
@@ -243,12 +314,11 @@ invalid {
   @name "Invalid";
   foreground: #FFFFFF;
   background: #990000;
-}
 
-invalid.deprecated {
-  @name "Invalid trailing whitespace";
-  foreground: #802020;
-  background: #FFD0D0;
+  &.deprecated {
+    foreground: #802020;
+    background: #FFD0D0;
+  }
 }
 
 text source, string.unquoted {
@@ -307,7 +377,7 @@ sublimelinter.mark.warning {
 
 punctuation.definition.type {
   @name "Punctuation definition type";
-  foreground: #C5656B;
+  foreground: $class_header;
 }
 
 punctuation.definition.arguments.type {
@@ -320,34 +390,29 @@ punctuation.definition.block {
   foreground: #D1D187;
 }
 
-punctuation.definition.block.loop, punctuation.definition.block.switch, punctuation.definition.block.conditional, punctuation.definition.block.trycatch, punctuation.definition.block.other, punctuation.section.loop, punctuation.section.switch, punctuation.section.conditional, punctuation.section.trycatch, punctuation.section.other, punctuation.definition.expression.loop, punctuation.definition.expression.switch, punctuation.definition.expression.conditional, punctuation.definition.expression.trycatch, punctuation.definition.expression.other {
+punctuation.definition.block.loop,
+punctuation.definition.block.switch,
+punctuation.definition.block.conditional,
+punctuation.definition.block.trycatch,
+punctuation.definition.block.other,
+punctuation.section.loop,
+punctuation.section.switch,
+punctuation.section.conditional,
+punctuation.section.trycatch,
+punctuation.section.other,
+punctuation.definition.expression.loop,
+punctuation.definition.expression.switch,
+punctuation.definition.expression.conditional,
+punctuation.definition.expression.trycatch,
+punctuation.definition.expression.other
+{
   @name "Punctuation block";
-  foreground: $keyword;
-}
-
-meta.method.identifier punctuation.definition, meta.method.identifier punctuation.separator, punctuation.definition.function, punctuation.section.parameters, punctuation.definition.parameters, punctuation.separator.parameters, punctuation.section.function, punctuation.section.method {
-  @name "Punctuation function";
-  foreground: #FF9358;
+  foreground: $keyword_dimmed;
 }
 
 meta.variable.identifier punctuation.definition, meta.variable.identifier punctuation.separator {
   @name "Punctuation variable";
   foreground: $keyword_dimmed;
-}
-
-keyword.operator.assignment {
-  @name "end of identifier";
-  foreground: $keyword_dimmed;
-}
-
-keyword.operator.accessor {
-  foreground: #D1D187;
-  fontStyle: none;
-}
-
-punctuation.definition.string {
-  @name "Punctuation string";
-  foreground: #049B0A;
 }
 
 punctuation.definition.arguments.type, punctuation.separator.argument.type {
@@ -405,48 +470,42 @@ meta.toc-list.line-number {
   foreground: #44AA43;
 }
 
-markup.background.green {
-  background: #61bd4fb0;
-}
+markup.background {
+  @name "Explicit background markup (for Trello)";
 
-markup.background.red {
-  background: #eb5a46b0;
-}
+  &.green {
+    background: $namespace_header;
+  }
 
-markup.background.blue {
-  background: #0079bfb0;
-}
+  &.red {
+    background: #eb5a46b0;
+  }
 
-markup.background.yellow {
-  background: #f2d600b0;
-}
+  &.blue {
+    background: $comment;
+  }
 
-markup.background.sky {
-  background: #00c2e0b0;
-}
+  &.yellow {
+    background: #f2d600b0;
+  }
 
-markup.background.purple {
-  background: #c377e0b0;
-}
+  &.sky {
+    background: $keyword;
+  }
 
-markup.background.black {
-  background: #4d4d4db0;
-}
+  &.purple {
+    background: #c377e0b0;
+  }
 
-markup.background.pink {
-  background: #ff80ceb0;
-}
+  &.black {
+    background: #4d4d4db0;
+  }
 
-markup.background.orange {
-  background: #ffab4ab0;
-}
+  &.pink {
+    background: #ff80ceb0;
+  }
 
-entity.name.filename {
-  foreground: #FF9358;
-  fontStyle: italic;
-}
-
-storage.modifier.annotation, meta.statement.decorator, meta.statement.decorator support.function, meta.statement.decorator variable.function, keyword.other.decorator {
-  foreground: #8B8E9C;
-  fontStyle: bold;
+  &.orange {
+    background: $function_header;
+  }
 }
