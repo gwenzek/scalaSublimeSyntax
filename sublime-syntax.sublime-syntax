@@ -95,7 +95,7 @@ contexts:
     # block regex
     - match: '^(\s*)([\w_]*)\s*(:)\s*(>-|\|-|\|)'
       captures:
-        2: entity.name.function.declaration
+        2: entity.name.function.syntax
         3: punctuation.separator.key-value
         4: punctuation.definition.block.begin
       push:
@@ -108,7 +108,7 @@ contexts:
     # inline regex
     - match: '\s*([\w_]+)\s*(:)\s*'
       captures:
-        1: entity.name.function.declaration
+        1: entity.name.function.syntax
         2: punctuation.separator.key-value
       push: regex
 
@@ -251,7 +251,7 @@ contexts:
     # others:
     - match: '\s+([\w_-]*)\s*(:)'
       captures:
-        1: entity.name.function.declaration.syntax entity.name.class.declaration.syntax
+        1: entity.name.class.syntax
         2: punctuation.separator.key-value
 
   regex:
@@ -483,7 +483,7 @@ contexts:
   scopes_:
     - meta_scope: debug.scope.inline
     - match: '[\w\d-]*'
-      scope: entity.name.scope.syntax
+      scope: variable.other.scope.syntax
     - match: '\.'
       scope: keyword.operator.accessor.syntax
     - match: \".*\"
