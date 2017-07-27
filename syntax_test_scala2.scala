@@ -267,6 +267,11 @@ package scala_syntax.test {
 
     val chars = List('a', 'oko', '\n', '\u0002', '\', '\\', '1')
 //               ^ support.class entity.name.constructor.scala
+//                   ^^^ constant.character.scala
+//                        ^^^^^ invalid.illegal
+//                               ^^^^ constant.character.escape.scala
+//                                     ^^^^ constant.character.escape.scala
+//                                               ^^^ invalid.illegal
     val how = "how"
     val e = "e"
     val quotes = List(
@@ -282,9 +287,19 @@ package scala_syntax.test {
 //  <- string.quoted.triple.scala
     """.stripMargin
 
+    val regex = """"[^"]*\n""""
+//              ^^^ punctuation.definition.string
+//                 ^ - punctuation.definition.string
+//                       ^ - constant.character.escape
+//                         ^ - punctuation.definition.string
+//                          ^^^ punctuation.definition.string
     val bar = new Bar(2)
     val barbar = new BarBar(1, b = 2)
     val interpolated = s"${barbar + 1} and $bar love to go to the be\u1ea1ch."
+//                       ^ punctuation.definition.string.interpolated.element
+//                         ^ variable
+//                                         ^ punctuation.definition.string.interpolated.element
+//                                          ^ variable
     val x = 3.054e2
     val formatted1 = f"x: $x%+,.3f ca"
     val formatted2 = f"date: $x%T \u0002 \124 \ "

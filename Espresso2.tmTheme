@@ -16,7 +16,7 @@
 				<key>caret</key>
 				<string>#889AFF</string>
 				<key>foreground</key>
-				<string>#BDAE9D</string>
+				<string>#CCC0B5</string>
 				<key>invisibles</key>
 				<string>#BFBFBF</string>
 				<key>lineHighlight</key>
@@ -235,7 +235,7 @@ a {
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#BDAE9D</string>
+				<string>#CCC0B5</string>
 			</dict>
 		</dict>
 		<dict>
@@ -336,7 +336,7 @@ a {
 			<key>name</key>
 			<string>Library object</string>
 			<key>scope</key>
-			<string>support.class, support.type</string>
+			<string>support.class, support.type, storage.type.primitive</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -744,7 +744,7 @@ a {
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#049B0A</string>
+				<string>#049B0AA0</string>
 			</dict>
 		</dict>
 		<dict>

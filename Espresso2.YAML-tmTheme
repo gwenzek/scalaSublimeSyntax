@@ -5,7 +5,8 @@ settings:
 - settings:
     background: '#2A211C'
     caret: '#889AFF'
-    foreground: '#BDAE9D'
+    foreground: '#CCC0B5'
+    # foreground: '#BDAE9D'
     invisibles: '#BFBFBF'
     lineHighlight: '#3A312C'
     # selection: '#C3DCFF'
@@ -121,7 +122,7 @@ settings:
   scope: string source
   settings:
     fontStyle: ''
-    foreground: '#BDAE9D'
+    foreground: '#CCC0B5'
 
 - name: String formatting
   scope: punctuation.definition.string.interpolated.element
@@ -167,7 +168,7 @@ settings:
     foreground: '#6D79DE'
 
 - name: Library object
-  scope: support.class, support.type
+  scope: support.class, support.type, storage.type.primitive
   settings:
     fontStyle: bold
     foreground: '#6D79DE'
@@ -394,7 +395,7 @@ settings:
 - name: Punctuation string
   scope: punctuation.definition.string
   settings:
-    foreground: '#049B0A'
+    foreground: '#049B0AA0'
 
 - name: Type punctuation
   scope:
