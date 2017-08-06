@@ -298,7 +298,7 @@ settings:
     foreground: '#43A8ED'
 
 - name: Markup name of tag
-  scope: entity.name.tag, entity.name.section
+  scope: entity.name.tag, entity.name.section, variable.annotation
   settings:
     fontStyle: bold
 

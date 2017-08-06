@@ -597,7 +597,7 @@ a {
 			<key>name</key>
 			<string>Markup name of tag</string>
 			<key>scope</key>
-			<string>entity.name.tag, entity.name.section</string>
+			<string>entity.name.tag, entity.name.section, variable.annotation</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>

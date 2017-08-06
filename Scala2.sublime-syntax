@@ -87,8 +87,10 @@ contexts:
     - match: ^\s*
 
     # annotations
-    - match: '@{{name}}'
-      scope: entity.name.tag
+    - match: '(@){{name}}'
+      scope: variable.annotation.scala
+      captures:
+        1: punctuation.definition.annotation.scala
 
     # embedded xml see:
     # http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html#xml-mode

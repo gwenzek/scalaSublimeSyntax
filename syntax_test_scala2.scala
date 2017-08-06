@@ -183,7 +183,8 @@ package scala_syntax.test {
 //                   ^ entity.name.val.scala
 //                                  ^ keyword.operator.assignment
     @tailrec
-//  ^ entity.name.tag
+//  ^ punctuation.definition.annotation.scala
+//  ^^^^^ variable.annotation.scala
     def abc(a: Int)(implicit b: Boolean) : Int = {
 //  ^ storage.type.function
 //      ^ entity.name.function
