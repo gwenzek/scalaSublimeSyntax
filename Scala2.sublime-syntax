@@ -1212,9 +1212,10 @@ contexts:
     - match: '@(inheritdoc)\b'
       scope: keyword.documentation.other.scala
 
+    - include: scaladoc-marker
     - include: scaladoc-markup
 
-  scaladoc-markup:
+  scaladoc-marker:
     - match: '\s*\*/'
       pop: true
     - match: '^\s*\*'
@@ -1222,63 +1223,46 @@ contexts:
     - match: '^(\s*.).*$'
       captures:
         1: invalid.deprecated.missing-asterisk
-    - match: "'''"
-      scope: constant.character.escaped.scaladoc
-      set:
-        - meta_content_scope: markup.bold
-        - match: "'''"
-          scope: constant.character.escaped.scaladoc
-          set: scaladoc
-        - include: scaladoc-markup
-    - match: "''"
-      scope: constant.character.escaped.scaladoc
-      set:
-        - meta_content_scope: markup.italic
-        - match: "''"
-          scope: constant.character.escaped.scaladoc
-          set: scaladoc
-        - include: scaladoc-markup
-    - match: '__'
-      scope: constant.character.escaped.scaladoc
-      set:
-        - meta_content_scope: markup.underline
-        - match: '__'
-          scope: constant.character.escaped.scaladoc
-          set: scaladoc
-        - include: scaladoc-markup
-    - match: '\^'
-      scope: constant.character.escaped.scaladoc
-      set:
-        - meta_content_scope: markup.superscipt
-        - match: '\^'
-          scope: constant.character.escaped.scaladoc
-          set: scaladoc
-        - include: scaladoc-markup
-    - match: ',,'
-      scope: constant.character.escaped.scaladoc
-      set:
-        - meta_content_scope: markup.subscipt
-        - match: ',,'
-          scope: constant.character.escaped.scaladoc
-          set: scaladoc
-        - include: scaladoc-markup
-    - match: '`'
-      scope: constant.character.escaped.scaladoc
-      set:
-        - meta_content_scope: markup.monospace
-        - match: '`'
-          scope: constant.character.escaped.scaladoc
-          set: scaladoc
-        - include: scaladoc-markup
+
+  scaladoc-markup:
+    - match: '('''''')([\w\s]+)('''''')'
+      captures:
+        1: constant.character.escaped.scaladoc
+        2: markup.bold
+        3: constant.character.escaped.scaladoc
+    - match: '('''')([\w\s]+)('''')'
+      captures:
+        1: constant.character.escaped.scaladoc
+        2: markup.italic
+        3: constant.character.escaped.scaladoc
+    - match: '(__)([\w\s]+)(__)'
+      captures:
+        1: constant.character.escaped.scaladoc
+        2: markup.underline
+        3: constant.character.escaped.scaladoc
+    - match: '(\^)([\w\s]+)(\^)'
+      captures:
+        1: constant.character.escaped.scaladoc
+        2: markup.superscript
+        3: constant.character.escaped.scaladoc
+    - match: '(,,)([\w\s]+)(,,)'
+      captures:
+        1: constant.character.escaped.scaladoc
+        2: markup.subscript
+        3: constant.character.escaped.scaladoc
+    - match: '(`)([\w\s]+)(`)'
+      captures:
+        1: constant.character.escaped.scaladoc
+        2: markup.monospace
+        3: constant.character.escaped.scaladoc
     - match: '\{\{\{'
       scope: constant.character.escaped.scaladoc
       set:
+        # mark the code embedded in the comment as non-documentation
+        - meta_scope: meta.embedded-code.scala
+        - include: scaladoc-marker
         - match: '\}\}\}'
           scope: constant.character.escaped.scaladoc
           set: scaladoc
-        - include: scaladoc-markup
         - match: .
           scope : markup.code
-
-
-
