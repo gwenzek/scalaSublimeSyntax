@@ -2,6 +2,7 @@
 @author "Chris Thomas";
 
 $foreground: #CCC0B5;
+$background: #2A211C;
 
 $namespace_header: #a5f492; // light green
 $class_header: #C5656B; // pink
@@ -20,11 +21,13 @@ $keyword_loop: $namespace_header;
 
 $constant_numeric: #44AA43;
 $constant_language: #585CF6; // boolean, null, ...
-$constant_other: #C5656B;
+$constant_other: $class_header;
+$dictionnary: $class_header;
 $string: #049B0A;
+$embedded_code: lighten($background, 10%);
 
 * {
-  background: #2A211C;
+  background: $background;
   caret: #889AFF;
   foreground: $foreground;
   invisibles: #BFBFBF;
@@ -156,11 +159,11 @@ punctuation.definition.string.interpolated.element {
 // Dictionaries
 
 punctuation.separator.key-value,
-punctuation.separator.dictionary.key-value,
+punctuation.separator.dictionary,
 punctuation.definition.dictionary,
 punctuation.section.dictionary,
 punctuation.section.dictionary-or-set {
-  foreground: #C5656B;
+  foreground: $dictionnary;
 }
 
 meta.preprocessor {
@@ -168,14 +171,6 @@ meta.preprocessor {
   foreground: #1A921C;
   fontStyle: none;
 }
-
-keyword.control.import {
-  @name "Preprocessor directive";
-  foreground: $namespace_header;
-  fontStyle: bold;
-}
-
-// Functions declaration
 
 entity.name.function, keyword.other.name-of-parameter.objc {
   @name "Function name";
@@ -212,7 +207,7 @@ variable.type, variable.other.type, entity.name.constructor {
   fontStyle: none;
 }
 
-support.class, support.type, storage.type.primitive {
+support.class, support.type, storage.type.primitive, storage.type.java {
   @name "Library object";
   foreground: #6D79DE;
   fontStyle: bold;
@@ -227,6 +222,8 @@ entity.name {
 }
 
 meta.class.identifier punctuation.separator,
+meta.class.identifier punctuation.definition.arguments.type,
+meta.class.identifier punctuation.definition.arguments,
 meta.class.identifier punctuation.definition,
 punctuation.definition.class,
 punctuation.section.class,
@@ -250,10 +247,21 @@ entity.other.inherited-class {
 
 // Namespace
 
-entity.name.namespace {
-  @name "Namespace declaration";
-  foreground: #9AFF87CC;
+keyword.control.import,
+entity.name.namespace,
+entity.name.module,
+storage.modifier.module,
+storage.modifier.namespace
+{
+  foreground: $namespace_header;
   fontStyle: bold;
+}
+
+punctuation.section.module,
+punctuation.definition.module-binding,
+punctuation.separator.module-binding
+{
+  foreground: $namespace_header;
 }
 
 // Function calls
@@ -355,9 +363,9 @@ invalid {
   }
 }
 
-text source, string.unquoted {
+text source, string.unquoted, markup.raw {
   @name "Embedded source";
-  background: #F5AA7715;
+  background: $embedded_code;
 }
 
 meta.tag.preprocessor.xml {
@@ -468,11 +476,6 @@ punctuation.definition.arguments.type, punctuation.separator.argument.type {
 
 punctuation.definition.array, punctuation.definition.tuple, punctuation.separator.array-element {
   @name "Array punctuation";
-  foreground: #D1D187;
-}
-
-punctuation.definition.module-binding {
-  @name "Punctuation module-binding";
   foreground: #D1D187;
 }
 

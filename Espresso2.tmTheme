@@ -12,7 +12,7 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#2A211C</string>
+				<string>#2a211c</string>
 				<key>caret</key>
 				<string>#889AFF</string>
 				<key>foreground</key>
@@ -271,11 +271,11 @@
 		</dict>
 		<dict>
 			<key>scope</key>
-			<string>punctuation.separator.key-value, punctuation.separator.dictionary.key-value, punctuation.definition.dictionary, punctuation.section.dictionary, punctuation.section.dictionary-or-set</string>
+			<string>punctuation.separator.key-value, punctuation.separator.dictionary, punctuation.definition.dictionary, punctuation.section.dictionary, punctuation.section.dictionary-or-set</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#C5656B</string>
+				<string>#c5656b</string>
 			</dict>
 		</dict>
 		<dict>
@@ -289,19 +289,6 @@
 				<string></string>
 				<key>foreground</key>
 				<string>#1A921C</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Preprocessor directive</string>
-			<key>scope</key>
-			<string>keyword.control.import</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string>bold</string>
-				<key>foreground</key>
-				<string>#a5f492</string>
 			</dict>
 		</dict>
 		<dict>
@@ -363,7 +350,7 @@
 			<key>name</key>
 			<string>Library object</string>
 			<key>scope</key>
-			<string>support.class, support.type</string>
+			<string>support.class, support.type, storage.type.primitive, storage.type.java</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -389,7 +376,7 @@
 			<key>name</key>
 			<string>Punctuation parameters</string>
 			<key>scope</key>
-			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class, punctuation.section.inheritance</string>
+			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition.arguments.type, meta.class.identifier punctuation.definition.arguments, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class, punctuation.section.inheritance</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -423,16 +410,23 @@
 			</dict>
 		</dict>
 		<dict>
-			<key>name</key>
-			<string>Namespace declaration</string>
 			<key>scope</key>
-			<string>entity.name.namespace</string>
+			<string>keyword.control.import, entity.name.namespace, entity.name.module, storage.modifier.module, storage.modifier.namespace</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#9AFF87CC</string>
+				<string>#a5f492</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>punctuation.section.module, punctuation.definition.module-binding, punctuation.separator.module-binding</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#a5f492</string>
 			</dict>
 		</dict>
 		<dict>
@@ -612,11 +606,11 @@
 			<key>name</key>
 			<string>Embedded source</string>
 			<key>scope</key>
-			<string>text source, string.unquoted</string>
+			<string>text source, string.unquoted, markup.raw</string>
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#F5AA7715</string>
+				<string>#493930</string>
 			</dict>
 		</dict>
 		<dict>
@@ -673,7 +667,7 @@
 			<key>name</key>
 			<string>Markup name of tag</string>
 			<key>scope</key>
-			<string>entity.name.tag, entity.name.section</string>
+			<string>entity.name.tag, entity.name.section, variable.annotation</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -815,17 +809,6 @@
 			<string>Array punctuation</string>
 			<key>scope</key>
 			<string>punctuation.definition.array, punctuation.definition.tuple, punctuation.separator.array-element</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#D1D187</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Punctuation module-binding</string>
-			<key>scope</key>
-			<string>punctuation.definition.module-binding</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
