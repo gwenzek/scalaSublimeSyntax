@@ -1,10 +1,14 @@
 @name "Espresso Libre";
 @author "Chris Thomas";
 
-$namespace_header: #9AFF87; // light green
+$foreground: #CCC0B5;
+
+$namespace_header: #a5f492; // light green
 $class_header: #C5656B; // pink
 $function_header: #FF9358; // orange
+
 $annotations: #8B8E9C; // grey
+$function_call: #7290D9; // dim purple
 
 $documentation: #0077FF; // dark blue
 $comment: darken($documentation, 8%);
@@ -12,6 +16,7 @@ $comment: darken($documentation, 8%);
 $keyword: #43A8ED;
 $keyword_dimmed: transparentize($keyword, 0.20);
 $punctuation: #D1D187;
+$keyword_loop: $namespace_header;
 
 $constant_numeric: #44AA43;
 $constant_language: #585CF6; // boolean, null, ...
@@ -21,7 +26,7 @@ $string: #049B0A;
 * {
   background: #2A211C;
   caret: #889AFF;
-  foreground: #CCC0B5;
+  foreground: $foreground;
   invisibles: #BFBFBF;
   lineHighlight: #3A312C;
   selection: #4A414C;
@@ -36,8 +41,7 @@ comment {
   @name "Comments and documentation";
 
   foreground: $comment;
-  fontStyle: italic;
-
+  // fontStyle: italic;
 
   &.block.documentation, &.block.documentation text {
     foreground: $documentation;
@@ -122,7 +126,7 @@ string {
   foreground: $string;
   fontStyle: none;
 
-  source {
+  meta.interpolated {
     @name "String interpolated";
     foreground: #CCC0B5;
     fontStyle: none;
@@ -167,7 +171,7 @@ meta.preprocessor {
 
 keyword.control.import {
   @name "Preprocessor directive";
-  foreground: #9AFF87;
+  foreground: $namespace_header;
   fontStyle: bold;
 }
 
@@ -225,7 +229,8 @@ entity.name {
 meta.class.identifier punctuation.separator,
 meta.class.identifier punctuation.definition,
 punctuation.definition.class,
-punctuation.section.class
+punctuation.section.class,
+punctuation.section.inheritance
 {
   @name "Punctuation parameters";
   foreground: $class_header;
@@ -251,23 +256,63 @@ entity.name.namespace {
   fontStyle: bold;
 }
 
+// Function calls
+
+support.function {
+  @name "Library function";
+  foreground: $function_call;
+  fontStyle: bold;
+}
+
+variable.function, punctuation.definition.arguments, punctuation.section.arguments, meta.function-call punctuation.separator.parameters, punctuation.separator.arguments, punctuation.separator.argument {
+  @name "Function call";
+  foreground: $function_call;
+  fontStyle: none;
+}
+
 // Annotations
 
 storage.modifier.annotation,
-meta.statement.decorator,
+meta.statement.decorator meta.function-call,
 meta.statement.decorator support.function,
 meta.statement.decorator variable.function,
+meta.statement.decorator meta.function-call variable.function,
 keyword.other.decorator,
 variable.annotation,
 {
   foreground: $annotations;
   fontStyle: bold;
+
+  meta.function-call.arguments,
+  {
+    foreground: $foreground;
+    fontStyle: none;
+  }
+}
+
+meta.statement.decorator meta.function-call meta.function-call.arguments variable.function,
+{
+  foreground: $function_call;
+  fontStyle: none;
+}
+meta.statement.decorator meta.function-call meta.function-call.arguments support.function
+{
+  foreground: $function_call;
+  fontStyle: bold;
 }
 
 punctuation.separator.annotation,
-punctuation.section.annotation
+punctuation.section.annotation,
+meta.statement.decorator meta.function-call punctuation.section.arguments,
+meta.statement.decorator meta.function-call punctuation.separator.arguments,
 {
   foreground: $annotations;
+}
+
+meta.statement.decorator meta.function-call meta.function-call.arguments punctuation.section.arguments,
+meta.statement.decorator meta.function-call meta.function-call.arguments punctuation.separator.arguments,
+{
+  foreground: $function_call;
 }
 
 meta.section entity.name.section, declaration.section entity.name.section {
@@ -275,17 +320,6 @@ meta.section entity.name.section, declaration.section entity.name.section {
   fontStyle: italic;
 }
 
-support.function {
-  @name "Library function";
-  foreground: #7290D9;
-  fontStyle: bold;
-}
-
-variable.function, punctuation.definition.arguments, punctuation.section.arguments, meta.function-call punctuation.separator.parameters, punctuation.separator.arguments, punctuation.separator.argument {
-  @name "Function call";
-  foreground: #7290D9;
-  fontStyle: none;
-}
 
 support.class, support.type {
   @name "Library object";
@@ -386,29 +420,41 @@ punctuation.definition.arguments.type {
 }
 
 punctuation.definition.block {
-  @name "Punctuation block";
+  @name "Punctuation for blocks";
   foreground: #D1D187;
 }
 
+
+keyword.control.loop {
+  foreground: $keyword_loop;
+}
+
 punctuation.definition.block.loop,
+punctuation.section.loop,
+punctuation.definition.expression.loop
+{
+  foreground: transparentize($keyword_loop, 0.20);
+}
+
 punctuation.definition.block.switch,
 punctuation.definition.block.conditional,
 punctuation.definition.block.trycatch,
 punctuation.definition.block.other,
-punctuation.section.loop,
 punctuation.section.switch,
 punctuation.section.conditional,
 punctuation.section.trycatch,
 punctuation.section.other,
-punctuation.definition.expression.loop,
+punctuation.section.block.with,
+punctuation.separator.annotation.variable.python,
 punctuation.definition.expression.switch,
 punctuation.definition.expression.conditional,
 punctuation.definition.expression.trycatch,
 punctuation.definition.expression.other
 {
-  @name "Punctuation block";
+  @name "Other blocks";
   foreground: $keyword_dimmed;
 }
+
 
 meta.variable.identifier punctuation.definition, meta.variable.identifier punctuation.separator {
   @name "Punctuation variable";

@@ -16,7 +16,7 @@
 				<key>caret</key>
 				<string>#889AFF</string>
 				<key>foreground</key>
-				<string>#CCC0B5</string>
+				<string>#ccc0b5</string>
 				<key>invisibles</key>
 				<string>#BFBFBF</string>
 				<key>lineHighlight</key>
@@ -41,8 +41,6 @@
 			<string>comment</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string>italic</string>
 				<key>foreground</key>
 				<string>#0064d6</string>
 			</dict>
@@ -218,7 +216,7 @@
 			<key>name</key>
 			<string>String interpolated</string>
 			<key>scope</key>
-			<string>string source</string>
+			<string>string meta.interpolated</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -231,7 +229,7 @@
 			<key>name</key>
 			<string>String</string>
 			<key>scope</key>
-			<string>string source string</string>
+			<string>string meta.interpolated string</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -303,7 +301,7 @@
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#9AFF87</string>
+				<string>#a5f492</string>
 			</dict>
 		</dict>
 		<dict>
@@ -391,7 +389,7 @@
 			<key>name</key>
 			<string>Punctuation parameters</string>
 			<key>scope</key>
-			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class</string>
+			<string>meta.class.identifier punctuation.separator, meta.class.identifier punctuation.definition, punctuation.definition.class, punctuation.section.class, punctuation.section.inheritance</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -438,37 +436,6 @@
 			</dict>
 		</dict>
 		<dict>
-			<key>scope</key>
-			<string>storage.modifier.annotation, meta.statement.decorator, meta.statement.decorator support.function, meta.statement.decorator variable.function, keyword.other.decorator, variable.annotation</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string>bold</string>
-				<key>foreground</key>
-				<string>#8b8e9c</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>scope</key>
-			<string>punctuation.separator.annotation, punctuation.section.annotation</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#8b8e9c</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Section</string>
-			<key>scope</key>
-			<string>meta.section entity.name.section, declaration.section entity.name.section</string>
-			<key>settings</key>
-			<dict>
-				<key>fontStyle</key>
-				<string>italic</string>
-			</dict>
-		</dict>
-		<dict>
 			<key>name</key>
 			<string>Library function</string>
 			<key>scope</key>
@@ -478,7 +445,7 @@
 				<key>fontStyle</key>
 				<string>bold</string>
 				<key>foreground</key>
-				<string>#7290D9</string>
+				<string>#7290d9</string>
 			</dict>
 		</dict>
 		<dict>
@@ -491,7 +458,80 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#7290D9</string>
+				<string>#7290d9</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>storage.modifier.annotation, meta.statement.decorator meta.function-call, meta.statement.decorator support.function, meta.statement.decorator variable.function, meta.statement.decorator meta.function-call variable.function, keyword.other.decorator, variable.annotation</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#8b8e9c</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>storage.modifier.annotation meta.function-call.arguments, meta.statement.decorator meta.function-call meta.function-call.arguments, meta.statement.decorator support.function meta.function-call.arguments, meta.statement.decorator variable.function meta.function-call.arguments, meta.statement.decorator meta.function-call variable.function meta.function-call.arguments, keyword.other.decorator meta.function-call.arguments, variable.annotation meta.function-call.arguments</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#ccc0b5</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>meta.statement.decorator meta.function-call meta.function-call.arguments variable.function</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#7290d9</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>meta.statement.decorator meta.function-call meta.function-call.arguments support.function</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#7290d9</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>punctuation.separator.annotation, punctuation.section.annotation, meta.statement.decorator meta.function-call punctuation.section.arguments, meta.statement.decorator meta.function-call punctuation.separator.arguments</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#8b8e9c</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>meta.statement.decorator meta.function-call meta.function-call.arguments punctuation.section.arguments, meta.statement.decorator meta.function-call meta.function-call.arguments punctuation.separator.arguments</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#7290d9</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Section</string>
+			<key>scope</key>
+			<string>meta.section entity.name.section, declaration.section entity.name.section</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
 			</dict>
 		</dict>
 		<dict>
@@ -710,7 +750,7 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Punctuation block</string>
+			<string>Punctuation for blocks</string>
 			<key>scope</key>
 			<string>punctuation.definition.block</string>
 			<key>settings</key>
@@ -720,10 +760,28 @@
 			</dict>
 		</dict>
 		<dict>
-			<key>name</key>
-			<string>Punctuation block</string>
 			<key>scope</key>
-			<string>punctuation.definition.block.loop, punctuation.definition.block.switch, punctuation.definition.block.conditional, punctuation.definition.block.trycatch, punctuation.definition.block.other, punctuation.section.loop, punctuation.section.switch, punctuation.section.conditional, punctuation.section.trycatch, punctuation.section.other, punctuation.definition.expression.loop, punctuation.definition.expression.switch, punctuation.definition.expression.conditional, punctuation.definition.expression.trycatch, punctuation.definition.expression.other</string>
+			<string>keyword.control.loop</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#a5f492</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>punctuation.definition.block.loop, punctuation.section.loop, punctuation.definition.expression.loop</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#A5F492CC</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Other blocks</string>
+			<key>scope</key>
+			<string>punctuation.definition.block.switch, punctuation.definition.block.conditional, punctuation.definition.block.trycatch, punctuation.definition.block.other, punctuation.section.switch, punctuation.section.conditional, punctuation.section.trycatch, punctuation.section.other, punctuation.section.block.with, punctuation.separator.annotation.variable.python, punctuation.definition.expression.switch, punctuation.definition.expression.conditional, punctuation.definition.expression.trycatch, punctuation.definition.expression.other</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -878,7 +936,7 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#9aff87</string>
+				<string>#a5f492</string>
 			</dict>
 		</dict>
 		<dict>
