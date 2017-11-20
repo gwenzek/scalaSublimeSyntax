@@ -272,7 +272,14 @@ support.function {
   fontStyle: bold;
 }
 
-variable.function, punctuation.definition.arguments, punctuation.section.arguments, meta.function-call punctuation.separator.parameters, punctuation.separator.arguments, punctuation.separator.argument {
+variable.function,
+punctuation.definition.arguments,
+punctuation.section.arguments,
+meta.function-call punctuation.separator.parameters,
+meta.method-call punctuation.section.group,
+punctuation.separator.arguments,
+punctuation.separator.argument
+{
   @name "Function call";
   foreground: $function_call;
   fontStyle: none;

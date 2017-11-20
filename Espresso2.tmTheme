@@ -446,7 +446,7 @@
 			<key>name</key>
 			<string>Function call</string>
 			<key>scope</key>
-			<string>variable.function, punctuation.definition.arguments, punctuation.section.arguments, meta.function-call punctuation.separator.parameters, punctuation.separator.arguments, punctuation.separator.argument</string>
+			<string>variable.function, punctuation.definition.arguments, punctuation.section.arguments, meta.function-call punctuation.separator.parameters, meta.method-call punctuation.section.group, punctuation.separator.arguments, punctuation.separator.argument</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
