@@ -1,38 +1,64 @@
 @name "Espresso Libre";
 @author "Chris Thomas";
 
-$foreground: #CCC0B5;
-$background: #2A211C;
+$base03: #2d241f;
+$base02: #372f2a;
+$base01: #4d444e;
+$base00: #bcbd74;
+$base0: #c2b7ae;
+$base1: #d0c5bc;
+$base2: #d0c5bc;
+$base3: #2d241f;
+$palette1: #3fa5ea;
+$palette2: #227eff;
+$palette3: #eb8248;
+$palette4: #d67479;
+$palette5: #7dcb6c;
+$palette6: #716fff; //#6D79DE;
+$palette6bis: #585CF6;
+$palette7: #808391;
+$palette8: #009907;
+$palette9: #3ea53e;
+$palette10: #7f9ce6;
 
-$namespace_header: #a5f492; // light green
-$class_header: #C5656B; // pink
-$function_header: #FF9358; // orange
+// $foreground: hsl(29, 18%, 75%);
+$background: $base03; //base03
+$background_hl: $base02; //base02
 
-$annotations: #8B8E9C; // grey
-$function_call: #7290D9; // dim purple
+$foreground: $base0; //base02
+$foreground_em: $base1; //base03
 
-$documentation: #0077FF; // dark blue
+
+$function_header: $palette3; // orange
+$class_header: $palette4; // pink
+$namespace_header: $palette5; // light green
+
+$function_call: $palette10; // dim purple
+$annotations: $palette7; // grey
+
+$documentation: $palette2; // dark blue
 $comment: darken($documentation, 8%);
 
-$keyword: #43A8ED;
+$keyword: $palette1;
 $keyword_dimmed: transparentize($keyword, 0.20);
-$punctuation: #D1D187;
+$punctuation: $base00;
 $keyword_loop: $namespace_header;
 
-$constant_numeric: #44AA43;
-$constant_language: #585CF6; // boolean, null, ...
+$constant_numeric: $palette9;
+$constant_language: $palette6; // boolean, null, ...
 $constant_other: $class_header;
 $dictionnary: $class_header;
-$string: #049B0A;
-$embedded_code: lighten($background, 10%);
+$string: $palette8;
+$type: $palette6;
+$embedded_code: lighten($background, 5%);
 
 * {
   background: $background;
-  caret: #889AFF;
+  caret: $palette6;
   foreground: $foreground;
-  invisibles: #BFBFBF;
-  lineHighlight: #3A312C;
-  selection: #4A414C;
+  invisibles: transparentize($foreground, 0.80);
+  lineHighlight: $base02;
+  selection: $base01;
 }
 
 punctuation {
@@ -43,7 +69,7 @@ punctuation {
 comment {
   @name "Comments and documentation";
 
-  foreground: $comment;
+  foreground: $palette2;
   // fontStyle: italic;
 
   &.block.documentation, &.block.documentation text {
@@ -106,7 +132,7 @@ constant {
 
   &.language {
     @name "Built-in constant";
-    foreground: #585CF6;
+    foreground: $palette6;
     fontStyle: bold;
   }
 }
@@ -168,11 +194,12 @@ punctuation.section.dictionary-or-set {
 
 meta.preprocessor {
   @name "Preprocessor line";
-  foreground: #1A921C;
+  foreground: $string;
   fontStyle: none;
 }
 
-entity.name.function, keyword.other.name-of-parameter.objc {
+entity.name.function,
+keyword.other.name-of-parameter.objc {
   @name "Function name";
   foreground: $function_header;
   fontStyle: bold;
@@ -180,6 +207,7 @@ entity.name.function, keyword.other.name-of-parameter.objc {
 
 meta.method.identifier punctuation.definition,
 meta.method.identifier punctuation.separator,
+meta.method.parameters punctuation.section.group,
 punctuation.definition.function,
 punctuation.section.parameters,
 punctuation.definition.parameters,
@@ -201,15 +229,17 @@ entity.name.filename {
 
 // Types
 
-variable.type, variable.other.type, entity.name.constructor {
+support.variable.property.ts,
+variable.type, variable.other.type,  entity.name.constructor {
   @name "Type name";
-  foreground: #6D79DE;
+  foreground: $type;
   fontStyle: none;
 }
 
-support.class, support.type, storage.type.primitive, storage.type.java {
+support.class, support.type, storage.type.primitive,
+storage.type.java {
   @name "Library object";
-  foreground: #6D79DE;
+  foreground: $type;
   fontStyle: bold;
 }
 
@@ -233,15 +263,17 @@ punctuation.section.inheritance
   foreground: $class_header;
 }
 
-punctuation.definition.arguments.constructor {
+punctuation.definition.arguments.constructor,
+punctuation.section.generic
+{
   @name "Constructor punctuation";
-  foreground: #6D79DE;
+  foreground: $type;
   fontStyle: none;
 }
 
 entity.other.inherited-class {
   @name "Inherited class name";
-  foreground: #6D79DE;
+  foreground: $type;
   fontStyle: italic;
 }
 
@@ -258,6 +290,7 @@ storage.modifier.namespace
 }
 
 punctuation.section.module,
+punctuation.section.namespace,
 punctuation.definition.module-binding,
 punctuation.separator.module-binding
 {
@@ -275,8 +308,11 @@ support.function {
 variable.function,
 punctuation.definition.arguments,
 punctuation.section.arguments,
+meta.function-call.ts entity.name.function.ts,
 meta.function-call punctuation.separator.parameters,
 meta.method-call punctuation.section.group,
+meta.function-call punctuation.section.generic,
+meta.function-call punctuation.section.group,
 punctuation.separator.arguments,
 punctuation.separator.argument
 {
@@ -338,7 +374,7 @@ meta.section entity.name.section, declaration.section entity.name.section {
 
 support.class, support.type {
   @name "Library object";
-  foreground: #6D79DE;
+  foreground: $type;
   fontStyle: bold;
 }
 
@@ -487,7 +523,7 @@ punctuation.definition.array, punctuation.definition.tuple, punctuation.separato
 }
 
 meta.diff.header {
-  foreground: #6D79DE;
+  foreground: $type;
 }
 
 markup.inserted {
