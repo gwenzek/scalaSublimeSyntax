@@ -277,6 +277,9 @@ contexts:
     - match: '"""'
       scope: punctuation.definition.string.quoted.triple.begin.scala
       push: triple_string
+    - match: 's"""'
+      scope: punctuation.definition.string.interpolated.begin.scala
+      push: ms_string
     - match: 's"'
       scope: punctuation.definition.string.interpolated.begin.scala
       push: s_string
@@ -549,6 +552,26 @@ contexts:
         1: punctuation.definition.string.interpolated.element.scala
         2: source.scala variable.other.scala
     - match: '"'
+      scope: punctuation.definition.string.interpolated.end.scala
+      pop: true
+    - include: escaped
+
+  ms_string:
+    - meta_include_prototype: false
+    - meta_scope: string.interpolated.scala
+    - match: '(\$)\{'
+      scope: punctuation.definition.string.interpolated.element.begin.scala
+      push:
+        - meta_scope: source.scala
+        - match: '\}'
+          scope: punctuation.definition.string.interpolated.element.end.scala
+          pop: true
+        - include: 'main'
+    - match: '(\$){{name}}'
+      captures:
+        1: punctuation.definition.string.interpolated.element.scala
+        2: source.scala variable.other.scala
+    - match: '"""'
       scope: punctuation.definition.string.interpolated.end.scala
       pop: true
     - include: escaped
