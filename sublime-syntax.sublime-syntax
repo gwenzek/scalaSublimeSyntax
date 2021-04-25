@@ -4,6 +4,7 @@
 name: YAML sublime-syntax
 file_extensions:
   - sublime-syntax
+  - _sublime-syntax
 first_line_match: ^%YAML( 1.\d)?$
 scope: source.yaml
 
@@ -519,6 +520,13 @@ contexts:
     - match: (?=.)
       pop: true
 
+  scope_inline:
+    - match: \w+
+      scope: variable.scope.syntax
+    - match: \.
+      scope: punctuation.accessor.scope.syntax
+    - match: (?=.)
+      pop: true
   # skip_comment_before_scalar:
   #   - match: '^\s*(#)(.*$)'
   #     captures:
