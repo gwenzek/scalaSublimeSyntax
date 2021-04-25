@@ -9,6 +9,9 @@ version because the others contributor didn't like them.
 
 The main syntax has probably less bugs because it has been more tested.
 
+As a consequence I'm archiving this repository,
+now that we are at build 4102.
+
 ## I - Installation
 
 This plugin is available on [package control](https://packagecontrol.io/packages/Scala%20Syntax).
